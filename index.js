@@ -44,7 +44,7 @@ client.on("message", message => {
 client.on("message", function(message) {
   if (message.content === ".online") {
     const interval = setInterval(function() {
-      client.channels.cache.get('841583699510034462').send('Stay online!');
+      client.channels.cache.get('843760730494861364').send('Stay online!');
     }, 1 * 240000);
   }
 });
@@ -62,7 +62,7 @@ client.on("message", async message =>{
           {name: ".sp", value: "Usage: .sp <Amount of Pings> <Delete Pings y/n> <User to Ping>", inline: false},
         )
         .addFields(
-          {name: ".online", value: "Usage: .online (Sends a Message in <#841583699510034462> every 4 Minutes to keep the Bot online).", inline: false},
+          {name: ".online", value: "Usage: .online (Sends a Message in <#843760730494861364> every 4 Minutes to keep the Bot online).", inline: false},
         )
         .setFooter(
           ("Made by Baltraz#4874 and firebxll#0001"),
@@ -72,5 +72,4 @@ client.on("message", async message =>{
       const sentMessage = await message.channel.send(embed)
       setTimeout(() => sentMessage.delete(), 120_000);  
     }
-    });
-   
+    });  
