@@ -1,10 +1,10 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const config = require("./config.json");
+const token = process.env['token'];
 const { Client, MessageEmbed } = require('discord.js');
 
 // Bot token
-client.login(config.token);
+client.login(token);
 
 // Send msg in Console when Bot is usable and set status
 client.on("ready", () => {
@@ -55,7 +55,7 @@ client.on("message", async message =>{
     if(message.content === '.help'){ 
         message.delete();
         let embed = new Discord.MessageEmbed()
-        .setTitle("BaltrazV2 Help")
+        .setTitle("Command List")
         .setDescription("This is how to use all the commands. Any questions? DM <@570267487393021969>")
         .setColor('ff0000')
         .addFields(
@@ -72,4 +72,4 @@ client.on("message", async message =>{
       const sentMessage = await message.channel.send(embed)
       setTimeout(() => sentMessage.delete(), 120_000);  
     }
-    });  
+    });
