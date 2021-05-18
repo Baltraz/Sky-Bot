@@ -1,8 +1,8 @@
+const discord = require('discord.js');
+
 module.exports = {
     "execute": (bot, message, args) => {
-  if (!message.guild) return;
-  if (message.content.startsWith("sp")) {
-    message.delete();
+      message.delete();
     let times = 1;
     let delet = false;
     try {
@@ -18,6 +18,4 @@ module.exports = {
           }, times * 25000);
         }
       });
-  }
-}
-};
+}};
