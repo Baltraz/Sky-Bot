@@ -13,6 +13,6 @@ module.exports = {
           {name: "Online", value: "Usage: !online (Sends a Message in <#843760730494861364> every 4 Minutes to keep the Bot online).", inline: false},
           {name: "Shutdown", value: "Usage: !kill (Baltraz only)", inline: false},
           {name: "Reload", value: "Usage: !reload <commandName> (Baltraz only", inline: false},
-          {name: "Ping", value: "Usage: !ping Shows the current Latency"})
+          {name: "Ping", value: "Usage: !ping Shows the current Latency and Up-Time."})
         .setFooter("Made by Baltraz#4874"))
         }};

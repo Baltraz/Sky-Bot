@@ -6,7 +6,8 @@
   "dependencies": {
     "discord.js": "^12.5.3",
     "fs": "0.0.1-security",
-    "js": "^0.1.0"
+    "js": "^0.1.0",
+    "pretty-ms": "^7.0.1"
   },
   "devDependencies": {},
   "scripts": {
