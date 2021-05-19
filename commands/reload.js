@@ -1,10 +1,10 @@
 const discord = require('discord.js');
 const config = require('../config.json');
 
-module.exports.run = async (bot, message, args) => {
+module.exports = async (bot, message, args) => {
   if(message.author.id != "570267487393021969") return message.channel.send("You're the bot owner!")
 
-  if(!args[0]) return message.channel.send("PLease provide a command to reload!")
+  if(!args[0]) return message.channel.send("Please provide a command to reload!")
 
   let commandName = args[0].toLowerCase()
 

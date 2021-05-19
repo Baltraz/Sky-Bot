@@ -1,7 +1,7 @@
 const discord = require('discord.js');
 
 module.exports = {
-    "execute": (bot, message, args) => {
+    execute: async (bot, message, args) => {
       message.delete();
     const interval = setInterval(function() {
       bot.channels.cache.get('843760730494861364').send('Stay online!');
