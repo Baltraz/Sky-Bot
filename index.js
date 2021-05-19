@@ -47,3 +47,13 @@ bot.on('message', async message => {
         message.reply('there was an error trying to execute that command!');
     }
 });
+
+/* how to export commands
+const discord = require('discord.js');
+
+module.exports = {
+    execute: (bot, message, args) => {
+      putmycodehere
+    }
+};
+*/

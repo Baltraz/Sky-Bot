@@ -12,6 +12,7 @@ module.exports = {
           {name: "Spamping", value: "Usage: !sp <Amount of Pings> <Delete Pings y/n> <User to Ping>", inline: false},
           {name: "Online", value: "Usage: !online (Sends a Message in <#843760730494861364> every 4 Minutes to keep the Bot online).", inline: false},
           {name: "Shutdown", value: "Usage: !kill (Baltraz only)", inline: false},
-          {name: "Reload", value: "Usage: !reload <commandName> (Baltraz only", inline: false})
+          {name: "Reload", value: "Usage: !reload <commandName> (Baltraz only", inline: false},
+          {name: "Ping", value: "Usage: !ping Shows the current Latency"})
         .setFooter("Made by Baltraz#4874"))
         }};

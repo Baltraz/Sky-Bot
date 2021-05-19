@@ -1,7 +1,7 @@
 const discord = require('discord.js');
 
 module.exports = {
-    "execute": (bot, message, args) => {
+    execute: async (bot, message, args) => {
       message.delete();
     let times = 1;
     let delet = false;
