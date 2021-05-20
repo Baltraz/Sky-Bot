@@ -5,4 +5,4 @@ module.exports = {
       if (message.author.id !== "570267487393021969") return;
         process.exit()
     }
-};
+}; 

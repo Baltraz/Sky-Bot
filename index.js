@@ -1,6 +1,5 @@
 const discord = require("discord.js");
 const bot = new discord.Client();
-const { MessageEmbed } = require('discord.js');
 const config = require("./config.json");
 let f = 0;
 
@@ -14,12 +13,29 @@ bot.on("ready", () => {
   console.log(`Loaded ${f} Commands!`)
 });
 
-//Send msg in #general once ready to use
+/*//Send msg in #general once ready to use
 bot.on("ready", () => {
   bot.channels.cache.get('843590952920940565').send('Rebooted and Ready to Use!');
-});
+});*/
 
 // Command loader
+/*bot.commands = new discord.Collection();
+const groupFolders = require("fs").readdirSync("./commands");
+
+groupFolders.forEach(folder => {
+    const commandFiles = require("fs").readdirSync(`./commands/${folder}`);
+    commandFiles.forEach(file => {
+    if (!file.includes(".js")) return;  
+    file = file.replace(".js", "");
+    f++;
+    bot.commands.set(file, require(`./commands/${file}`));
+});
+}); */
+
+
+
+
+//working handler for now
 bot.commands = new discord.Collection();
 const commandFiles = require("fs").readdirSync("./commands");
 
@@ -28,7 +44,7 @@ commandFiles.forEach(file => {
     file = file.replace(".js", "");
     f++;
     bot.commands.set(file, require(`./commands/${file}`));
-});
+}); 
 
 
 //Command Handler

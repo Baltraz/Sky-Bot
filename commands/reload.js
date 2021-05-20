@@ -18,7 +18,6 @@ module.exports = {
        console.log(err);
        return message.channel.send(`Couldn't reload: \`${args[0].toUpperCase()}\``)
   }
-
-  message.channel.send(`The command \`${args[0].toUpperCase()}\` has been reloaded!`)
+      message.channel.send(`Successfully reloaded \`${args[0].toUpperCase()}\`!`)
   }
 };
