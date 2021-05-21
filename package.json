@@ -5,6 +5,8 @@
   "main": "index.js",
   "dependencies": {
     "discord.js": "^12.5.3",
+    "epxress": "0.0.1-security",
+    "express": "^4.17.1",
     "fs": "0.0.1-security",
     "js": "^0.1.0",
     "pretty-ms": "^7.0.1"

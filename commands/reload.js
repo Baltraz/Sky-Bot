@@ -3,7 +3,8 @@ const config = require('../config.json');
 
 module.exports = {
     execute: (bot, message, args) => {
-    if(message.author.id != "570267487393021969") return message.channel.send("You're the bot owner!")
+    if(message.author.id != config.ownerID) return message.channel.send("Can't use this!")
+    message.delete();
 
   if(!args[0]) return message.channel.send("Please provide a command to reload!")
 
@@ -18,6 +19,6 @@ module.exports = {
        console.log(err);
        return message.channel.send(`Couldn't reload: \`${args[0].toUpperCase()}\``)
   }
-      message.channel.send(`Successfully reloaded \`${args[0].toUpperCase()}\`!`)
+      message.channel.send(`Successfully reloaded: \`${args[0].toUpperCase()}\`!`)
   }
 };

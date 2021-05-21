@@ -1,6 +1,7 @@
 const discord = require("discord.js");
 const bot = new discord.Client();
 const config = require("./config.json");
+const keepAlive = require('./keepAlive.js');
 let f = 0;
 
 // Bot token
@@ -13,29 +14,30 @@ bot.on("ready", () => {
   console.log(`Loaded ${f} Commands!`)
 });
 
-/*//Send msg in #general once ready to use
-bot.on("ready", () => {
-  bot.channels.cache.get('843590952920940565').send('Rebooted and Ready to Use!');
+/*//Log all messages it sees in a defined channel
+bot.on("message", message => {
+  if (message.author.id == bot.user.id) return;
+  if (message.guild.id !== config.guildID) return; //Change in config file
+  const embed = new discord.MessageEmbed()
+        .setDescription(`${message.author}`)
+        .setColor('ffff00')
+        .addFields(
+          {name: `\u200b`, value: `${message.content} in ${message.channel}`, inline: false})
+        .setFooter(`ID: ${message.author.id}`)
+  bot.channels.cache.get(config.logID).send(embed) //Change in config file
 });*/
 
-// Command loader
-/*bot.commands = new discord.Collection();
-const groupFolders = require("fs").readdirSync("./commands");
 
-groupFolders.forEach(folder => {
-    const commandFiles = require("fs").readdirSync(`./commands/${folder}`);
-    commandFiles.forEach(file => {
-    if (!file.includes(".js")) return;  
-    file = file.replace(".js", "");
-    f++;
-    bot.commands.set(file, require(`./commands/${file}`));
+
+bot.on("message", message => {
+    if (message.author.bot) return false;
+
+    if (message.mentions.has(bot.user.id)) {
+        message.channel.send(`My prefix is \`${config.prefix}\`.`);
+    };
 });
-}); */
 
-
-
-
-//working handler for now
+//Command Loader
 bot.commands = new discord.Collection();
 const commandFiles = require("fs").readdirSync("./commands");
 
@@ -63,6 +65,8 @@ bot.on('message', async message => {
         message.reply('There was an Error trying to execute that Command!');
     }
 });
+
+keepAlive();
 
 /* how to export commands
 const discord = require('discord.js');

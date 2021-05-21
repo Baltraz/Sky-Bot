@@ -1,4 +1,4 @@
-const discord = require('discord.js');
+/*const discord = require('discord.js');
 
 module.exports = {
     execute: async (bot, message, args) => {
@@ -18,4 +18,4 @@ module.exports = {
           }, times * 25000);
         }
       });
-}};
+}};*/
