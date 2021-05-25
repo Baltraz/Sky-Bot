@@ -1,6 +1,8 @@
 const discord = require('discord.js');
 
 module.exports = {
+  name: "Userinfo",
+  description: "Shows some Info about the User!",
     execute: (bot, message, args) => {
       message.delete();
       message.channel.send(

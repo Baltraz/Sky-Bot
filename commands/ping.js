@@ -2,6 +2,8 @@ const discord = require('discord.js');
 const pms = require('pretty-ms')
 
 module.exports = {
+  name: "Ping",
+  description: "Shows the Bot&API Ping and Bot Uptime!",
     execute: async (bot, message, args) => {
       message.delete();
     message.channel.send('Pinging . . .').then(m => {

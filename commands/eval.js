@@ -2,6 +2,8 @@ const discord = require('discord.js');
 const config = require('../config.json');
 
 module.exports = {
+  name: "Eval",
+  description: "Allows me to execute Code directly from Discord",
     execute: (bot, message, args) => {
       function clean(text) {
   if (typeof(text) === "string")

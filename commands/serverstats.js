@@ -1,6 +1,8 @@
 const discord = require('discord.js');
 
 module.exports = {
+  name: "Serverstats",
+  description: "Shows some Info about the current Server!",
     execute: (bot, message, args) => {
       message.delete();
       message.channel.send(
