@@ -3,7 +3,7 @@ const pms = require('pretty-ms')
 
 module.exports = {
   name: "Ping",
-  description: "Shows the Bot&API Ping and Bot Uptime!",
+  description: "Shows the BOT&API Ping and Bot Uptime!",
   usage: "!ping",
   execute: async (bot, message, args) => {
     message.delete();

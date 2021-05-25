@@ -1,8 +1,8 @@
 const discord = require('discord.js');
 
 module.exports = {
-  name: "Serverstats",
-  description: "Shows some Info about the current Server!",
+  name: "Serverinfo",
+  description: "Shows some Info about the current Server.",
   usage: "!serverstats",
   execute: (bot, message, args) => {
     message.delete();

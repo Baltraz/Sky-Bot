@@ -10,7 +10,7 @@ bot.login(config.token);
 // Send msg in Console when Bot is usable and set status
 bot.on("ready", () => {
   console.log(`Logged in as ${bot.user.tag} and ready to use!`);
-  bot.user.setPresence({ activity: { name: "Learning JS" }, });
+  bot.user.setActivity('discord.js', { type: 'WATCHING' });
   console.log(`Loaded ${f} Commands!`)
 });
 

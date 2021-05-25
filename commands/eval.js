@@ -3,7 +3,7 @@ const config = require('../config.json');
 
 module.exports = {
   name: "Eval",
-  description: "Allows me to execute Code directly from Discord",
+  description: "Allows execution of Code from Discord. (Baltraz Only)",
   usage: "!eval <command snipet>",
   execute: (bot, message, args) => {
     function clean(text) {
