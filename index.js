@@ -30,11 +30,11 @@ bot.on("message", message => {
 
 
 bot.on("message", message => {
-    if (message.author.bot) return false;
+  if (message.author.bot) return false;
 
-    if (message.mentions.has(bot.user.id)) {
-        message.channel.send(`My prefix is \`${config.prefix}\`.`);
-    };
+  if (message.mentions.has(bot.user.id)) {
+    message.channel.send(`My prefix is \`${config.prefix}\`.`);
+  };
 });
 
 //Command Loader
@@ -42,28 +42,28 @@ bot.commands = new discord.Collection();
 const commandFiles = require("fs").readdirSync("./commands");
 
 commandFiles.forEach(file => {
-    if (!file.includes(".js")) return;
-    file = file.replace(".js", "");
-    f++;
-    bot.commands.set(file, require(`./commands/${file}`));
-}); 
+  if (!file.includes(".js")) return;
+  file = file.replace(".js", "");
+  f++;
+  bot.commands.set(file, require(`./commands/${file}`));
+});
 
 
 //Command Handler
 bot.on('message', async message => {
-    if (!message.content.startsWith(config.prefix) || message.author.bot) return;
+  if (!message.content.startsWith(config.prefix) || message.author.bot) return;
 
-    const args = message.content.slice(config.prefix.length).trim().split(/ +/);
-    const command = args.shift().toLowerCase();
+  const args = message.content.slice(config.prefix.length).trim().split(/ +/);
+  const command = args.shift().toLowerCase();
 
-    if (!bot.commands.has(command)) return;
+  if (!bot.commands.has(command)) return;
 
-    try {
-        bot.commands.get(command).execute(bot, message, args);
-    } catch (error) {
-        console.error(error);
-        message.reply('There was an Error trying to execute that Command!');
-    }
+  try {
+    bot.commands.get(command).execute(bot, message, args);
+  } catch (error) {
+    console.error(error);
+    message.reply('There was an Error trying to execute that Command!');
+  }
 });
 
 keepAlive();

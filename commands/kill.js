@@ -4,8 +4,9 @@ const config = require('../config.json')
 module.exports = {
   name: "Kill",
   description: "Stops the Bot",
-    execute: (bot, message, args) => {
-      if (message.author.id !== config.ownerID) return message.channel.send("Can't use this!")
-        process.exit()
-    }
+  usage: "!kill",
+  execute: (bot, message, args) => {
+    if (message.author.id !== config.ownerID) return message.channel.send("Can't use this!")
+    process.exit()
+  }
 };
