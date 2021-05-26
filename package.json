@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "chalk": "^4.1.1",
     "discord.js": "^12.5.3",
     "epxress": "0.0.1-security",
     "express": "^4.17.1",

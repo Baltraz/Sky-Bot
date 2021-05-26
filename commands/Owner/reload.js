@@ -1,5 +1,5 @@
 const discord = require('discord.js');
-const config = require('../config.json');
+const config = require('../../config.json');
 
 module.exports = {
   name: "Reload",
@@ -24,11 +24,20 @@ module.exports = {
 
 
     try {
-      delete require.cache[require.resolve(`./${commandName}.js`)]
-      bot.commands.delete(commandName)
-      const pull = require(`./${commandName}.js`)
-      bot.commands.set(commandName, pull)
-    } catch (err) {
+      const fs = require("fs");
+      const commandFolders = fs.readdirSync('./commands');
+
+      for (const folder of commandFolders) {
+        const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));
+          for (const file of commandFiles) {
+            if (file.toLowerCase().includes(commandName.toLowerCase())) {
+            delete require.cache[require.resolve(`../${folder}/${file}`)]
+            bot.commands.delete(commandName)
+            const pull = require(`../${folder}/${file}`)
+            bot.commands.set(commandName, pull)
+      }
+  }
+}} catch (err) {
       console.log(err);
       return message.channel.send(embedno)
     }

@@ -13,7 +13,7 @@ module.exports = {
         .addFields(
           { name: "User", value: `${message.author}`, inline: true },
           { name: "User ID", value: `${message.author.id}`, inline: true },
-          { name: "Join Date", value: `${message.member.joinedAt}`, inline: true })
+          { name: "Server Join Date", value: `${message.member.joinedAt}`, inline: true })
         .setFooter("Made by Baltraz#4874")
         .setThumbnail(message.author.displayAvatarURL()))
   }

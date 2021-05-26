@@ -2,33 +2,22 @@ const discord = require("discord.js");
 const bot = new discord.Client();
 const config = require("./config.json");
 const keepAlive = require('./keepAlive.js');
+const fs = require('fs');
+const chalk = require('chalk');
 let f = 0;
 
 // Bot token
 bot.login(config.token);
 
+
 // Send msg in Console when Bot is usable and set status
 bot.on("ready", () => {
-  console.log(`Logged in as ${bot.user.tag} and ready to use!`);
-  bot.user.setActivity('discord.js', { type: 'WATCHING' });
-  console.log(`Loaded ${f} Commands!`)
+  console.log(chalk.greenBright(`Logged in as ${bot.user.username}!`));
+  console.log(chalk.greenBright(`Loaded ${f} Commands!`));
 });
 
-/*//Log all messages it sees in a defined channel
-bot.on("message", message => {
-  if (message.author.id == bot.user.id) return;
-  if (message.guild.id !== config.guildID) return; //Change in config file
-  const embed = new discord.MessageEmbed()
-        .setDescription(`${message.author}`)
-        .setColor('ffff00')
-        .addFields(
-          {name: `\u200b`, value: `${message.content} in ${message.channel}`, inline: false})
-        .setFooter(`ID: ${message.author.id}`)
-  bot.channels.cache.get(config.logID).send(embed) //Change in config file
-});*/
 
-
-
+//Replies with the Preifx when Bot is mentioned
 bot.on("message", message => {
   if (message.author.bot) return false;
 
@@ -37,16 +26,20 @@ bot.on("message", message => {
   };
 });
 
+
 //Command Loader
 bot.commands = new discord.Collection();
-const commandFiles = require("fs").readdirSync("./commands");
 
-commandFiles.forEach(file => {
-  if (!file.includes(".js")) return;
-  file = file.replace(".js", "");
-  f++;
-  bot.commands.set(file, require(`./commands/${file}`));
-});
+const commandFolders = fs.readdirSync('./commands');
+
+for (const folder of commandFolders) {
+  const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));
+  for (const file of commandFiles) {
+    const command = require(`./commands/${folder}/${file}`);
+    f += 1;
+    bot.commands.set(command.name.toLowerCase(), command);
+  }
+}
 
 
 //Command Handler
@@ -66,7 +59,10 @@ bot.on('message', async message => {
   }
 });
 
+
+//Loophole to keep the Bot running
 keepAlive();
+
 
 /* how to export commands
 const discord = require('discord.js');
@@ -75,4 +71,5 @@ module.exports = {
     execute: (bot, message, args) => {
       putmycodehere
     }
-};*/
+};
+*/
