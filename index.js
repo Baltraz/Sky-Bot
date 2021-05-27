@@ -61,6 +61,18 @@ bot.on('message', async message => {
   }
 });
 
+//Event Handler
+const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+
+for (const file of eventFiles) {
+	const event = require(`./events/${file}`);
+	if (event.once) {
+		bot.once(event.name, (...args) => event.execute(...args, bot));
+	} else {
+		bot.on(event.name, (...args) => event.execute(...args, bot));
+	}
+}
+
 
 //Loophole to keep the Bot running
 keepAlive();
@@ -77,5 +89,14 @@ module.exports = {
     execute: (bot, message, args) => {
       putmycodehere
     }
+};
+*/
+
+/*
+module.exports = {
+	name: 'name',
+	execute(bot) {
+    code here
+	}
 };
 */

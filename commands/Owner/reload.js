@@ -17,7 +17,7 @@ module.exports = {
 
     const embedyes = new discord.MessageEmbed()
       .setColor('00ff00')
-      .setDescription(`Successfully reloaded **${commandName}**!`)
+      .setDescription(`<a:yes:847468695772987423> Successfully reloaded **${commandName}**!`)
 
     const embedno = new discord.MessageEmbed()
       .setColor('ff0000')

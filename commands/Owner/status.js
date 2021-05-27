@@ -16,7 +16,7 @@ module.exports = {
             return message.client.user.setActivity()
                 .then(message.channel.send(
                     new discord.MessageEmbed()
-                        .setDescription(`Status removed`)
+                        .setDescription(`<a:yes:847468695772987423> Status removed`)
                         .setColor('7CFC00')
                 ))
         }
@@ -32,7 +32,7 @@ module.exports = {
 
         if (args.length == 1) return message.channel.send(
             new discord.MessageEmbed()
-                .setDescription(`You need a message as well as a status type`)
+                .setDescription(`<a:wait:847471618272002059> You need a message as well as a status type`)
                 .setColor('DC143C')
         )
 
@@ -41,7 +41,7 @@ module.exports = {
         message.client.user.setActivity(args.join(' '), { type: status })
             .then(message.channel.send(
                 new discord.MessageEmbed()
-                    .setDescription(`Status successfully set to \`${status.charAt(0).toUpperCase() + status.slice(1).toLowerCase() + ' ' + args.join(' ')}\``)
+                    .setDescription(`<a:yes:847468695772987423> Status successfully set to \`${status.charAt(0).toUpperCase() + status.slice(1).toLowerCase() + ' ' + args.join(' ')}\``)
                     .setColor('7CFC00')
             ))
     },

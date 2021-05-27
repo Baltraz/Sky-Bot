@@ -16,7 +16,6 @@ module.exports = {
           { name: "Server Name", value: `${message.guild.name}`, inline: true },
           { name: "Member Count", value: `${message.guild.memberCount}`, inline: true },
           { name: "Server Verification Level", value: `${message.guild.verificationLevel}`, inline: true },
-          { name: "Server Created On", value: `${message.guild.createdAt}`, inline: true })
-        .setFooter("Made by Baltraz#4874"))
+          { name: "Server Created On", value: `${message.guild.createdAt}`, inline: true }))
   }
 };
