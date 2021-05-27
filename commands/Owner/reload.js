@@ -5,6 +5,7 @@ module.exports = {
   name: "Reload",
   description: "Allows Commads to be reloaded. (Baltraz Only)",
   usage: "!reload <Command Name>",
+  perms: "BotOwner",
   execute: (bot, message, args) => {
     if (message.author.id != config.ownerID) return message.channel.send("Can't use this!")
     message.delete();

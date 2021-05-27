@@ -4,6 +4,7 @@ module.exports = {
   name: "Serverinfo",
   description: "Shows some Info about the current Server.",
   usage: "!serverstats",
+  perms: "None",
   execute: (bot, message, args) => {
     message.delete();
     message.channel.send(

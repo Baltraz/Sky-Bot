@@ -72,7 +72,8 @@ const discord = require('discord.js');
 module.exports = {
   name: "Name",
   description: "Description",
-  usage: "!eval <comma",
+  usage: "Usage",
+  perms: "Permissions Needed",
     execute: (bot, message, args) => {
       putmycodehere
     }

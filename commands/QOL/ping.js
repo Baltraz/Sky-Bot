@@ -5,6 +5,7 @@ module.exports = {
   name: "Ping",
   description: "Shows the BOT&API Ping and Bot Uptime!",
   usage: "!ping",
+  perms: "None",
   execute: async (bot, message, args) => {
     message.delete();
     message.channel.send('Pinging . . .').then(m => {

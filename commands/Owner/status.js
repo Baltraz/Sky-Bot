@@ -6,6 +6,7 @@ module.exports = {
     name: 'Status',
     description: 'Set the Bots Status. (Baltraz Only)',
     usage: '!status <statusType> <statusMessage>',
+    perms: "BotOwner",
     execute(client, message, args) {
 
       if (message.author.id != config.ownerID) return message.channel.send("Can't use this!")

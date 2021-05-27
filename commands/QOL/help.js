@@ -4,6 +4,7 @@ module.exports = {
   name: "Help",
   description: "Shows Information for all Commands.",
   usage: "!help <Command Name>",
+  perms: "None",
   execute: (bot, message, args) => {
 
     message.delete();
@@ -14,7 +15,7 @@ module.exports = {
         .setTitle("Available Commands")
         .setColor("add8e6")
         .addFields(
-          { name: "Usage:", value: "!help <Command> to get a more detailed Information about the Command." })
+          { name: "Usage: (Needed) <Optional>", value: "!help <Command> to get a more detailed Information about the Command." })
       const l = [];
 
       message.client.commands.each(c => l.push(c.name));
@@ -24,6 +25,7 @@ module.exports = {
     } else if (commands.some(c => c.name.toLowerCase() === args[0].toLowerCase())) {
       const embed2 = new discord.MessageEmbed()
         .setColor("GREY")
+        .addField("Permissions Needed:", `${commands.find(c => c.name.toLowerCase() == args[0].toLowerCase()).perms}`)
         .addField("Usage:", `${commands.find(c => c.name.toLowerCase() == args[0].toLowerCase()).usage}`)
 
       message.client.commands.forEach(command => {

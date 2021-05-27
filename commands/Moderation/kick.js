@@ -2,26 +2,34 @@ const discord = require('discord.js');
 
 module.exports = {
   name: "Kick",
-  description: "Ban a Member from the Discord",
-  usage: "!ban (Member) <Ban Reason>",
+  description: "Kick a Member from the Discord",
+  usage: "!kick (Member) <Kick Reason>",
+  perms: "Kick Members",
   execute: (bot, message, args) => {
-    const { member, mentions } = message
-    const tag = `<@${member.id}>`
-    if (
-      member.hasPermission('ADMINISTRATOR') ||
-      member.hasPermission('Kick')
-    ) {
-      const target = mentions.users.first()
-      if (target) {
-        const targetMember = message.guild.members.cache.get(target.id)
-        targetMember.kick()
-        message.channel.send(`<@${target.id}>, has been kicked.`)
-
+    if (!message.member.hasPermission('ADMINISTRATOR' || 'KICK_MEMBERS')) return message.channel.send("Not allowed to use this.")
+    message.delete()
+    const user = message.mentions.users.first()
+    const kickembed = new discord.MessageEmbed()
+          .setTitle("✅ Kicked User")
+          .setColor("008000")
+          .setDescription(`${user} has been kicked.`)
+    if (user) {
+      const member = message.guild.member(user);
+      if (member) {
+        member
+          .kick('')
+          .then(() => {
+            message.reply(kickembed);
+          })
+          .catch(err => {
+            message.reply('I was unable to kick the member');
+            console.error(err);
+          });
       } else {
-        message.channel.send(`${tag}, please mention someone to kick.`)
+        message.reply("The mentioned User isn't in the Discord.");
       }
     } else {
-      message.channel.send(`${tag}, you don't have permission to use this Command.`)
+      message.reply("You didn't mention anyone to kick.");
     }
   }
 };

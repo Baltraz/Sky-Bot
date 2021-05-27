@@ -3,6 +3,7 @@ module.exports = {
     name: "Getcode",
     description: "Sends the code for a given command to chat. (Baltraz Only)",
     usage: "!getcode <filename>",
+    perms: "BotOwner",
     execute: (bot, message, args) => {
       if (message.author.id !== config.ownerID) return message.channel.send("Can't use this!")
       message.delete();
