@@ -4,10 +4,12 @@ const config = require("./config.json");
 const keepAlive = require('./keepAlive.js');
 const fs = require('fs');
 const chalk = require('chalk');
+const mySecret = process.env['token']
 let f = 0;
 
+
 // Bot token
-bot.login(config.token);
+bot.login(mySecret);
 
 
 // Send msg in Console when Bot is usable and set status
@@ -68,6 +70,9 @@ keepAlive();
 const discord = require('discord.js');
 
 module.exports = {
+  name: "Name",
+  description: "Description",
+  usage: "!eval <comma",
     execute: (bot, message, args) => {
       putmycodehere
     }

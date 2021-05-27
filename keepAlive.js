@@ -3,7 +3,7 @@ const server = express();
 const chalk = require('chalk');
 
 server.all('/', (req, res) => {
-  res.send(`These Nuts in your Mouth Stupid bitch.`)
+  res.send(`Wont go Offline!`)
 })
 
 function keepAlive() {
