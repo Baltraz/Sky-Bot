@@ -6,16 +6,15 @@ module.exports = {
     execute(guild, bot) {
         console.log(chalk.green(`Joined a Guild: ${guild.name}`));
         discordLog(bot,
-            new discord.MessageEmbed()
+             new discord.MessageEmbed()
                 .setAuthor(bot.user.username, bot.user.avatarURL())
                 .setDescription(`Joined a Guild: \`${guild.name}\``)
                 .setColor('7CFC00')
                 .setTimestamp()
                 .addFields(
-                  {name: "Member Count", value: `${guild.memberCount}`},
-                )
+                  {name: "Member Count", value: `${guild.memberCount}`})
         )
-    },
+    }
 };
 
 function discordLog(bot, embed) {
