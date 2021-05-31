@@ -9,15 +9,16 @@ module.exports = {
     if (!message.member.hasPermission('ADMINISTRATOR' || 'BAN_MEMBERS')) return message.channel.send("Not allowed to use this.")
     message.delete()
     const user = message.mentions.users.first() || message.guild.members.cache.get(args[0]);
+    const reason = args.slice(1).join(" ");
     const banembed = new discord.MessageEmbed()
           .setTitle("✅ Banned User")
           .setColor("008000")
-          .setDescription(`${user} has been banned.`)
+          .setDescription(`**${user}** has been banned for **${reason}**.`)
     if (user) {
       const member = message.guild.member(user);
       if (member) {
         member
-          .ban()
+          .ban({reason: reason})
           .then(() => {
             message.channel.send(banembed);
           })

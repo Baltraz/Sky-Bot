@@ -2,7 +2,7 @@ const discord = require('discord.js')
 const chalk = require('chalk');
 
 module.exports = {
-    name: 'guildCreate',
+    name: 'guildjoin',
     execute(guild, bot) {
         console.log(chalk.green(`Joined a Guild: ${guild.name}`));
         discordLog(bot,
@@ -12,7 +12,9 @@ module.exports = {
                 .setColor('7CFC00')
                 .setTimestamp()
                 .addFields(
-                  {name: "Member Count", value: `${guild.memberCount}`})
+                  {name: "Member Count of the Server", value: `${guild.memberCount}`},
+                  {name: "Total Server Count Now", value: `${bot.guilds.cache.size}`},
+                  {name: "Total User Count Now", value: `${bot.users.cache.size}`})
         )
     }
 };

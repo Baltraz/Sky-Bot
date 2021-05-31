@@ -1,9 +1,9 @@
 const discord = require('discord.js');
 
 module.exports = {
-  name: "Userinfo",
+  name: "User",
   description: "Shows some Info about the User.",
-  usage: "!userinfo",
+  usage: "!user",
   perms: "None",
   execute: (bot, message, args) => {
     message.delete();

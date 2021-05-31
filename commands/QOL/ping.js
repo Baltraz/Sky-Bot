@@ -11,12 +11,11 @@ module.exports = {
     message.channel.send('Pinging . . .').then(m => {
       message.channel.send(
         new discord.MessageEmbed()
-          .setTitle("Current Bot Downtime")
+          .setTitle("Current Bot Info")
           .setColor('4169E1')
           .addFields(
             { name: "<:ping:847473419011620955> BOT Latency", value: `${m.createdTimestamp - message.createdTimestamp}ms.`, inline: false },
-            { name: "<:ping:847473419011620955> API Latency", value: `${Math.round(bot.ws.ping)}ms.`, inline: false },
-            { name: "<:uptime:847474288884842567> Up-Time", value: `${pms(bot.uptime)}` }
+            { name: "<:ping:847473419011620955> API Latency", value: `${Math.round(bot.ws.ping)}ms.`, inline: false }
           ));
     });
   }
