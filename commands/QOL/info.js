@@ -6,6 +6,7 @@ module.exports = {
   description: "Shows some Info about the Bot",
   usage: "!info",
   perms: "None",
+  folder: "QOL",
     execute: (bot, message, args) => {
       message.delete()
       const infoembed = new discord.MessageEmbed()

@@ -5,6 +5,7 @@ module.exports = {
   description: "<:beans:849265485199048744>",
   usage: "!bean (Member)",
   perms: "<:beans:849265485199048744>",
+  folder: "Fun",
   execute: (bot, message, args) => {
     message.delete()
     const user = message.mentions.users.first() || message.guild.members.cache.get(args[0]);

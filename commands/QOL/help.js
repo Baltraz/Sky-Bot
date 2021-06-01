@@ -1,43 +1,64 @@
-const discord = require('discord.js');
+const Discord = require('discord.js');
+const fs = require('fs')
 
 module.exports = {
-  name: "Help",
-  description: "Shows Information for all Commands.",
-  usage: "!help <Command Name>",
-  perms: "None",
-  execute: (bot, message, args) => {
+    name: 'help',
+    aliases: ['h', 'info', `commands`],
+    usage: 'help [command]',
+    description: 'Shows Information about all the Commands from Sky Bot',
+    perms: "None",
+    execute(bot, message, args) {
+        if (!args.length) {
+            delete require.cache[require.resolve('../../package.json')];
+            const package = require('../../package.json');
+    
+            delete require.cache[require.resolve('../../config.json')];
+            const config = require('../../config.json');
+    
+            const commandFolders = fs.readdirSync('./commands');
+    
+            let embed = new Discord.MessageEmbed()
+                .setAuthor(`Help`)
+                .setDescription(`For more information run \`!help (Command Name)\``)
+                .setColor('ORANGE')
 
-    message.delete();
+            for (const folder of commandFolders) {
+                let descriptions = [];
+                const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));
+                for (const file of commandFiles) {
+                    const command = require(`../${folder}/${file}`);
+                    let currentCommand = [];
+                    currentCommand.push(`\`${command.name.charAt(0).toUpperCase() + command.name.slice(1)}\``);
+                    currentCommand.push('-');
+                    currentCommand.push(command.description);
+                    descriptions.push(currentCommand.join(' '));
+                }
+                embed.addField((folder.charAt(0).toUpperCase() + folder.slice(1)), descriptions.join('\n'))
+            }
 
-    const commands = message.client.commands
-    if (args.length === 0) {
-      const embed1 = new discord.MessageEmbed()
-        .setTitle("Available Commands")
-        .setColor("add8e6")
-        .addFields(
-          { name: "Usage: (Needed) <Optional>", value: "!help <Command> to get a more detailed Information about the Command." })
-          .setFooter('Created by Baltraz, Mend, Delta and Fireball')
-      const l = [];
+            return message.channel.send(embed)
+        } // all commands
 
-      message.client.commands.each(c => l.push(c.name));
-      embed1.setDescription(l.join(", "));
-      message.channel.send(embed1)
+        const name = args[0].toLowerCase();
+        const command = message.client.commands.get(name);
 
-    } else if (commands.some(c => c.name.toLowerCase() === args[0].toLowerCase())) {
-      const embed2 = new discord.MessageEmbed()
-        .setColor("GREY")
-        .addField("Permissions Needed:", `${commands.find(c => c.name.toLowerCase() == args[0].toLowerCase()).perms}`)
-        .addField("Usage:", `${commands.find(c => c.name.toLowerCase() == args[0].toLowerCase()).usage}`)
-
-      message.client.commands.forEach(command => {
-        if (command.name.toLowerCase() == args[0].toLowerCase()) {
-          embed2.setTitle(command.name)
-          embed2.setDescription(command.description)
+        if (!command) {
+            return message.channel.send(
+                new Discord.MessageEmbed()
+                .setDescription(`Command \`${name}\` wasn\'t found.\nUse \`!help\` to see all the Valid Commands. `)
+                .setColor('RED')
+            );
         }
-      })
-      message.channel.send(embed2)
-    } else {
-      message.channel.send(`Unknown Command!`)
-    }
-  }
-}
+
+        let embed = new Discord.MessageEmbed()
+                .setAuthor(`Help -> ${command.folder} -> ${command.name}`)
+                .setColor('616060')
+
+        embed.setDescription(`${command.description}`)
+        embed.addField('Permissions Needed to Execute:', `${command.perms}`)
+        embed.addField('Usage:', `${command.usage}`)
+
+        return message.channel.send(embed)
+                // individual commands
+    },
+};

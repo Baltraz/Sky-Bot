@@ -5,6 +5,7 @@ module.exports = {
   description: "Kick a Member from the Discord",
   usage: "!kick (Member)",
   perms: "Kick Members",
+  folder: "Moderation",
   execute: (bot, message, args) => {
     if (!message.member.hasPermission('KICK_MEMBERS')) return message.channel.send("You are missing the Permission \`KICK_MEMBERS\`.");
     if (!message.guild.me.hasPermission('KICK_MEMBERS')) return message.channel.send("I don\'t have \`KICK_MEMBERS\` Permission.");

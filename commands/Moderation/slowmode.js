@@ -5,6 +5,7 @@ module.exports = {
 	description: 'Increase/Decrease slomode of a channel',
 	usage: '!slowmode (Time)\n\`Time Between 1 and 21600 (Enter 0 to remove Slowmode.)\`',
 	perms: 'Manage Channels',
+  folder: "Moderation",
 	async execute(bot, message, args) {
 		if (!message.member.hasPermission('MANAGE_CHANNELS'))
 			return message.channel.send('You are missing the Permission \`MANAGE_CHANNELS\`.'

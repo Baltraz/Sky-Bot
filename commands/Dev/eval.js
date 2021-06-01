@@ -5,7 +5,8 @@ module.exports = {
   name: "Eval",
   description: "Allows execution of Code from Discord. (Baltraz Only)",
   usage: "!eval <command snipet>",
-  perms: "BotOwner",
+  perms: "Dev",
+  folder: "Dev",
   execute: (bot, message, args) => {
     if (message.author.id !== config.ownerID) return message.channel.send("Can't use this!")
     function clean(text) {

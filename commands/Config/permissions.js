@@ -2,9 +2,10 @@ const discord = require('discord.js');
 
 module.exports = {
   name: "Permissions",
-  description: "Shows what Permissions the Bot has/needs.",
+  description: "Shows what Permissions the Bot has/needs",
   usage: "!permissions",
   perms: "Admin",
+  folder: "Config",
     execute: (bot, message, args) => {
       if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send("You are missing the Permission \`ADMINISTRATOR\`.");
       message.delete()

@@ -5,7 +5,8 @@ module.exports = {
   name: "Kill",
   description: "Shuts the Bot down. (Baltraz Only)",
   usage: "!kill",
-  perms: "BotOwner",
+  perms: "Dev",
+  folder: "Dev",
   execute: (bot, message, args) => {
     if (message.author.id !== config.ownerID) return message.channel.send("Can't use this!")
     process.exit()

@@ -5,6 +5,7 @@ module.exports = {
   description: "Ban a Member from the Discord",
   usage: "!ban (Member) <Ban Reason>",
   perms: "Ban Members",
+  folder: "Moderation",
   execute: (bot, message, args) => {
     if (!message.member.hasPermission('BAN_MEMBERS')) return message.channel.send("You are missing the Permission \`BAN_MEMBERS\`.");
     if (!message.guild.me.hasPermission('BAN_MEMBERS'))return message.channel.send("I don\'t have \`BAN_MEMBERS\` Permission.");

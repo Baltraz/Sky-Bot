@@ -5,6 +5,7 @@ module.exports = {
   description: "Purge Messages",
   usage: "!purge (Message Amount)",
   perms: "Manage Messages",
+  folder: "Moderation",
     execute: (bot, message, args) => {
         if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send("You are missing the Permission \`MANAGE_MESSAGES\`.");
         if (!message.guild.me.hasPermission('MANAGE_MESSAGES')) return message.channel.send('I don\'t have \`MANAGE_MESSAGES\` Permission.')

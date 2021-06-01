@@ -5,6 +5,7 @@ module.exports = {
   description: "Shows some Stats about the current Server.",
   usage: "!serverstats",
   perms: "None",
+  folder: "QOL",
   execute: (bot, message, args) => {
     message.delete();
     message.channel.send(

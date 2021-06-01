@@ -2,7 +2,7 @@ const discord = require('discord.js');
 
 module.exports = {
   name: "Welcome",
-  description: "Sets the Welcome Role and Welcome Channel for your Server\n**STILL WORK IN PROGRESS**",
+  description: "Sets the Welcome Role and Welcome Channel for your Server",
   usage: "!welcome (Mention Role/Send Role ID) (Mention Channel/Send Channel ID)",
   perms: "Admin",
   execute: (bot, message, args) => {

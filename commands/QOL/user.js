@@ -1,10 +1,11 @@
 const discord = require('discord.js');
 
 module.exports = {
-  name: "User",
+  name: "Userinfo",
   description: "Shows some Info about the User.",
   usage: "!user",
   perms: "None",
+  folder: "QOL",
   execute: (bot, message, args) => {
     message.delete();
     message.channel.send(

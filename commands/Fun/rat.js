@@ -5,6 +5,7 @@ module.exports = {
   description: "🐀",
   usage: "!rat (Member)",
   perms: "🐀",
+  folder: "Fun",
   execute: (bot, message, args) => {
     message.delete()
     const user = message.mentions.users.first() || message.guild.members.cache.get(args[0]);
