@@ -13,7 +13,7 @@ module.exports = {
     const user = message.mentions.users.first() || message.guild.members.cache.get(args[0]);
     const reason = args.slice(1).join(" ");
     const banembed = new discord.MessageEmbed()
-          .setTitle("✅ Banned User")
+          .setTitle("<a:yes:847468695772987423> Banned User")
           .setColor("008000")
           .setDescription(`**${user}** has been banned for **${reason}**.`)
     if (user) {
@@ -29,7 +29,7 @@ module.exports = {
             console.error(err);
           });
       } else {
-        message.channel.send("The mentioned User isn't in the Discord.");
+        message.channel.send("<a:no:847468672380829707> The mentioned User isn't in the Discord.");
       }
     } else {
       message.channel.send("<a:wait:847471618272002059> You didn't mention anyone to ban.");

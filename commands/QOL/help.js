@@ -18,8 +18,8 @@ module.exports = {
             const commandFolders = fs.readdirSync('./commands');
     
             let embed = new Discord.MessageEmbed()
-                .setAuthor(`Help`)
-                .setDescription(`For more information run \`!help (Command Name)\``)
+                .setAuthor(`Sky Bot Help`)
+                .setDescription(`Use \`!help (Command Name)\` for a more detailed view on a Command.`)
                 .setColor('ORANGE')
 
             for (const folder of commandFolders) {

@@ -8,4 +8,11 @@ module.exports = {
   folder: "QOL",
     execute: (bot, message, args) => {
       message.delete()
-      message.channel.send("Use this Link to Invite me to your Server:\nhttps://discord.com/oauth2/authorize?client_id=839835292785704980&scope=bot&permissions=388167")}};
+      const embed = new discord.MessageEmbed()
+      .setTitle('Important Bot Links')
+      .setColor('fed8b1')
+      .setDescription("[Support Server](https://discord.gg/Ca6XpTRQaR)\n[Bot Invite](https://discord.com/oauth2/authorize?client_id=839835292785704980&scope=bot&permissions=268758103)")
+      .setTi
+      message.channel.send(embed)
+    }
+};

@@ -5,6 +5,7 @@ module.exports = {
   description: "Sets the Welcome Role and Welcome Channel for your Server",
   usage: "!welcome (Mention Role/Send Role ID) (Mention Channel/Send Channel ID)",
   perms: "Admin",
+  folder: "WIP",
   execute: (bot, message, args) => {
     if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send("You are missing the Permission \`ADMINISTRATOR\`.");
 

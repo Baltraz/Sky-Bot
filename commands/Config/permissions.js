@@ -13,6 +13,7 @@ module.exports = {
       const pembed = new discord.MessageEmbed()
       .setTitle('Permission Check')
       .setDescription('✅ = Has the Permission.\n🚫 = Doesn\'t have the Permission.')
+      .setColor('ORANGE')
       
       if (message.guild.me.hasPermission('BAN_MEMBERS')) {
         pembed.addField("BAN_MEMBERS", '✅', true)

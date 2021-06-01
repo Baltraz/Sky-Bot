@@ -1,9 +1,9 @@
 const discord = require('discord.js');
 
 module.exports = {
-  name: "Serverstats",
+  name: "Serverinfo",
   description: "Shows some Stats about the current Server.",
-  usage: "!serverstats",
+  usage: "!serverinfo",
   perms: "None",
   folder: "QOL",
   execute: (bot, message, args) => {

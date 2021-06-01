@@ -10,10 +10,15 @@ module.exports = {
     message.delete()
     const user = message.mentions.users.first() || message.guild.members.cache.get(args[0]);
     const ratembed = new discord.MessageEmbed()
-      .setTitle("🐀 Ratted User")
+      .setTitle("🐀 Ratted User 🐀")
       .setColor("GREY")
-      .setDescription(`🐀 ${user} is a Rat!`)
+      .setDescription(`🐀 ${user} is a Rat! 🐀`)
+      .setFooter(`Used by ${message.author.tag}`)
 
-    message.channel.send(ratembed);
+    if (user) {
+      message.channel.send(ratembed)
+    } else {
+      message.channel.send("<a:wait:847471618272002059> You didn't mention anyone to bean.")
+    }
   }
 };
