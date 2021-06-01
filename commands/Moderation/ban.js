@@ -6,7 +6,8 @@ module.exports = {
   usage: "!ban (Member) <Ban Reason>",
   perms: "Ban Members",
   execute: (bot, message, args) => {
-    if (!message.member.hasPermission('ADMINISTRATOR' || 'BAN_MEMBERS')) return message.channel.send("Not allowed to use this.")
+    if (!message.member.hasPermission('BAN_MEMBERS')) return message.channel.send("You are missing the Permission \`BAN_MEMBERS\`.");
+    if (!message.guild.me.hasPermission('BAN_MEMBERS'))return message.channel.send("I don\'t have \`BAN_MEMBERS\` Permission.");
     message.delete()
     const user = message.mentions.users.first() || message.guild.members.cache.get(args[0]);
     const reason = args.slice(1).join(" ");

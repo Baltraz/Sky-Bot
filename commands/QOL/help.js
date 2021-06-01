@@ -16,6 +16,7 @@ module.exports = {
         .setColor("add8e6")
         .addFields(
           { name: "Usage: (Needed) <Optional>", value: "!help <Command> to get a more detailed Information about the Command." })
+          .setFooter('Created by Baltraz, Mend, Delta and Fireball')
       const l = [];
 
       message.client.commands.each(c => l.push(c.name));

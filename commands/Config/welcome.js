@@ -1,12 +1,12 @@
 const discord = require('discord.js');
 
 module.exports = {
-  name: "welcome",
-  description: "Sets the Welcome Role and Welcome Channel for your Server",
+  name: "Welcome",
+  description: "Sets the Welcome Role and Welcome Channel for your Server\n**STILL WORK IN PROGRESS**",
   usage: "!welcome (Mention Role/Send Role ID) (Mention Channel/Send Channel ID)",
   perms: "Admin",
   execute: (bot, message, args) => {
-    if (!message.member.hasPermission('ADMINISTRATOR')) return;
+    if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send("You are missing the Permission \`ADMINISTRATOR\`.");
 
     const role = message.mentions.roles.first() ? message.mentions.roles.first() : message.guild.roles.cache.get(args[0]);
     const channel = message.mentions.channels.first() ? message.mentions.channels.first() : message.guild.channels.cache.get(args[1]);
@@ -36,9 +36,9 @@ module.exports = {
       )
 
       const sucEmbed = new discord.MessageEmbed()
-        .setTitle('Welcome Setup')
+        .setTitle('Welcome Settings')
         .setColor('GREEN')
-        .setDescription(`Successfully set the WelcomeChannel to ${channel}.\nSuccesfully set the WelcomeRole to ${role}.`)
+        .setDescription(`Succesfully set the WelcomeRole to ${role}.\nSuccessfully set the WelcomeChannel to ${channel}.`)
 
       await message.channel.send(sucEmbed);
       mclient.close();

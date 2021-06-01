@@ -6,6 +6,7 @@ const fs = require('fs');
 const chalk = require('chalk');
 const mySecret = process.env['token'];
 let f = 0;
+let e = 0;
 
 // Bot token
 bot.login(mySecret);
@@ -13,16 +14,15 @@ bot.login(mySecret);
 // Send msg in Console when Bot is usable and set status
 bot.on('ready', () => {
 	console.log(chalk.greenBright(`Logged in as ${bot.user.username}!`));
-	console.log(chalk.greenBright(`Loaded ${f} Commands!`));
+	console.log(chalk.greenBright(`Loaded ${f} Commands and ${e} Events!`));
+  
 });
 
 //Replies with the Preifx when Bot is mentioned
 bot.on('message', message => {
 	if (message.author.bot) return false;
-
-	if (message.mentions.has(bot.user.id)) {
-		message.channel.send(`My prefix is \`${config.prefix}\`.`);
-	}
+const args = message.content
+if (args.slice(0) === "<@!839835292785704980>") return (message.channel.send(`My Prefix is \`${config.prefix}\``))
 });
 
 //Command Loader
@@ -72,6 +72,7 @@ for (const file of eventFiles) {
 		bot.once(event.name, (...args) => event.execute(...args, bot));
 	} else {
 		bot.on(event.name, (...args) => event.execute(...args, bot));
+    e += 1;
 	}
 }
 
