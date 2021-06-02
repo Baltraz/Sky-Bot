@@ -87,6 +87,7 @@ module.exports = {
   description: "Description",
   usage: "Usage",
   perms: "Permissions Needed",
+  folder: "folder",
     execute: (bot, message, args) => {
       putmycodehere
     }
