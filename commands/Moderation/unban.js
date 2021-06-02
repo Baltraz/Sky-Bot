@@ -3,7 +3,7 @@ const discord = require('discord.js');
 module.exports = {
   name: "Unban",
   description: "Unban a Member from the Discord",
-  usage: "!unban (Member ID)",
+  usage: "!unban (Member ID)\n\`Example: !unban 570267487393021969\`",
   perms: "Ban Members",
   folder: "Moderation",
   execute: (bot, message, args) => {

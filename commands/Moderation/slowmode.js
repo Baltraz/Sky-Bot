@@ -2,8 +2,8 @@ const discord = require('discord.js');
 
 module.exports = {
 	name: 'Slowmode',
-	description: 'Increase/Decrease the slowmode of a channel',
-	usage: '!slowmode (Time)\n\`Time Between 1 and 21600 (Enter 0 to remove Slowmode.)\`',
+	description: 'Increase/Decrease the slowmode of a Channel',
+	usage: '!slowmode (Time)\n\`Time Between 1 and 21600 (Enter 0 to remove Slowmode.)\`\n\`Example: !slowmode 5\`',
 	perms: 'Manage Channels',
   folder: "Moderation",
 	async execute(bot, message, args) {

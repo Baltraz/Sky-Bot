@@ -3,7 +3,7 @@ const discord = require('discord.js');
 module.exports = {
   name: "Ban",
   description: "Ban a Member from the Discord",
-  usage: "!ban (Member) <Ban Reason>",
+  usage: "!ban (Member) <Ban Reason>\n\`Example: !ban 570267487393021969 Bad Dev\`",
   perms: "Ban Members",
   folder: "Moderation",
   execute: (bot, message, args) => {

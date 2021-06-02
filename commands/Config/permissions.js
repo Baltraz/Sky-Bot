@@ -51,8 +51,6 @@ module.exports = {
         pembed.addField("USE_EXTERNAL_EMOJIS", '🚫', true)
       }
 
-
-
       message.channel.send(pembed)
     }
 };
