@@ -2,7 +2,7 @@ const discord = require('discord.js');
 
 module.exports = {
   name: "Avatar",
-  description: "Sends the Users Avatar",
+  description: "Sends the mentioned Users Avatar",
   usage: "!avatar",
   perms: "None",
   folder: "Fun",

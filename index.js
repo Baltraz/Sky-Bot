@@ -15,14 +15,13 @@ bot.login(mySecret);
 bot.on('ready', () => {
 	console.log(chalk.greenBright(`Logged in as ${bot.user.username}!`));
 	console.log(chalk.greenBright(`Loaded ${f} Commands and ${e} Events!`));
-  
 });
 
 //Replies with the Preifx when Bot is mentioned
 bot.on('message', message => {
 	if (message.author.bot) return false;
 const args = message.content
-if (args.slice(0) === "<@!839835292785704980>") return (message.channel.send(`My Prefix is \`${config.prefix}\``))
+if (args.slice(0) === "<@839835292785704980>") return (message.channel.send(`My Prefix is \`${config.prefix}\``))
 });
 
 //Command Loader

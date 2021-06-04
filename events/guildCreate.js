@@ -2,9 +2,9 @@ const discord = require('discord.js')
 const chalk = require('chalk');
 
 module.exports = {
-    name: 'guildjoin',
+    name: 'guildCreate',
     execute(guild, bot) {
-        console.log(chalk.green(`Joined a Guild: ${guild.name}`));
+        console.log(chalk.yellow(`Joined a Guild: ${guild.name}`));
         discordLog(bot,
              new discord.MessageEmbed()
                 .setAuthor(bot.user.username, bot.user.avatarURL())

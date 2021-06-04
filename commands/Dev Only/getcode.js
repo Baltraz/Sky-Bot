@@ -1,7 +1,7 @@
 const config = require('../../config.json');
 module.exports = {
     name: "Getcode",
-    description: "Sends the code for a given command to chat. (Baltraz Only)",
+    description: "Sends the code for a given command to chat. (Dev Only)",
     usage: "!getcode <filename>",
     perms: "Dev",
     folder: "Dev",

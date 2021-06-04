@@ -3,7 +3,7 @@ const config = require('../../config.json');
 
 module.exports = {
   name: "Eval",
-  description: "Allows execution of Code from Discord. (Baltraz Only)",
+  description: "Allows execution of Code from Discord. (Dev Only)",
   usage: "!eval <command snipet>",
   perms: "Dev",
   folder: "Dev",
@@ -20,9 +20,9 @@ module.exports = {
     
     let resultSuccess = new discord.MessageEmbed()
     .setColor("GREEN")
-    .setTitle("Success")
-    .addField(`Input:\n`, '```js\n' + `${args.join(" ")}` + '```', false)
-    .addField(`Output:\n`, '```js\n' + evaled + '```', true)
+    .setTitle("Eval Success")
+    .addField(`<:input:849565147331559424> Input:\n`, '```js\n' + `${args.join(" ")}` + '```', false)
+    .addField(`<:output:849565147348336650> Output:\n`, '```js\n' + evaled + '```', true)
     
     message.channel.send(resultSuccess)
     
@@ -30,8 +30,8 @@ module.exports = {
     let resultError = new discord.MessageEmbed()
     .setColor("RED")
     .setTitle("An error has occured")
-    .addField(`Input:\n`, '```js\n' + `${result}` + '```', false)
-    .addField(`Output:\n`, '```js\n' + `${error.message}` + '```', true)
+    .addField(`<:input:849565147331559424> Input:\n`, '```js\n' + `${result}` + '```', false)
+    .addField(`<:output:849565147348336650>Output:\n`, '```js\n' + `${error.message}` + '```', true)
     //.setDescription(`Output:\n\`\`\`${err}\`\`\``)
     return message.channel.send(resultError)
   }

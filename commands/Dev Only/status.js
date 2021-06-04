@@ -4,7 +4,7 @@ const config = require('../../config.json');
 
 module.exports = {
     name: 'Status',
-    description: 'Set the Bots Status. (Baltraz Only)',
+    description: 'Set the Bots Status. (Dev Only)',
     usage: '!status <statusType> <statusMessage>',
     perms: "Dev",
     folder: "Dev",

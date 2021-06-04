@@ -3,7 +3,7 @@ const config = require('../../config.json')
 
 module.exports = {
   name: "Kill",
-  description: "Shuts the Bot down. (Baltraz Only)",
+  description: "Shuts the Bot down. (Dev Only)",
   usage: "!kill",
   perms: "Dev",
   folder: "Dev",

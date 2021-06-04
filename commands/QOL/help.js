@@ -2,9 +2,8 @@ const Discord = require('discord.js');
 const fs = require('fs')
 
 module.exports = {
-    name: 'help',
-    aliases: ['h', 'info', `commands`],
-    usage: 'help [command]',
+    name: 'Help',
+    usage: '!help [command]',
     description: 'Shows Information about all the Commands from Sky Bot',
     perms: "None",
     execute(bot, message, args) {
@@ -19,7 +18,7 @@ module.exports = {
     
             let embed = new Discord.MessageEmbed()
                 .setAuthor(`Sky Bot Help`)
-                .setDescription(`Use \`!help (Command Name)\` for a more detailed view on a Command.`)
+                .setDescription(`Use \`!help (Command Name)\` for a more detailed view on a Command.\n(Needed) <Optional>`)
                 .setColor('ORANGE')
 
             for (const folder of commandFolders) {
