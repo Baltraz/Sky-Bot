@@ -21,7 +21,7 @@ module.exports = {
         {name: "ℹ️ Total Server Count", value:`${client.guilds.cache.size}`, inline: true},
         {name: "ℹ️ Total User Count", value: `${client.users.cache.size}`, inline: true},
         {name: "<:uptime:847474288884842567> Bot Uptime", value: `${pms(client.uptime)}`, inline: true},
-        {name: "Command Count", value: '\`28\`', inline: true},
+        {name: "Command Count", value: '\`30\`', inline: true},
         {name: "Event Count", value: '\`2\`', inline: true})
         message.channel.send(infoembed)
     }

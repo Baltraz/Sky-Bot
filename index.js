@@ -5,7 +5,7 @@ const keepAlive = require('./keepAlive.js');
 const fs = require('fs');
 const chalk = require('chalk');
 const mySecret = process.env['token'];
-let f = 0;
+let c = 0;
 let e = 0;
 
 // Bot token login
@@ -14,7 +14,7 @@ client.login(mySecret);
 // Send msg in Console when Bot is usable and set status
 client.on('ready', () => {
 	console.log(chalk.greenBright(`Logged in as ${client.user.username}!`));
-	console.log(chalk.greenBright(`Loaded ${f} Commands and ${e} Events!`));
+	console.log(chalk.greenBright(`Loaded ${c} Commands and ${e} Events!`));
 });
 
 //Replies with the Preifx when Bot is mentioned
@@ -35,7 +35,7 @@ for (const folder of commandFolders) {
 		.filter(file => file.endsWith('.js'));
 	for (const file of commandFiles) {
 		const command = require(`./commands/${folder}/${file}`);
-		f += 1;
+		c += 1;
 		client.commands.set(command.name.toLowerCase(), command);
 	}
 }

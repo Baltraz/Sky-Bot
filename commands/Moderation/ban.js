@@ -30,7 +30,7 @@ module.exports = {
           });
       }
     } else {
-      message.channel.send("<a:wait:847471618272002059> You didn't mentio a User or an ID to ban.");
+      message.channel.send("<a:wait:847471618272002059> You didn't mention a User or an ID to ban.");
     }
   }
 };
