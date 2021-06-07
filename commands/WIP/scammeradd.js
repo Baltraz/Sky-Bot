@@ -1,3 +1,5 @@
+
+const urii = process.env['uri']
 const Discord = require('discord.js');
 const config = require('../../config.json')
 const axios = require('axios')
@@ -26,8 +28,7 @@ module.exports = {
 				const uuid = res.data.uuid;
 
     const MongoClient = require('mongodb').MongoClient;
-    const uri = require('../../config.json').uri;
-    const mclient = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+    const mclient = new MongoClient(urii, { useNewUrlParser: true, useUnifiedTopology: true });
     mclient.connect(async err => {
       if (err) throw err;
       const collection = mclient.db('Sky-Bot').collection('Scammers');

@@ -1,4 +1,7 @@
+
+const urii = process.env['uri']
 const Discord = require('discord.js');
+
 module.exports = {
   name: "Scammer",
   description: "Checks for Scammers in the Database.",
@@ -8,8 +11,7 @@ module.exports = {
     execute: (client, message, args) => {
     message.delete();
     const MongoClient = require('mongodb').MongoClient;
-    const uri = require('../../config.json').uri;
-    const mclient = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+    const mclient = new MongoClient(urii, { useNewUrlParser: true, useUnifiedTopology: true });
     mclient.connect(async err => {
       if (err) throw err;
       const ign = args[0];

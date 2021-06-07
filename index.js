@@ -15,6 +15,7 @@ client.login(mySecret);
 client.on('ready', () => {
 	console.log(chalk.greenBright(`Logged in as ${client.user.username}!`));
 	console.log(chalk.greenBright(`Loaded ${c} Commands and ${e} Events!`));
+	client.user.setActivity(`${client.users.cache.size} Members and ${client.guilds.cache.size} Servers`, { type: 'WATCHING' });
 });
 
 //Replies with the Preifx when Bot is mentioned
