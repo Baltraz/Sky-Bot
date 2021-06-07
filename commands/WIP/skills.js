@@ -7,7 +7,7 @@ module.exports = {
   usage: "!skills (IGN)",
   perms: "None",
   folder: "Skyblock",
-    async execute(bot, message, args) {
+    async execute(client, message, args) {
       if (!args[0]) {
             var ign = message.member.displayName;
         } else {

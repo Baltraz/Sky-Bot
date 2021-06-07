@@ -6,7 +6,7 @@ module.exports = {
   usage: "!avatar",
   perms: "None",
   folder: "Fun",
-    execute: (bot, message, args) => {
+    execute: (client, message, args) => {
       const user = message.mentions.users.first() || message.guild.members.cache.get(args[0]);
       
 

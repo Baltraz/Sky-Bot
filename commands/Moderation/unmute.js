@@ -7,7 +7,7 @@ module.exports = {
 	usage: '!unmute (Mention Member or ID)\n\`Example: !unmute 570267487393021969\`',
 	perms: 'Manage Roles',
 	folder: 'Moderation',
-	execute(bot, message, args) {
+	execute(client, message, args) {
 		try {
       message.delete();
     if (!message.member.hasPermission('MANAGE_ROLES'))

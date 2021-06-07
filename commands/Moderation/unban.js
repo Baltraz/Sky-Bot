@@ -6,7 +6,7 @@ module.exports = {
   usage: "!unban (Member ID)\n\`Example: !unban 570267487393021969\`",
   perms: "Ban Members",
   folder: "Moderation",
-  execute: (bot, message, args) => {
+  execute: (client, message, args) => {
     if (!message.member.hasPermission('BAN_MEMBERS')) return message.channel.send("You are missing the Permission \`BAN_MEMBERS\`.");
     if (!message.guild.me.hasPermission('BAN_MEMBERS'))return message.channel.send("I don\'t have \`BAN_MEMBERS\` Permission.");
 

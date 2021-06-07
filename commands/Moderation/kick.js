@@ -6,7 +6,7 @@ module.exports = {
   usage: "!kick (Member)\n\`Example: !kick 570267487393021969\`",
   perms: "Kick Members",
   folder: "Moderation",
-  execute: (bot, message, args) => {
+  execute: (client, message, args) => {
     if (!message.member.hasPermission('KICK_MEMBERS')) return message.channel.send("You are missing the Permission \`KICK_MEMBERS\`.");
     if (!message.guild.me.hasPermission('KICK_MEMBERS')) return message.channel.send("I don\'t have \`KICK_MEMBERS\` Permission.");
     message.delete()

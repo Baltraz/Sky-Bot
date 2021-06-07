@@ -6,7 +6,7 @@ module.exports = {
 	usage: '!slowmode (Time)\n\`Time Between 1 and 21600 (Enter 0 to remove Slowmode.)\`\n\`Example: !slowmode 5\`',
 	perms: 'Manage Channels',
   folder: "Moderation",
-	async execute(bot, message, args) {
+	async execute(client, message, args) {
     message.delete()
 		if (!message.member.hasPermission('MANAGE_CHANNELS'))
 			return message.channel.send('You are missing the Permission \`MANAGE_CHANNELS\`.'

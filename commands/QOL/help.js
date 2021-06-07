@@ -6,7 +6,7 @@ module.exports = {
     usage: '!help [command]',
     description: 'Shows Information about all the Commands from Sky Bot',
     perms: "None",
-    execute(bot, message, args) {
+    execute(client, message, args) {
         if (!args.length) {
             delete require.cache[require.resolve('../../package.json')];
             const package = require('../../package.json');

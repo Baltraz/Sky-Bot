@@ -6,7 +6,7 @@ module.exports = {
   usage: "!userinfo",
   perms: "None",
   folder: "QOL",
-  execute: (bot, message, args) => {
+  execute: (client, message, args) => {
     message.delete();
     message.channel.send(
       new discord.MessageEmbed()

@@ -6,7 +6,7 @@ module.exports = {
   usage: "!purge (Message Amount)\n\`Example: !purge 10\`\n Max Message Amount to delete is 100.",
   perms: "Manage Messages",
   folder: "Moderation",
-  execute: (bot, message, args) => {
+  execute: (client, message, args) => {
     if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send("You are missing the Permission \`MANAGE_MESSAGES\`.");
     if (!message.guild.me.hasPermission('MANAGE_MESSAGES')) return message.channel.send('I don\'t have \`MANAGE_MESSAGES\` Permission.')
     if (!args[0]) return message.channel.send('<a:wait:847471618272002059> Please define how many Messages should be deleted.')

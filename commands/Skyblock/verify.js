@@ -8,7 +8,7 @@ module.exports = {
 	description: 'Sets the Users Nick to [Cata Level] IGN',
 	perms: 'None',
 	folder: 'Skyblock',
-	execute(bot, message, args) {
+	execute(client, message, args) {
 		if (!message.guild.roles.cache.find(role => role.name === 'Verified'))
 			return message.channel.send("Can't find a Role named `Verified`.");
 

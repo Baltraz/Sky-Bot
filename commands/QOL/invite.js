@@ -6,7 +6,7 @@ module.exports = {
   usage: "!invite",
   perms: "None",
   folder: "QOL",
-    execute: (bot, message, args) => {
+    execute: (client, message, args) => {
       message.delete()
       const embed = new discord.MessageEmbed()
       .setTitle('Important Bot Links')

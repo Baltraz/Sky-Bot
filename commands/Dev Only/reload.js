@@ -7,7 +7,7 @@ module.exports = {
   usage: "!reload <Command Name>",
   perms: "Dev",
   folder: "Dev",
-  execute: (bot, message, args) => {
+  execute: (client, message, args) => {
     if (message.author.id != config.ownerID) return message.channel.send("Can't use this!")
     message.delete();
 
@@ -34,9 +34,9 @@ module.exports = {
           for (const file of commandFiles) {
             if (file.toLowerCase().includes(commandName.toLowerCase())) {
             delete require.cache[require.resolve(`../${folder}/${file}`)]
-            bot.commands.delete(commandName)
+            client.commands.delete(commandName)
             const pull = require(`../${folder}/${file}`)
-            bot.commands.set(commandName, pull)
+            client.commands.set(commandName, pull)
       }
   }
 }} catch (err) {

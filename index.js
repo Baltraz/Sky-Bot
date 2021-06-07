@@ -1,5 +1,5 @@
 const discord = require('discord.js');
-const bot = new discord.Client();
+const client = new discord.Client();
 const config = require('./config.json');
 const keepAlive = require('./keepAlive.js');
 const fs = require('fs');
@@ -9,23 +9,23 @@ let f = 0;
 let e = 0;
 
 // Bot token
-bot.login(mySecret);
+client.login(mySecret);
 
 // Send msg in Console when Bot is usable and set status
-bot.on('ready', () => {
-	console.log(chalk.greenBright(`Logged in as ${bot.user.username}!`));
+client.on('ready', () => {
+	console.log(chalk.greenBright(`Logged in as ${client.user.username}!`));
 	console.log(chalk.greenBright(`Loaded ${f} Commands and ${e} Events!`));
 });
 
 //Replies with the Preifx when Bot is mentioned
-bot.on('message', message => {
+client.on('message', message => {
 	if (message.author.bot) return false;
 const args = message.content
 if (args.slice(0) === "<@839835292785704980>") return (message.channel.send(`My Prefix is \`${config.prefix}\``))
 });
 
 //Command Loader
-bot.commands = new discord.Collection();
+client.commands = new discord.Collection();
 
 const commandFolders = fs.readdirSync('./commands');
 
@@ -36,12 +36,12 @@ for (const folder of commandFolders) {
 	for (const file of commandFiles) {
 		const command = require(`./commands/${folder}/${file}`);
 		f += 1;
-		bot.commands.set(command.name.toLowerCase(), command);
+		client.commands.set(command.name.toLowerCase(), command);
 	}
 }
 
 //Command Handler
-bot.on('message', async message => {
+client.on('message', async message => {
 	if (!message.content.startsWith(config.prefix) || message.author.bot) return;
 
 	const args = message.content
@@ -50,10 +50,10 @@ bot.on('message', async message => {
 		.split(/ +/);
 	const command = args.shift().toLowerCase();
 
-	if (!bot.commands.has(command)) return;
+	if (!client.commands.has(command)) return;
 
 	try {
-		bot.commands.get(command).execute(bot, message, args);
+		client.commands.get(command).execute(client, message, args);
 	} catch (error) {
 		console.error(error);
 		message.reply('There was an Error trying to execute that Command!');
@@ -68,9 +68,9 @@ const eventFiles = fs
 for (const file of eventFiles) {
 	const event = require(`./events/${file}`);
 	if (event.once) {
-		bot.once(event.name, (...args) => event.execute(...args, bot));
+		client.once(event.name, (...args) => event.execute(...args, client));
 	} else {
-		bot.on(event.name, (...args) => event.execute(...args, bot));
+		client.on(event.name, (...args) => event.execute(...args, client));
     e += 1;
 	}
 }
@@ -80,14 +80,13 @@ keepAlive();
 
 /* how to export commands
 const discord = require('discord.js');
-
 module.exports = {
   name: "Name",
   description: "Description",
   usage: "Usage",
   perms: "Permissions Needed",
   folder: "folder",
-    execute: (bot, message, args) => {
+    execute: (client, message, args) => {
       putmycodehere
     }
 };
@@ -96,7 +95,7 @@ module.exports = {
 /*
 module.exports = {
 	name: 'name',
-	execute(bot) {
+	execute(client) {
     code here
 	}
 };

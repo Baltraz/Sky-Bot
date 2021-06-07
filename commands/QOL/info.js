@@ -7,7 +7,7 @@ module.exports = {
   usage: "!info",
   perms: "None",
   folder: "QOL",
-    execute: (bot, message, args) => {
+    execute: (client, message, args) => {
       message.delete();
       const infoembed = new discord.MessageEmbed()
       .setTitle("Bot Info")
@@ -18,9 +18,9 @@ module.exports = {
         {name: "<:contributor:849605979589967922> Contributors", value:"firebxll, Delta, Mend"},
         {name: "<:verifiedbot:848830315890737172> Bot Version", value: "1.0.1"},
         {name: "<:support:848831144509177866> Support Server", value: "[Discord Support Server](https://discord.gg/Ca6XpTRQaR)"},
-        {name: "<:uptime:847474288884842567> Bot Uptime", value: `${pms(bot.uptime)}`},
-        {name: "ℹ️ Total Server Count", value:`${bot.guilds.cache.size}`},
-        {name: "ℹ️ Total User Count", value: `${bot.users.cache.size}`})
+        {name: "<:uptime:847474288884842567> Bot Uptime", value: `${pms(client.uptime)}`},
+        {name: "ℹ️ Total Server Count", value:`${client.guilds.cache.size}`},
+        {name: "ℹ️ Total User Count", value: `${client.users.cache.size}`})
         message.channel.send(infoembed)
     }
 };

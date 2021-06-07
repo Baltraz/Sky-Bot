@@ -6,7 +6,7 @@ module.exports = {
   usage: "!bean (Member)",
   perms: "<:beans:849265485199048744>",
   folder: "Fun",
-  execute: (bot, message, args) => {
+  execute: (client, message, args) => {
 
     message.delete()
 

@@ -6,7 +6,7 @@ module.exports = {
   usage: "!policy",
   perms: "None",
   folder: "QOL",
-    execute: (bot, message, args) => {
+    execute: (client, message, args) => {
       message.delete()
       const policy = new discord.MessageEmbed()
       .setTitle('Sky Bot Rules')

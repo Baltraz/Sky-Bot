@@ -6,8 +6,8 @@ module.exports = {
   usage: "!setup",
   perms: "Admin",
   folder: "Config",
-    execute: (bot, message, args) => {
-   //  if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send("You are missing the Permission \`ADMINISTRATOR\`.");
+    execute: (client, message, args) => {
+   if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send("You are missing the Permission \`ADMINISTRATOR\`.");
       message.delete()
 
       const pembed = new discord.MessageEmbed()

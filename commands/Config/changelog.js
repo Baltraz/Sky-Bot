@@ -6,7 +6,7 @@ module.exports = {
   usage: "!changelog",
   perms: "None",
   folder: "Config",
-    execute: (bot, message, args) => {
+    execute: (client, message, args) => {
       message.delete()
       const cembed = new discord.MessageEmbed()
       .setTitle('Sky Bot Changelog')
