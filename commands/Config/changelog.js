@@ -1,4 +1,4 @@
-const discord = require('discord.js');
+const Discord = require('discord.js');
 
 module.exports = {
   name: "Changelog",
@@ -8,7 +8,7 @@ module.exports = {
   folder: "Config",
     execute: (client, message, args) => {
       message.delete()
-      const cembed = new discord.MessageEmbed()
+      const cembed = new Discord.MessageEmbed()
       .setTitle('Sky Bot Changelog')
       .setDescription('Version 1.0.1 Changelog\n\nAdded **!bean** and **!rat** for Fun Commands.\n\n**!verify** has been added checking for your Catacombs level and setting your nick as needed.\n\n**!setup** has been added for very easy Bot Setup.\n\n**Sneak Peak on upcoming Features**\n\nAdding some Hypixel Skyblock Commands now like Weight checking Skills checking etc.')
       

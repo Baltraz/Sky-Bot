@@ -1,4 +1,4 @@
-const discord = require('discord.js');
+const Discord = require('discord.js');
 
 module.exports = {
   name: "Unban",
@@ -14,7 +14,7 @@ module.exports = {
 
     const user = args[0];
 
-    const unban = new discord.MessageEmbed()
+    const unban = new Discord.MessageEmbed()
           .setTitle("<a:yes:847468695772987423> Unbanned User")
           .setColor("008000")
           .setDescription(`**${user}** has been unbanned.`)

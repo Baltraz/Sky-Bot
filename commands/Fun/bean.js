@@ -1,4 +1,4 @@
-const discord = require('discord.js');
+const Discord = require('discord.js');
 
 module.exports = {
   name: "Bean",
@@ -12,7 +12,7 @@ module.exports = {
 
     const user = message.mentions.users.first() || message.guild.members.cache.get(args[0]);
     
-    const beanembed = new discord.MessageEmbed()
+    const beanembed = new Discord.MessageEmbed()
       .setTitle("<:beans:849265485199048744> Beaned User <:beans:849265485199048744>")
       .setColor("964B00")
       .setDescription(`<:beans:849265485199048744> ${user} has bean **BEANED**! <:beans:849265485199048744>`)

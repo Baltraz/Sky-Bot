@@ -1,4 +1,4 @@
-const discord = require('discord.js');
+const Discord = require('discord.js');
 const config = require('../../config.json');
 
 module.exports = {
@@ -11,14 +11,14 @@ module.exports = {
     if (message.author.id !== config.ownerID) return message.channel.send("Can't use this!")
   try {
     var result = args.join(" ")
-    let noResultArg = new discord.MessageEmbed()
+    let noResultArg = new Discord.MessageEmbed()
     .setColor("RED")
     .setDescription("ERROR: No valid eval args were provided")
     if (!result) return message.channel.send(noResultArg)
     let evaled = eval(result);
     
     
-    let resultSuccess = new discord.MessageEmbed()
+    let resultSuccess = new Discord.MessageEmbed()
     .setColor("GREEN")
     .setTitle("Eval Success")
     .addField(`<:input:849565147331559424> Input:\n`, '```js\n' + `${args.join(" ")}` + '```', false)
@@ -27,7 +27,7 @@ module.exports = {
     message.channel.send(resultSuccess)
     
   } catch (error) {
-    let resultError = new discord.MessageEmbed()
+    let resultError = new Discord.MessageEmbed()
     .setColor("RED")
     .setTitle("An error has occured")
     .addField(`<:input:849565147331559424> Input:\n`, '```js\n' + `${result}` + '```', false)

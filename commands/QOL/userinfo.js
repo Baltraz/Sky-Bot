@@ -1,4 +1,4 @@
-const discord = require('discord.js');
+const Discord = require('discord.js');
 
 module.exports = {
   name: "Userinfo",
@@ -9,7 +9,7 @@ module.exports = {
   execute: (client, message, args) => {
     message.delete();
     message.channel.send(
-      new discord.MessageEmbed()
+      new Discord.MessageEmbed()
         .setTitle("User Info")
         .setColor('00ff00')
         .addFields(

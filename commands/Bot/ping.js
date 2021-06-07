@@ -1,4 +1,4 @@
-const discord = require('discord.js');
+const Discord = require('discord.js');
 const pms = require('pretty-ms')
 
 module.exports = {
@@ -6,14 +6,14 @@ module.exports = {
   description: "Shows the BOT&API Ping and Bot Uptime!",
   usage: "!ping",
   perms: "None",
-  folder: "QOL",
+  folder: "Bot",
   execute: async (client, message, args) => {
     message.delete();
-    const embed = new discord.MessageEmbed()
+    const embed = new Discord.MessageEmbed()
     .setDescription('Pinging . . .')
     message.channel.send(embed).then(m => {
       m.edit(
-        new discord.MessageEmbed()
+        new Discord.MessageEmbed()
           .setTitle("Current Bot Info")
           .setColor('GREEN')
           .addFields(

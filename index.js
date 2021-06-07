@@ -1,5 +1,5 @@
-const discord = require('discord.js');
-const client = new discord.Client();
+const Discord = require('discord.js');
+const client = new Discord.Client();
 const config = require('./config.json');
 const keepAlive = require('./keepAlive.js');
 const fs = require('fs');
@@ -25,7 +25,7 @@ if (args.slice(0) === "<@839835292785704980>") return (message.channel.send(`My 
 });
 
 //Command Loader
-client.commands = new discord.Collection();
+client.commands = new Discord.Collection();
 
 const commandFolders = fs.readdirSync('./commands');
 
@@ -79,7 +79,7 @@ for (const file of eventFiles) {
 keepAlive();
 
 /* how to export commands
-const discord = require('discord.js');
+const Discord = require('discord.js');
 module.exports = {
   name: "Name",
   description: "Description",

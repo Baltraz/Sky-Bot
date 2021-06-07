@@ -1,5 +1,5 @@
 const ms = require('ms');
-const discord = require('discord.js');
+const Discord = require('discord.js');
 
 module.exports = {
 	name: 'Mute',
@@ -31,7 +31,7 @@ module.exports = {
 			let memberTarget = message.guild.members.cache.get(target.id);
 
 			memberTarget.roles.add(muteRole.id);
-      const muteembed = new discord.MessageEmbed()
+      const muteembed = new Discord.MessageEmbed()
       .setTitle('<a:yes:847468695772987423> User Muted')
       .setColor('GREEN')
       .setDescription(`<@${memberTarget.user.id}> has been muted for ${ms(ms(args[1]))}.`)
@@ -45,7 +45,7 @@ module.exports = {
     }
     } catch (error) {
       console.error(error)
-      const errorembed = new discord.MessageEmbed()
+      const errorembed = new Discord.MessageEmbed()
       .setTitle('<a:no:847468672380829707> Error')
       .setColor('RED')
       .setDescription('Invalid Format.\n\`Use !mute (User) (Time in m/h).\`\nThis Error may also be from me not being able to assign the Role due to it being above me or Missing Permissions (Check !permissions to see if im missing any Permissions.)')

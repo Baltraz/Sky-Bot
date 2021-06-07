@@ -1,4 +1,4 @@
-const discord = require('discord.js');
+const Discord = require('discord.js');
 
 module.exports = {
   name: "Ban",
@@ -12,7 +12,7 @@ module.exports = {
     message.delete()
     const user = message.mentions.users.first() || args[0];
     const reason = args.slice(1).join(" ");
-    const banembed = new discord.MessageEmbed()
+    const banembed = new Discord.MessageEmbed()
           .setTitle("<a:yes:847468695772987423> Banned User")
           .setColor("008000")
           .setDescription(`**${user}** has been banned for **${reason}**.`)

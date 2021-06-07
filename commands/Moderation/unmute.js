@@ -1,5 +1,5 @@
 const ms = require('ms');
-const discord = require('discord.js');
+const Discord = require('discord.js');
 
 module.exports = {
 	name: 'Unmute',
@@ -30,7 +30,7 @@ module.exports = {
 			let memberTarget = message.guild.members.cache.get(target.id);
 
 			memberTarget.roles.remove(muteRole.id);
-      const muteembed = new discord.MessageEmbed()
+      const muteembed = new Discord.MessageEmbed()
       .setTitle('<a:yes:847468695772987423> User Unmuted')
       .setColor('GREEN')
       .setDescription(`<@${memberTarget.user.id}> has been unmuted.`)
@@ -40,7 +40,7 @@ module.exports = {
     }
     } catch (error) {
       console.error(error)
-      const errorembed = new discord.MessageEmbed()
+      const errorembed = new Discord.MessageEmbed()
       .setTitle('Error')
       .setDescription('Invalid Unmute Format. (See !help unmute).')
       message.channel.send(errorembed)

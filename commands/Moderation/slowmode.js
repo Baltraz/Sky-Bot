@@ -1,4 +1,4 @@
-const discord = require('discord.js');
+const Discord = require('discord.js');
 
 module.exports = {
 	name: 'Slowmode',
@@ -22,7 +22,7 @@ module.exports = {
 		if (!time || time > 21600)
 			return message.channel.send("Enter a Number between 1 and 21600.\nOr 0 to remove the Slowmode.");
 
-		const embed = new discord.MessageEmbed()
+		const embed = new Discord.MessageEmbed()
 			.setTitle('<a:yes:847468695772987423> Slowmode Changed')
 			.setDescription(`Slowmode of ${message.channel} is now set to ${time} Seconds.`)
 			.setColor('#00FF00')

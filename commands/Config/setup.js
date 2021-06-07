@@ -1,4 +1,4 @@
-const discord = require('discord.js');
+const Discord = require('discord.js');
 
 module.exports = {
   name: "Setup",
@@ -10,7 +10,7 @@ module.exports = {
    if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send("You are missing the Permission \`ADMINISTRATOR\`.");
       message.delete()
 
-      const pembed = new discord.MessageEmbed()
+      const pembed = new Discord.MessageEmbed()
       .setTitle('Sky Bot Setup Check')
       .setDescription('<a:yes:847468695772987423> = Has the Permission.\n<a:no:847468672380829707> = Doesn\'t have the Permission.')
       .setColor('ORANGE')

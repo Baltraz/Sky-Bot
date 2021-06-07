@@ -1,4 +1,4 @@
-const discord = require('discord.js');
+const Discord = require('discord.js');
 const config = require('../../config.json');
 
 module.exports = {
@@ -16,11 +16,11 @@ module.exports = {
     let commandName = args[0].toLowerCase()
 
 
-    const embedyes = new discord.MessageEmbed()
+    const embedyes = new Discord.MessageEmbed()
       .setColor('00ff00')
       .setDescription(`<a:yes:847468695772987423> Successfully reloaded **${commandName}**!`)
 
-    const embedno = new discord.MessageEmbed()
+    const embedno = new Discord.MessageEmbed()
       .setColor('ff0000')
       .setDescription(`Couldn't reload **${commandName}**!\nMaybe you typed the **CommandName wrong** if not check the Console.`)
 

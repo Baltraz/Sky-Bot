@@ -1,4 +1,4 @@
-const discord = require('discord.js');
+const Discord = require('discord.js');
 
 module.exports = {
   name: "Welcome",
@@ -36,7 +36,7 @@ module.exports = {
         { upsert: true }
       )
 
-      const sucEmbed = new discord.MessageEmbed()
+      const sucEmbed = new Discord.MessageEmbed()
         .setTitle('Welcome Settings')
         .setColor('GREEN')
         .setDescription(`Succesfully set the WelcomeRole to ${role}.\nSuccessfully set the WelcomeChannel to ${channel}.`)

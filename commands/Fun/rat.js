@@ -1,4 +1,4 @@
-const discord = require('discord.js');
+const Discord = require('discord.js');
 
 module.exports = {
   name: "Rat",
@@ -9,7 +9,7 @@ module.exports = {
   execute: (client, message, args) => {
     message.delete()
     const user = message.mentions.users.first() || message.guild.members.cache.get(args[0]);
-    const ratembed = new discord.MessageEmbed()
+    const ratembed = new Discord.MessageEmbed()
       .setTitle("🐀 Ratted User 🐀")
       .setColor("GREY")
       .setDescription(`🐀 ${user} is a Rat! 🐀`)
