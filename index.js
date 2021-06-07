@@ -8,7 +8,7 @@ const mySecret = process.env['token'];
 let f = 0;
 let e = 0;
 
-// Bot token
+// Bot token login
 client.login(mySecret);
 
 // Send msg in Console when Bot is usable and set status
