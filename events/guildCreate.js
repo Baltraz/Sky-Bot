@@ -13,7 +13,7 @@ module.exports = {
                 .addFields(
                   {name: "Guild Owner", value: `${guild.owner} [${guild.owner.user.tag} (${guild.owner.id})]`},
                   {name: "Member Count of the Server", value: `${guild.memberCount}`},
-                  {name: "Bot Count of the Server", value: `${guild.members.cache.filter(u => u.user.client).size}`},
+                  {name: "Bot Count of the Server", value: `${guild.members.cache.filter(u => u.user.bot).size}`},
                  {name: "Total Server Count Now", value: `${client.guilds.cache.size}`},
                   {name: "Total User Count Now", value: `${client.users.cache.size}`})
         )

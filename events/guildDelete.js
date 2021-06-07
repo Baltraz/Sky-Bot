@@ -4,7 +4,7 @@ const chalk = require('chalk');
 module.exports = {
     name: 'guildDelete',
     execute(guild, client) {
-        discordLog(bot,
+        discordLog(client,
              new discord.MessageEmbed()
                 .setAuthor(client.user.username, client.user.avatarURL())
                 .setDescription(`Left a Guild: \`${guild.name}\``)
