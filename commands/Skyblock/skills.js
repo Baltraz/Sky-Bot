@@ -8,6 +8,11 @@ module.exports = {
   perms: "None",
   folder: "Skyblock",
     async execute(client, message, args) {
+if(args[0] === undefined) {
+  message.channel.send('Please enter a IGN')
+  return;
+}
+
       if (!args[0]) {
             var ign = message.member.displayName;
         } else {

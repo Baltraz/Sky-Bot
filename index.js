@@ -43,22 +43,22 @@ for (const folder of commandFolders) {
 
 //Command Handler
 client.on('message', async message => {
-	if (!message.content.startsWith(config.prefix) || message.author.bot) return;
+    if (!message.content.startsWith(config.prefix) || message.author.bot) return;
 
-	const args = message.content
-		.slice(config.prefix.length)
-		.trim()
-		.split(/ +/);
-	const command = args.shift().toLowerCase();
+    const args = message.content
+        .slice(config.prefix.length)
+        .trim()
+        .split(/ +/);
+    const command = args.shift().toLowerCase();
 
-	if (!client.commands.has(command)) return;
+    if (!client.commands.has(command)) return;
 
-	try {
-		client.commands.get(command).execute(client, message, args);
-	} catch (error) {
-		console.error(error);
-		message.reply('There was an Error trying to execute that Command!');
-	}
+    try {
+        client.commands.get(command).execute(client, message, args);
+    } catch (error) {
+        console.error(error);
+        message.reply('There was an Error trying to execute that Command!');
+    }
 });
 
 //Event Handler
