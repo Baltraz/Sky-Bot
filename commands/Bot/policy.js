@@ -7,7 +7,7 @@ module.exports = {
   perms: "None",
   folder: "Bot",
     execute: (client, message, args) => {
-      message.delete()
+
       const policy = new Discord.MessageEmbed()
       .setTitle('Sky Bot Rules')
       .setColor('ORANGE')

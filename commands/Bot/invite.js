@@ -7,7 +7,7 @@ module.exports = {
   perms: "None",
   folder: "Bot",
     execute: (client, message, args) => {
-      message.delete()
+
       const embed = new Discord.MessageEmbed()
       .setTitle('Important Bot Links')
       .setColor('fed8b1')

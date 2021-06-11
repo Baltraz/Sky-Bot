@@ -8,7 +8,7 @@ module.exports = {
   perms: "None",
   folder: "Bot",
   execute: async (client, message, args) => {
-    message.delete();
+
     const embed = new Discord.MessageEmbed()
     .setDescription('Pinging . . .')
     message.channel.send(embed).then(m => {

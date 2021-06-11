@@ -7,15 +7,18 @@ module.exports = {
   perms: "None",
   folder: "QOL",
   execute: (client, message, args) => {
-    message.delete();
-    message.channel.send(
-      new Discord.MessageEmbed()
+
+const mentionedMember = message.mentions.members.first();
+if (!mentionedMember) return;
+const mentionedUser = mentionedMember.user;
+
+     const embed = new Discord.MessageEmbed()
         .setTitle("User Info")
         .setColor('00ff00')
         .addFields(
-          { name: "User", value: `${message.author}`, inline: true },
-          { name: "User ID", value: `${message.author.id}`, inline: true },
-          { name: "Server Join Date", value: `${message.member.joinedAt}`, inline: true })
-        .setThumbnail(message.author.displayAvatarURL()))
+          { name: "User", value: `${mentionedUser.tag}`, inline: true },
+          { name: "User ID", value: `${mentionedUser.id}`, inline: true },
+          { name: "Server Join Date", value: `${mentionedMember.joinedAt}`, inline: true })
+        message.channel.send(embed)
   }
 };

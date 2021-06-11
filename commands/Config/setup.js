@@ -8,7 +8,8 @@ module.exports = {
   folder: "Config",
     execute: (client, message, args) => {
    if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send("You are missing the Permission \`ADMINISTRATOR\`.");
-      message.delete()
+    if (!message.guild.me.hasPermission('EMBED_LINKS'))return message.channel.send("I don\'t have \`EMBED_LINKS\` Permission.");
+
 
       const pembed = new Discord.MessageEmbed()
       .setTitle('Sky Bot Setup Check')

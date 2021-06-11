@@ -10,14 +10,14 @@ module.exports = {
     if (!message.member.hasPermission('BAN_MEMBERS')) return message.channel.send("You are missing the Permission \`BAN_MEMBERS\`.");
     if (!message.guild.me.hasPermission('BAN_MEMBERS'))return message.channel.send("I don\'t have \`BAN_MEMBERS\` Permission.");
 
-    message.delete();
+
 
     const user = args[0];
 
     const unban = new Discord.MessageEmbed()
           .setTitle("<a:yes:847468695772987423> Unbanned User")
           .setColor("008000")
-          .setDescription(`**${user}** has been unbanned.`)
+          .setDescription(`<@${user}> has been unbanned.`)
     if (user) {
       const member = message.guild.member(user);
       if (args[0]) {

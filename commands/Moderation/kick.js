@@ -9,7 +9,7 @@ module.exports = {
   execute: (client, message, args) => {
     if (!message.member.hasPermission('KICK_MEMBERS')) return message.channel.send("You are missing the Permission \`KICK_MEMBERS\`.");
     if (!message.guild.me.hasPermission('KICK_MEMBERS')) return message.channel.send("I don\'t have \`KICK_MEMBERS\` Permission.");
-    message.delete()
+
     const user = message.mentions.users.first() || message.guild.members.cache.get(args[0]);
     const kickembed = new Discord.MessageEmbed()
           .setTitle("<a:yes:847468695772987423> Kicked User")

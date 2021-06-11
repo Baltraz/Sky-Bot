@@ -37,11 +37,11 @@ if(args[0] === undefined) {
                             .setDescription(`No Minecraft account found for \`${ign}\``)
                             .setColor('DC143C')
                             .setTimestamp()
-                    ).then(message.reactions.removeAll().catch(error => console.error('Failed to clear reactions: ', error)))
+                    )
                 }
             }); // Test if IGN esists
 
-        ign = await getTrueIgn(ign);
+       // ign = await getTrueIgn(ign);
 
         // At this point we know its a valid IGN, but not if it has skyblock profiles
         const apiData = await getApiData(ign, method); // Gets all skyblock player data from Senither's Hypixel API Facade
@@ -52,7 +52,7 @@ if(args[0] === undefined) {
 					.setDescription(apiData.reason)
 					.setColor('DC143C')
 					.setTimestamp()
-			).then(message.reactions.removeAll().catch(error => console.error('Failed to clear reactions: ', error)))
+			)
 		}
 
         // IGN is valid and player has skyblock profiles
@@ -63,7 +63,7 @@ if(args[0] === undefined) {
                 .setDescription('You currently have skills API disabled, please enable it in the skyblock menu and try again')
                 .setColor('DC143C')
                 .setTimestamp()
-        ).then(message.reactions.removeAll().catch(error => console.error('Failed to clear reactions: ', error)))
+        )
 
         return message.channel.send( // EDIT THIS BIT
             new Discord.MessageEmbed()
@@ -72,16 +72,16 @@ if(args[0] === undefined) {
                 .setAuthor(ign, `https://cravatar.eu/helmavatar/${ign}/600.png`, `http://sky.shiiyu.moe/stats/${ign}`)
                 .setFooter(`${ign}'s Skill Average: ${toFixed(apiData.data.skills.average_skills)}`)
                 .addFields(
-                    {name: "Mining", value: `${toFixed(apiData.data.skills.mining.level)}`, inline: true},
-                    {name: "Foraging", value: `${toFixed(apiData.data.skills.foraging.level)}`, inline: true},
-                    {name: "Enchanting", value: `${toFixed(apiData.data.skills.enchanting.level)}`, inline: true},
-                    {name: "Farming", value: `${toFixed(apiData.data.skills.farming.level)}`, inline: true},
-                    {name: "Combat", value: `${toFixed(apiData.data.skills.combat.level)}`, inline: true},
-                    {name: "Fishing", value: `${toFixed(apiData.data.skills.fishing.level)}`, inline: true},
-                    {name: "Alchemy", value: `${toFixed(apiData.data.skills.alchemy.level)}`, inline: true},
-                    {name: "Taming", value: `${toFixed(apiData.data.skills.taming.level)}`, inline: true}
+                    {name: "<:mining:852069714577719306> Mining", value: `${toFixed(apiData.data.skills.mining.level)}`, inline: true},
+                    {name: "<:foraging:852069714447695872> Foraging", value: `${toFixed(apiData.data.skills.foraging.level)}`, inline: true},
+                    {name: "<:enchanting:852069714511659058> Enchanting", value: `${toFixed(apiData.data.skills.enchanting.level)}`, inline: true},
+                    {name: "<:farming:852069714451759114> Farming", value: `${toFixed(apiData.data.skills.farming.level)}`, inline: true},
+                    {name: "<:combat:852069714527911956> Combat", value: `${toFixed(apiData.data.skills.combat.level)}`, inline: true},
+                    {name: "<:fishing:852069714359877643> Fishing", value: `${toFixed(apiData.data.skills.fishing.level)}`, inline: true},
+                    {name: "<:alchemy:852069714480988180> Alchemy", value: `${toFixed(apiData.data.skills.alchemy.level)}`, inline: true},
+                    {name: "<:taming:852069714493833227> Taming", value: `${toFixed(apiData.data.skills.taming.level)}`, inline: true}
                 )
-                .setTimestamp()
+                
         )
     },
 };

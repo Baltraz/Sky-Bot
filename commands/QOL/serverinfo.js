@@ -7,7 +7,6 @@ module.exports = {
   perms: "None",
   folder: "QOL",
   execute: (client, message, args) => {
-    message.delete();
     message.channel.send(
       new Discord.MessageEmbed()
         .setTitle("Server Stats")

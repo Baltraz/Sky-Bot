@@ -9,7 +9,7 @@ module.exports = {
 	folder: 'Moderation',
 	execute(client, message, args) {
 		try {
-      message.delete();
+
     if (!message.member.hasPermission('MANAGE_ROLES'))
 			return message.channel.send(
 				'You are missing the Permission `MANAGE_ROLES`.'
