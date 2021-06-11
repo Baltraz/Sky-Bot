@@ -4,7 +4,7 @@ const fetch = require('node-fetch');
 
 module.exports = {
     name: 'Dungeons',
-    usage: '!dungeons (IGN)',
+    usage: 'dungeons (IGN)',
     description: "Show Dungeons Stats for the mentioned User",
     async execute(client, message, args) {
       if(args[0] === undefined) {

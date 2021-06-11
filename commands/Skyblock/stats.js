@@ -4,7 +4,7 @@ const fetch = require('node-fetch');
 
 module.exports = {
     name: 'Stats',
-    usage: '!stats (IGN)',
+    usage: 'stats (IGN)',
     description: "Show Overall Stats for the mentioned User",
     async execute(client, message, args) {
       if(args[0] === undefined) {
@@ -65,7 +65,7 @@ module.exports = {
                 .addFields(
                     {name: "💰 Coins", value: `Total: ${toFixed(apiData.data.coins.total)}\nBank: ${toFixed(bank)}\nPurse: ${toFixed(purse)}`, inline: true},
 
-                    {name: "<:slayer:852093582537916416> Slayers", value: `Zombie: ${toFixed(apiData.data.slayers.bosses.revenant.level)}\nSpider: ${toFixed(apiData.data.slayers.bosses.tarantula.level)}\nWolf: ${toFixed(apiData.data.slayers.bosses.sven.level)}`, inline: true},
+                    {name: "<:rev:852892164559732806> Slayers", value: `Zombie: ${toFixed(apiData.data.slayers.bosses.revenant.level)}\nSpider: ${toFixed(apiData.data.slayers.bosses.tarantula.level)}\nWolf: ${toFixed(apiData.data.slayers.bosses.sven.level)}`, inline: true},
 
                     {name: "Weight", value: `Total: ${toFixed(apiData.data.weight)}\nOverflow: ${toFixed(apiData.data.weight_overflow)}\nSkills: ${toFixed(apiData.data.skills.weight)}\nSlayers: ${toFixed(apiData.data.slayers.weight)}\nDungons: ${toFixed(apiData.data.dungeons.weight)}`, inline: true},
 

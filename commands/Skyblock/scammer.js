@@ -7,7 +7,7 @@ const urii = process.env['uri']
 module.exports = {
   name: "Scammer",
   description: "Checks the SBZ and Sky Bot Database for Scammers",
-  usage: "!scammer (IGN)",
+  usage: "scammer (IGN)",
   perms: "None",
   folder: "Skyblock",
   async execute(client, message, args) {

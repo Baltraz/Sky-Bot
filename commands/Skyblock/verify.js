@@ -4,7 +4,7 @@ const config = require('../../config.json');
 
 module.exports = {
 	name: 'Verify',
-	usage: '!verify (IGN)',
+	usage: 'verify (IGN)',
 	description: 'Sets the Users Nick to [Cata Level] IGN',
 	perms: 'None',
 	folder: 'Skyblock',

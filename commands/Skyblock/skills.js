@@ -4,7 +4,7 @@ const fetch = require('node-fetch');
 module.exports = {
   name: "Skills",
   description: "Shows the Users Skills.",
-  usage: "!skills (IGN)",
+  usage: "skills (IGN)",
   perms: "None",
   folder: "Skyblock",
     async execute(client, message, args) {

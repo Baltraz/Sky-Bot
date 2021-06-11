@@ -9,7 +9,7 @@ module.exports = {
   folder: "Config",
   execute: (client, message, args) => {
     if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.channel.send("You are missing the Permission \`MANAGE_CHANNELS\`.");
-    if (!message.guild.me.hasPermission('MANAGE_CHANNELS'))return message.channel.send("I don\'t have \`MANAGE_CHANNELS\` Permission.");
+    if (!message.guild.me.hasPermission('MANAGE_CHANNELS')) return message.channel.send("I don\'t have \`MANAGE_CHANNELS\` Permission.");
 
     const muteRole = message.guild.roles.cache.find(
       role => role.name === 'Muted'
@@ -19,12 +19,12 @@ module.exports = {
       if (ch.type == "text")
         ch.createOverwrite(muteRole.id,
           {
-              'SEND_MESSAGES': false,
-              'EMBED_LINKS': false,
-              'ATTACH_FILES': false,
-              'ADD_REACTIONS': false,
-          },'Automatic permissions Setup.')
-          editedchannels += 1;
+            'SEND_MESSAGES': false,
+            'EMBED_LINKS': false,
+            'ATTACH_FILES': false,
+            'ADD_REACTIONS': false,
+          }, 'Automatic permissions Setup.')
+      editedchannels += 1;
     })
     message.channel.send(`Permissions for Muted Role Setup!\n\`${editedchannels}\` Channels have been edited.`)
 

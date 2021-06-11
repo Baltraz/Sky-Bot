@@ -4,7 +4,7 @@ const fetch = require('node-fetch');
 
 module.exports = {
     name: 'dtest',
-    usage: '!dtest (IGN)',
+    usage: 'dtest (IGN)',
     description: "Show Dungeons Stats for the mentioned User",
     async execute(client, message, args) {
       message.channel.send('this command is in development');

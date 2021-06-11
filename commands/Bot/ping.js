@@ -10,7 +10,7 @@ module.exports = {
   execute: async (client, message, args) => {
 
     const embed = new Discord.MessageEmbed()
-    .setDescription('Pinging . . .')
+      .setDescription('Pinging . . .')
     message.channel.send(embed).then(m => {
       m.edit(
         new Discord.MessageEmbed()

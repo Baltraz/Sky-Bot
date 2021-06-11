@@ -9,7 +9,7 @@ const axios = require('axios')
 module.exports = {
   name: "scammeradd",
   description: "Adds a Scammer to the Database (Dev Only)",
-  usage: "!scammeradd (Scammer IGN) (Scammer Reason)",
+  usage: "scammeradd (Scammer IGN) (Scammer Reason)",
   perms: "Dev Only",
   folder: "Skyblock",
   execute: (client, message, args) => {
