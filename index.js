@@ -24,11 +24,12 @@ client.on('ready', () => {
 //Replies with the Prefix when Bot is mentioned
 client.on('message', message => {
 
-  if (message.author.bot) return;
-  const args = message.content;
-  let guildPrefix = prefix.getPrefix(message.guild.id);
-  if (!guildPrefix) guildPrefix = defaultPrefix;
-  if (args === "<@!839835292785704980>") return (message.channel.send(`My Prefix is \`${guildPrefix}\`.`))
+ if (message.author.bot) return;
+  let guildPrefixx = prefix.getPrefix(message.guild.id);
+  if (!guildPrefixx) guildPrefixx = defaultPrefix;
+  const bottag = message.mentions.users.first();
+  if (bottag === client.user) { (message.channel.send(`My Prefix is \`${guildPrefixx}\``)) 
+  return; }
 
 });
 
