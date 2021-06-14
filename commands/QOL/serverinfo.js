@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 module.exports = {
   name: "Serverinfo",
   description: "Shows some Stats about the current Server.",
-  usage: "!serverinfo",
+  usage: "serverinfo",
   perms: "None",
   folder: "QOL",
   execute: (client, message, args) => {

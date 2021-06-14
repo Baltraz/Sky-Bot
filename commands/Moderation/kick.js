@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 module.exports = {
   name: "Kick",
   description: "Kick a Member from the Discord",
-  usage: "!kick (Member)\n\`Example: !kick 570267487393021969\`",
+  usage: "kick (Member)\n\`Example: !kick 570267487393021969\`",
   perms: "Kick Members",
   folder: "Moderation",
   execute: (client, message, args) => {

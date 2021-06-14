@@ -5,7 +5,7 @@ module.exports = {
 	name: 'Mute',
 	description: 'Mute a Member',
 	usage:
-		'!mute (Mention Member or ID) (Amount of Time in m/h/d)\n\`Example: !mute 570267487393021969 1m\`\nMax Mute Duration is 20 Days.(Timer will Freeze on Bot Restart don\'t go above 6-12h.',
+		'mute (Mention Member or ID) (Amount of Time in m/h/d)\n\`Example: !mute 570267487393021969 1m\`\nMax Mute Duration is 20 Days.(Timer will Freeze on Bot Restart don\'t go above 6-12h.',
 	perms: 'Manage Roles',
 	folder: 'Moderation',
 	execute(client, message, args) {

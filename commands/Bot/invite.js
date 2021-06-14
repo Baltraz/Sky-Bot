@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 module.exports = {
   name: "Invite",
   description: "Sends the Bots Invite Link",
-  usage: "!invite",
+  usage: "invite",
   perms: "None",
   folder: "Bot",
     execute: (client, message, args) => {

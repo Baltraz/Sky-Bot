@@ -4,7 +4,7 @@ const Discord = require('discord.js');
 module.exports = {
 	name: 'Unmute',
 	description: 'Unmute a Member',
-	usage: '!unmute (Mention Member or ID)\n\`Example: !unmute 570267487393021969\`',
+	usage: 'unmute (Mention Member or ID)\n\`Example: !unmute 570267487393021969\`',
 	perms: 'Manage Roles',
 	folder: 'Moderation',
 	execute(client, message, args) {

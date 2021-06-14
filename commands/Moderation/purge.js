@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 module.exports = {
   name: "Purge",
   description: "Purge Messages",
-  usage: "!purge (Message Amount)\n\`Example: !purge 10\`\n Max Message Amount to delete is 100.",
+  usage: "purge (Message Amount)\n\`Example: !purge 10\`\n Max Message Amount to delete is 100.",
   perms: "Manage Messages",
   folder: "Moderation",
   execute: (client, message, args) => {

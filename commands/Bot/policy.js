@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 module.exports = {
   name: "policy",
   description: "Shows the General Rules of Conduct for  the Bot",
-  usage: "!policy",
+  usage: "policy",
   perms: "None",
   folder: "Bot",
   execute: (client, message, args) => {

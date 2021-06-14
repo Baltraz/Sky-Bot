@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 module.exports = {
   name: "Changelog",
   description: "Shows the Bots Changes/Updates",
-  usage: "!changelog",
+  usage: "changelog",
   perms: "None",
   folder: "Config",
     execute: (client, message, args) => {

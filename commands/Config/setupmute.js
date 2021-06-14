@@ -4,7 +4,7 @@ let editedchannels = 0;
 module.exports = {
   name: "Setupmute",
   description: "Sets the Permissions for all Channels for the Muted role",
-  usage: "!setupmute",
+  usage: "setupmute",
   perms: "Manage Channels",
   folder: "Config",
   execute: (client, message, args) => {

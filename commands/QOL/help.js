@@ -3,7 +3,7 @@ const fs = require('fs')
 
 module.exports = {
     name: 'Help',
-    usage: '!help [command]',
+    usage: 'help [command]',
     description: 'Shows Information about all the Commands from Sky Bot',
     perms: "None",
     execute(client, message, args) {

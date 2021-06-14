@@ -15,7 +15,6 @@ module.exports = {
   execute: (client, message, args) => {
     if(!config.scammanagers.includes(message.author.id)
 ) return message.channel.send('You are not allowed to do this.')
-    //if (message.author.id !== '570267487393021969' && message.author.id !== '637943235523641373') return message.channel.send("You are not allowed to do this.");
 
 
     const scammerIGN = args[0];

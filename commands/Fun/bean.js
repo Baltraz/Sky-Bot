@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 module.exports = {
   name: "Bean",
   description: "<:beans:849265485199048744>",
-  usage: "!bean (Member)",
+  usage: "bean (Member)",
   perms: "<:beans:849265485199048744>",
   folder: "Fun",
   execute: (client, message, args) => {

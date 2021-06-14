@@ -4,7 +4,7 @@ const config = require("../../config.json");
 module.exports = {
   name: "Eval",
   description: "Allows execution of Code from Discord. (Dev Only)",
-  usage: "!eval <command snipet>",
+  usage: "eval <command snipet>",
   perms: "Dev",
   folder: "Dev",
   execute: (client, message, args) => {

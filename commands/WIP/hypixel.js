@@ -6,7 +6,7 @@ const config = require("../../config.json")
 module.exports = {
   name: "Hypixel",
   description: "Shows Info about the Hypixel profile of the user",
-  usage: "!hypixel (IGN)",
+  usage: "hypixel (IGN)",
   perms: "None",
   folder: "WIP",
     execute: (client, message, args) => {

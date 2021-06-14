@@ -5,7 +5,7 @@ const prefix = require('discord-prefix');
 module.exports = {
   name: "Info",
   description: "Shows some Info about the Bot",
-  usage: "!info",
+  usage: "info",
   perms: "None",
   folder: "Bot",
   execute: (client, message, args) => {

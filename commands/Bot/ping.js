@@ -4,7 +4,7 @@ const pms = require('pretty-ms')
 module.exports = {
   name: "Ping",
   description: "Shows the BOT&API Ping and Bot Uptime!",
-  usage: "!ping",
+  usage: "ping",
   perms: "None",
   folder: "Bot",
   execute: async (client, message, args) => {

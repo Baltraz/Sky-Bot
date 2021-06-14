@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 module.exports = {
   name: "Ban",
   description: "Ban a Member from the Discord",
-  usage: "!ban (Member) <Ban Reason>\n\`Example: !ban 570267487393021969 Bad Dev\`",
+  usage: "ban (Member) <Ban Reason>\n\`Example: !ban 570267487393021969 Bad Dev\`",
   perms: "Ban Members",
   folder: "Moderation",
   execute: (client, message, args) => {
@@ -15,7 +15,7 @@ module.exports = {
     const banembed = new Discord.MessageEmbed()
           .setTitle("<a:yes:847468695772987423> Banned User")
           .setColor("008000")
-          .setDescription(`<@${user}> has been banned for **${reason}**.`)
+          .setDescription(`${user} has been banned for **${reason}**.`)
     if (user) {
       const member = message.guild.member(user);
       if (args[0]) {

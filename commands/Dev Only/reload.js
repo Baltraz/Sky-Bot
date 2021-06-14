@@ -4,7 +4,7 @@ const config = require('../../config.json');
 module.exports = {
   name: "Reload",
   description: "Allows Commads to be reloaded. (Dev Only)",
-  usage: "!reload <Command Name>",
+  usage: "reload <Command Name>",
   perms: "Dev",
   folder: "Dev",
   execute: (client, message, args) => {

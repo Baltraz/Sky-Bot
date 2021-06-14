@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 module.exports = {
   name: "vote",
   description: "Shows the Upvote Links for Sky Bot",
-  usage: "!vote",
+  usage: "vote",
   perms: "None",
   folder: "Bot",
   execute: (client, message, args) => {

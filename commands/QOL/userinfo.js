@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 module.exports = {
   name: "Userinfo",
   description: "Shows some Info about the User.",
-  usage: "!userinfo",
+  usage: "userinfo",
   perms: "None",
   folder: "QOL",
   execute: (client, message, args) => {

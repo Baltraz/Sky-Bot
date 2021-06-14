@@ -5,7 +5,7 @@ const config = require('../../config.json');
 module.exports = {
   name: "Setprefix",
   description: "Set the Server Prefix",
-  usage: "!prefix (Prefix)",
+  usage: "setprefix (New Prefix)",
   perms: "Admin",
   folder: "Config",
     execute: (client, message, args) => {

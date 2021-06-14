@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 module.exports = {
   name: "Setup",
   description: "Shows everything the Bot needs to work properly.",
-  usage: "!setup",
+  usage: "setup",
   perms: "Admin",
   folder: "Config",
   execute: (client, message, args) => {
