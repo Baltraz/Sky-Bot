@@ -19,11 +19,11 @@ module.exports = {
       gprefix = '!'
     }
       if(args[0] === undefined) {
-        message.channel.send(`This Servers Prefix is \`${gprefix}\`\nUse \`!setprefix (Prefix)\` to set a new Prefix.`)
+        message.channel.send(`This Servers Prefix is \`${gprefix}\`\nUse \`!setprefix (Prefix)\` to set a new one.`)
         return;
       }
 
 prefix.setPrefix(`${args[0]}`, `${id}`);
-message.channel.send(`Prefix has been set to \`${prefix.getPrefix(id)}\`!`)
+message.channel.send(`Prefix has been set to \`${prefix.getPrefix(id)}\``)
     }
 };
