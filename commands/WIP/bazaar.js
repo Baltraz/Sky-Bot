@@ -13,7 +13,7 @@ module.exports = {
     async execute(client, message, args) {
 
       if(args[0] === undefined) {
-        message.channel.send('Please enter an valid Item.\n**Example:** ENCHANTED_GOLD')
+        message.channel.send('Please enter an valid Item.\n**Example:** bazaar ENCHANTED_GOLD')
         return;
       }
 

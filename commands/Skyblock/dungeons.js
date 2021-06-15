@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const fetch = require('node-fetch');
 const apikey = process.env['apikey']
+const pms = require('pretty-ms')
 
 
 
@@ -34,11 +35,24 @@ module.exports = {
                     )
                 }
             }); // Test if IGN esists
+        
 
         ign = await getTrueIgn(ign);
 
+
         // At this point we know its a valid IGN, but not if it has skyblock profiles
+
+
+        const waitembed = new Discord.MessageEmbed()
+        .setDescription('Checking for Player Data . . .')
+        .setFooter('If i don\'t respond within 10 Seconds then theres an Error at the Hypixel API\nTry again later pls.')
+        .setColor('ORANGE')
+
+        const waitingembed = await message.channel.send(waitembed)
+
+
         const apiData = await getApiData(ign); // Gets all skyblock player data from Senither's Hypixel API Facade
+
 
         if (apiData.status != 200) {
             return message.channel.send(
@@ -50,7 +64,11 @@ module.exports = {
         } 
         if(!apiData.data.dungeons) return message.channel.send("This player hasn't played dungeons yet")
 
+
+
         // IGN is valid and player has skyblock profiles
+
+
         let tier7 = apiData.data.dungeons.types.catacombs.tier_completions.tier_7
         if(!tier7) tier7 = 0
         
@@ -100,9 +118,39 @@ module.exports = {
         if(!value7) value7 = 0
         if(value7) value7 = apiData.data.dungeons.types.catacombs.best_score.tier_7.value
 
-        return message.channel.send( // EDIT THIS BIT
+        let time2 = apiData.data.dungeons.types.catacombs.fastest_time_s_plus.tier_2
+        if(!time2) time2 = 0
+        if(time2) time2 = apiData.data.dungeons.types.catacombs.fastest_time_s_plus.tier_2.seconds
+        let min2 = Math.floor(time2 / 60)
+        let sec2 = Math.floor(time2 % 60)
 
-            new Discord.MessageEmbed()  
+        let time4 = apiData.data.dungeons.types.catacombs.fastest_time_s_plus.tier_4
+        if(!time4) time4 = 0
+        if(time4) time4 = apiData.data.dungeons.types.catacombs.fastest_time_s_plus.tier_4.seconds
+        let min4 = Math.floor(time4 / 60)
+        let sec4 = Math.floor(time4 % 60)
+
+        let time5 = apiData.data.dungeons.types.catacombs.fastest_time_s_plus.tier_5
+        if(!time5) time5 = 0
+        if(time5) time5 = apiData.data.dungeons.types.catacombs.fastest_time_s_plus.tier_5.seconds
+        let min5 = Math.floor(time5 / 60)
+        let sec5 = Math.floor(time5 % 60)
+
+        let time6 = apiData.data.dungeons.types.catacombs.fastest_time_s_plus.tier_6
+        if(!time6) time6 = 0
+        if(time6) time6 = apiData.data.dungeons.types.catacombs.fastest_time_s_plus.tier_6.seconds
+        let min6 = Math.floor(time6 / 60)
+        let sec6 = Math.floor(time6 % 60)
+
+        let time7 = apiData.data.dungeons.types.catacombs.fastest_time_s_plus.tier_7
+        if(!time7) time7 = 0
+        if(time7) time7 = apiData.data.dungeons.types.catacombs.fastest_time_s_plus.tier_7.seconds
+        let min7 = Math.floor(time7 / 60)
+        let sec7 = Math.floor(time7 % 60)
+
+
+
+             const foundresult = new Discord.MessageEmbed()  
                 .setTitle(`Dungeons Stats`)
                 .setColor('7CFC00')
                 .setFooter('Click their Name to view their SkyShiiyu')
@@ -117,18 +165,16 @@ module.exports = {
 
                     {name: "\u200b", value: "**Floor Completions**"},
 
-                    //find a way to switch from .time -> .seconds and then convert the seconds.ms to M and S
-                    //\nFastest S+: ${apiData.data.dungeons.types.catacombs.fastest_time_s_plus.tier_2.time}
 
-                    {name: "<:bonzo:852111493859115019> Floor 1", value: `Normal: **${tier1}**\nBest Score: **${value1}**`, inline: true},
-                    {name: "<:scarff:852111493909446686> Floor 2", value: `Normal: **${tier2}**\nBest Score: **${value2}**`, inline: true},
-                    {name: "<:professor:852111493952176148> Floor 3", value: `Normal: **${tier3}**\nBest Score: **${value3}**`, inline: true},
-                    {name: "<:thorn:852111493990580284> Floor 4", value: `Normal: **${tier4}**\nBest Score: **${value4}**`, inline: true},
-                    {name: "<:livid:852111493784666123> Floor 5", value: `Normal: **${tier5}**\nBest Score: **${value5}**`, inline: true},
-                    {name: "<:sadan:852111495466582017> Floor 6", value: `Normal: **${tier6}**\nBest Score: **${value6}**`, inline: true},
-                    {name: "<:necron:852111495575765012> Floor 7", value: `Normal: **${tier7}**\nBest Score: **${value7}**`, inline: true},
+                    {name: "<:bonzo:852111493859115019> Floor 1", value: `Normal: **${tier1}**\nFastest S+: **?**\nBest Score: **${value1}**`, inline: true},
+                    {name: "<:scarff:852111493909446686> Floor 2", value: `Normal: **${tier2}**\nFastest S+: **${min2}m ${sec2}s**\nBest Score: **${value2}**`, inline: true},
+                    {name: "<:professor:852111493952176148> Floor 3", value: `Normal: **${tier3}**\nFastest S+: **?**\nBest Score: **${value3}**`, inline: true},
+                    {name: "<:thorn:852111493990580284> Floor 4", value: `Normal: **${tier4}**\nFastest S+: **${min4}m ${sec4}s**\nBest Score: **${value4}**`, inline: true},
+                    {name: "<:livid:852111493784666123> Floor 5", value: `Normal: **${tier5}**\nFastest S+: **${min5}m ${sec5}s**\nBest Score: **${value5}**`, inline: true},
+                    {name: "<:sadan:852111495466582017> Floor 6", value: `Normal: **${tier6}**\nFastest S+: **${min6}m ${sec6}s**\nBest Score: **${value6}**`, inline: true},
+                    {name: "<:necron:852111495575765012> Floor 7", value: `Normal: **${tier7}**\nFastest S+: **${min7}m ${sec7}s**\nBest Score: **${value7}**`, inline: true},
                 )
-        )
+              waitingembed.edit(foundresult)
     },
 };
 
@@ -147,7 +193,7 @@ async function getApiData(ign) {
     const UUID = await getUUID(ign);
     const response = await fetch(`https://hypixel-api.senither.com/v1/profiles/${UUID}/skills?key=${apikey}`);
     return await response.json();
-}
+} 
 
 async function getTrueIgn(ign) {
     const response = await fetch(`https://api.mojang.com/users/profiles/minecraft/${ign}`);

@@ -55,7 +55,7 @@ return;*/
        // if(!apiData.dungeons) return message.channel.send("This player hasn't played dungeons yet")
 
         // IGN is valid and player has skyblock profiles
-        console.log(apiData.dungeons.dungeon_types.catacombs.tier_completions)
+        console.log(apiData.id)
 
         return message.channel.send( // EDIT THIS BIT
             new Discord.MessageEmbed()  
