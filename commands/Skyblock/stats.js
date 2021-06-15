@@ -8,11 +8,10 @@ module.exports = {
     name: 'Stats',
     usage: 'stats (IGN)',
     description: "Show Overall Stats for the mentioned User",
+    perms: "None",
+    folder: "Skyblock",
     async execute(client, message, args) {
-      if(args[0] === undefined) {
-  message.channel.send('Please enter a IGN')
-  return;
-}
+
         if (!args[0]) {
             var ign = message.member.displayName;
         } else {

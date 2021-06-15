@@ -53,7 +53,9 @@ module.exports = {
         // IGN is valid and player has skyblock profiles
 
 
+
         return message.channel.send( // EDIT THIS BIT
+
             new Discord.MessageEmbed()  
                 .setTitle(`Dungeons Stats`)
                 .setColor('7CFC00')
@@ -72,13 +74,13 @@ module.exports = {
                     //find a way to switch from .time -> .seconds and then convert the seconds.ms to M and S
                     //\nFastest S+: ${apiData.data.dungeons.types.catacombs.fastest_time_s_plus.tier_2.time}
 
-                    {name: "<:bonzo:852111493859115019> Floor 1", value: `Normal: **${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_1)}**\nBest Score: **${apiData.data.dungeons.types.catacombs.best_score.tier_1.value}**`, inline: true},
-                    {name: "<:scarff:852111493909446686> Floor 2", value: `Normal: **${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_2)}**\nBest Score: **${apiData.data.dungeons.types.catacombs.best_score.tier_2.value}**`, inline: true},
-                    {name: "<:professor:852111493952176148> Floor 3", value: `Normal: **${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_3)}**\nBest Score: **${apiData.data.dungeons.types.catacombs.best_score.tier_3.value}**`, inline: true},
-                    {name: "<:thorn:852111493990580284> Floor 4", value: `Normal: **${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_4)}**\nBest Score: **${apiData.data.dungeons.types.catacombs.best_score.tier_4.value}**`, inline: true},
-                    {name: "<:livid:852111493784666123> Floor 5", value: `Normal: **${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_5)}**\nBest Score: **${apiData.data.dungeons.types.catacombs.best_score.tier_5.value}**`, inline: true},
-                    {name: "<:sadan:852111495466582017> Floor 6", value: `Normal: **${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_6)}**\nBest Score: **${apiData.data.dungeons.types.catacombs.best_score.tier_6.value}**`, inline: true},
-                    {name: "<:necron:852111495575765012> Floor 7", value: `Normal: **${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_7)}**\nBest Score: **${apiData.data.dungeons.types.catacombs.best_score.tier_7.value}**`, inline: true},
+                    {name: "<:bonzo:852111493859115019> Floor 1", value: `Normal: **${apiData.data.dungeons.types.catacombs.tier_completions.tier_1}**\nBest Score: **${apiData.data.dungeons.types.catacombs.best_score.tier_1.value}**`, inline: true},
+                    {name: "<:scarff:852111493909446686> Floor 2", value: `Normal: **${apiData.data.dungeons.types.catacombs.tier_completions.tier_2}**\nBest Score: **${apiData.data.dungeons.types.catacombs.best_score.tier_2.value}**`, inline: true},
+                    {name: "<:professor:852111493952176148> Floor 3", value: `Normal: **${apiData.data.dungeons.types.catacombs.tier_completions.tier_3}**\nBest Score: **${apiData.data.dungeons.types.catacombs.best_score.tier_3.value}**`, inline: true},
+                    {name: "<:thorn:852111493990580284> Floor 4", value: `Normal: **${apiData.data.dungeons.types.catacombs.tier_completions.tier_4}**\nBest Score: **${apiData.data.dungeons.types.catacombs.best_score.tier_4.value}**`, inline: true},
+                    {name: "<:livid:852111493784666123> Floor 5", value: `Normal: **${apiData.data.dungeons.types.catacombs.tier_completions.tier_5}**\nBest Score: **${apiData.data.dungeons.types.catacombs.best_score.tier_5.value}**`, inline: true},
+                    {name: "<:sadan:852111495466582017> Floor 6", value: `Normal: **${apiData.data.dungeons.types.catacombs.tier_completions.tier_6}**\nBest Score: **${apiData.data.dungeons.types.catacombs.best_score.tier_6.value}**`, inline: true},
+                    {name: "<:necron:852111495575765012> Floor 7", value: `Normal: **${apiData.data.dungeons.types.catacombs.tier_completions.tier_7}**\nBest Score: **${apiData.data.dungeons.types.catacombs.best_score.tier_7.value}**`, inline: true},
                 )
         )
     },

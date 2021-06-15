@@ -9,6 +9,8 @@ module.exports = {
     name: 'Weight',
     usage: 'weight (IGN) <Profile>',
     description: "Gets the weight of a player's profile. This is a number generated from your Skills, Slayers and Dungeons levels.",
+    perms: "None",
+    folder: "Skyblock",
     async execute(client, message, args) {
         if (!args[0]) {
             var ign = message.member.displayName;
@@ -152,7 +154,7 @@ module.exports = {
                     {
                         name: 'Dungeons',
                         value: [
-                            `Catacombs:`,
+                            `<:catacombs:854399510951624775> Catacombs`,
                             `<:healer:852079613001990175> Healer`,
                             `<:mage:852079612699607072> Mage`,
                             `<:berserker:852079613052059658> Berserker`,

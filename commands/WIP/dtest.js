@@ -105,7 +105,7 @@ async function getApiData(ign) {
     const config = require('../../config.json');
 
     const UUID = await getUUID(ign);
-    const response = await fetch(`https://api.hypixel.net/skyblock/profiles?key=${config.apikey}&uuid=${UUID}`);
+    const response = await fetch(`https://api.slothpixel.me/api/skyblock/profiles/${ign}`);
     return await response.json();
 }
 

@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const config = require("../../config.json");
+const pms = require('pretty-ms');
 
 module.exports = {
   name: "Eval",
