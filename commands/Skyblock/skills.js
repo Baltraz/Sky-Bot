@@ -1,5 +1,8 @@
 const Discord = require('discord.js');
 const fetch = require('node-fetch');
+const apikey = process.env['apikey']
+
+
 
 module.exports = {
   name: "Skills",
@@ -97,7 +100,7 @@ async function getApiData(ign, method) {
     const config = require('../../config.json');
 
     const UUID = await getUUID(ign);
-    const response = await fetch(`https://hypixel-api.senither.com/v1/profiles/${UUID}/${method}?key=${config.apikey}`);
+    const response = await fetch(`https://hypixel-api.senither.com/v1/profiles/${UUID}/${method}?key=${apikey}`);
     return await response.json();
 }
 

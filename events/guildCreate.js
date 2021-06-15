@@ -1,9 +1,19 @@
 const discord = require('discord.js')
 const chalk = require('chalk');
+const config = require('../config.json');
 
 module.exports = {
     name: 'guildCreate',
     execute(guild, client) {
+      let targetguild = client.guilds.cache.get(guild.id)
+
+
+      if(config.blacklistedservers.includes(guild.id)) {
+      targetguild.leave();
+      client.channels.fetch(config.blacklistlog).then(channel => channel.send(`The Blacklisted Guild **${guild.name}** with the ID **${guild.id}** tried to add me, so i automatically left their Server.`))
+      
+      return;
+    }
         discordLog(client,
              new discord.MessageEmbed()
                 .setAuthor(client.user.username, client.user.avatarURL())
@@ -19,6 +29,9 @@ module.exports = {
         )
     }
 };
+
+
+
 
 function discordLog(client, embed) {
     delete require.cache[require.resolve('../config.json')];

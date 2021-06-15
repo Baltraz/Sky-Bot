@@ -1,5 +1,7 @@
 const Discord = require('discord.js');
 const fetch = require('node-fetch');
+const apikey = process.env['apikey']
+
 
 
 module.exports = {
@@ -7,10 +9,7 @@ module.exports = {
     usage: 'dungeons (IGN)',
     description: "Show Dungeons Stats for the mentioned User",
     async execute(client, message, args) {
-      if(args[0] === undefined) {
-  message.channel.send('Please enter a IGN')
-  return;
-}
+
         if (!args[0]) {
             var ign = message.member.displayName;
         } else {
@@ -56,8 +55,9 @@ module.exports = {
 
         return message.channel.send( // EDIT THIS BIT
             new Discord.MessageEmbed()  
-                .setTitle(`Dungeons Stats for ${ign}`)
+                .setTitle(`Dungeons Stats`)
                 .setColor('7CFC00')
+                .setFooter('Click their Name to view their SkyShiiyu')
                 .setAuthor(ign, `https://cravatar.eu/helmavatar/${ign}/600.png`, `http://sky.shiiyu.moe/stats/${ign}`)
                 .setDescription(`Catacombs Level: **${toFixed(apiData.data.dungeons.types.catacombs.level)}**\nSecrets Count: **${toFixed(apiData.data.dungeons.secrets_found)}**`)
                 .addFields(
@@ -70,14 +70,15 @@ module.exports = {
                     {name: "\u200b", value: "**Floor Completions**"},
 
                     //find a way to switch from .time -> .seconds and then convert the seconds.ms to M and S
+                    //\nFastest S+: ${apiData.data.dungeons.types.catacombs.fastest_time_s_plus.tier_2.time}
 
-                    {name: "<:bonzo:852111493859115019> Floor 1", value: `Normal: ${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_1)}\nFastest S+: ?`, inline: true},
-                    {name: "<:scarff:852111493909446686> Floor 2", value: `Normal: ${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_2)}\nFastest S+: ${apiData.data.dungeons.types.catacombs.fastest_time_s_plus.tier_2.time}`, inline: true},
-                    {name: "<:professor:852111493952176148> Floor 3", value: `Normal: ${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_3)}\nFastest S+: ?`, inline: true},
-                    {name: "<:thorn:852111493990580284> Floor 4", value: `Normal: ${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_4)}\nFastest S+: ${apiData.data.dungeons.types.catacombs.fastest_time_s_plus.tier_4.time}`, inline: true},
-                    {name: "<:livid:852111493784666123> Floor 5", value: `Normal: ${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_5)}\nFastest S+: ${apiData.data.dungeons.types.catacombs.fastest_time_s_plus.tier_5.time}`, inline: true},
-                    {name: "<:sadan:852111495466582017> Floor 6", value: `Normal: ${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_6)}\nFastest S+: ${apiData.data.dungeons.types.catacombs.fastest_time_s_plus.tier_6.time}`, inline: true},
-                    {name: "<:necron:852111495575765012> Floor 7", value: `Normal: ${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_7)}\nFastest S+: ${apiData.data.dungeons.types.catacombs.fastest_time_s_plus.tier_7.time}`, inline: true},
+                    {name: "<:bonzo:852111493859115019> Floor 1", value: `Normal: **${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_1)}**\nBest Score: **${apiData.data.dungeons.types.catacombs.best_score.tier_1.value}**`, inline: true},
+                    {name: "<:scarff:852111493909446686> Floor 2", value: `Normal: **${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_2)}**\nBest Score: **${apiData.data.dungeons.types.catacombs.best_score.tier_2.value}**`, inline: true},
+                    {name: "<:professor:852111493952176148> Floor 3", value: `Normal: **${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_3)}**\nBest Score: **${apiData.data.dungeons.types.catacombs.best_score.tier_3.value}**`, inline: true},
+                    {name: "<:thorn:852111493990580284> Floor 4", value: `Normal: **${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_4)}**\nBest Score: **${apiData.data.dungeons.types.catacombs.best_score.tier_4.value}**`, inline: true},
+                    {name: "<:livid:852111493784666123> Floor 5", value: `Normal: **${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_5)}**\nBest Score: **${apiData.data.dungeons.types.catacombs.best_score.tier_5.value}**`, inline: true},
+                    {name: "<:sadan:852111495466582017> Floor 6", value: `Normal: **${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_6)}**\nBest Score: **${apiData.data.dungeons.types.catacombs.best_score.tier_6.value}**`, inline: true},
+                    {name: "<:necron:852111495575765012> Floor 7", value: `Normal: **${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_7)}**\nBest Score: **${apiData.data.dungeons.types.catacombs.best_score.tier_7.value}**`, inline: true},
                 )
         )
     },
@@ -96,7 +97,7 @@ async function getApiData(ign) {
     const config = require('../../config.json');
 
     const UUID = await getUUID(ign);
-    const response = await fetch(`https://hypixel-api.senither.com/v1/profiles/${UUID}/skills?key=${config.apikey}`);
+    const response = await fetch(`https://hypixel-api.senither.com/v1/profiles/${UUID}/skills?key=${apikey}`);
     return await response.json();
 }
 

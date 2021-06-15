@@ -1,6 +1,8 @@
 const Discord = require('discord.js');
 const axios = require('axios');
 const config = require('../../config.json');
+const apikey = process.env['apikey']
+
 
 module.exports = {
 	name: 'Verify',
@@ -47,7 +49,7 @@ module.exports = {
 				const uuid = res.data.uuid;
 				axios
 					.get(
-						`https://api.hypixel.net/player?key=${config.apikey}&uuid=${uuid}`
+						`https://api.hypixel.net/player?key=${apikey}&uuid=${uuid}`
 					)
 					.then(res => {
 						if (
@@ -69,7 +71,7 @@ module.exports = {
 							axios
 								.get(
 									`https://hypixel-api.senither.com/v1/profiles/${uuid}/catacombs?key=${
-										config.apikey
+										apikey
 									}`
 								)
 								.then(res => {

@@ -1,6 +1,8 @@
 const Discord = require('discord.js')
 const axios = require("axios")
 const config = require("../../config.json")
+const apikey = process.env['apikey']
+
 
 
 module.exports = {
@@ -18,7 +20,7 @@ module.exports = {
     axios.get(`https://some-random-api.ml/mc?username=${mcname}`) //Minecraft UUID api
     .then((res) => {
         var UUID =  res.data.uuid
-        axios.get(`https://api.hypixel.net/player?uuid=${UUID}&key=${config.apikey}`) //General api = network stats
+        axios.get(`https://api.hypixel.net/player?uuid=${UUID}&key=${apikey}`) //General api = network stats
         .then((resp) => {
             const unixFirstLogin = resp.data.player.firstLogin
             var firstLogin = new Date(unixFirstLogin).toDateString() //Should make a date but im not sure LOL
@@ -35,7 +37,7 @@ module.exports = {
             var networkExp = resp.data.player.networkExp 
             var level = (Math.sqrt((2 * networkExp) + 30625) / 50) - 2.5
             var karma = resp.data.player.karma
-            axios.get(`https://api.hypixel.net/status?uuid=${UUID}&key=${config.apikey}`) //Status api checks if player is online
+            axios.get(`https://api.hypixel.net/status?uuid=${UUID}&key=${apikey}`) //Status api checks if player is online
            .then((response) => {  
                 let session = response.data.session.online
                 let emoji = ''
@@ -46,7 +48,7 @@ module.exports = {
                 }
                 let gameo = ""
                 if(gametype) gameo = `\nPlaying: ${gametype}`
-                axios.get(`https://api.hypixel.net/guild?player=${UUID}&key=${config.apikey}`) //Guild api
+                axios.get(`https://api.hypixel.net/guild?player=${UUID}&key=${apikey}`) //Guild api
                 .then((respo) => {
                     let guild = respo.data.guild
                     if(!guild) {
