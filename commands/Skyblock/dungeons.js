@@ -51,8 +51,54 @@ module.exports = {
         if(!apiData.data.dungeons) return message.channel.send("This player hasn't played dungeons yet")
 
         // IGN is valid and player has skyblock profiles
+        let tier7 = apiData.data.dungeons.types.catacombs.tier_completions.tier_7
+        if(!tier7) tier7 = 0
+        
+        let tier6 = apiData.data.dungeons.types.catacombs.tier_completions.tier_6
+        if(!tier6) tier6 = 0
 
+        let tier5 = apiData.data.dungeons.types.catacombs.tier_completions.tier_5
+        if(!tier5) tier5 = 0
 
+        let tier4 = apiData.data.dungeons.types.catacombs.tier_completions.tier_4
+        if(!tier4) tier4 = 0
+
+        let tier3 = apiData.data.dungeons.types.catacombs.tier_completions.tier_3
+        if(!tier3) tier3 = 0
+
+        let tier2 = apiData.data.dungeons.types.catacombs.tier_completions.tier_2
+        if(!tier2) tier2 = 0
+
+        let tier1 = apiData.data.dungeons.types.catacombs.tier_completions.tier_1
+        if(!tier1) tier1 = 0
+
+        let value1 = apiData.data.dungeons.types.catacombs.best_score.tier_1
+        if(!value1) value1 = 0
+        if(value1) value1 = apiData.data.dungeons.types.catacombs.best_score.tier_1.value
+
+        let value2 = apiData.data.dungeons.types.catacombs.best_score.tier_2
+        if(!value2) value2 = 0
+        if(value2) value2 = apiData.data.dungeons.types.catacombs.best_score.tier_2.value
+
+        let value3 = apiData.data.dungeons.types.catacombs.best_score.tier_3
+        if(!value3) value3 = 0
+        if(value3) value3 = apiData.data.dungeons.types.catacombs.best_score.tier_3.value
+
+        let value4 = apiData.data.dungeons.types.catacombs.best_score.tier_4
+        if(!value4) value4 = 0
+        if(value4) value4 = apiData.data.dungeons.types.catacombs.best_score.tier_4.value
+
+        let value5 = apiData.data.dungeons.types.catacombs.best_score.tier_5
+        if(!value5) value5 = 0
+        if(value5) value5 = apiData.data.dungeons.types.catacombs.best_score.tier_5.value
+
+        let value6 = apiData.data.dungeons.types.catacombs.best_score.tier_6
+        if(!value6) value6 = 0
+        if(value6) value6 = apiData.data.dungeons.types.catacombs.best_score.tier_6.value
+
+        let value7 = apiData.data.dungeons.types.catacombs.best_score.tier_7
+        if(!value7) value7 = 0
+        if(value7) value7 = apiData.data.dungeons.types.catacombs.best_score.tier_7.value
 
         return message.channel.send( // EDIT THIS BIT
 
@@ -74,13 +120,13 @@ module.exports = {
                     //find a way to switch from .time -> .seconds and then convert the seconds.ms to M and S
                     //\nFastest S+: ${apiData.data.dungeons.types.catacombs.fastest_time_s_plus.tier_2.time}
 
-                    {name: "<:bonzo:852111493859115019> Floor 1", value: `Normal: **${apiData.data.dungeons.types.catacombs.tier_completions.tier_1}**\nBest Score: **${apiData.data.dungeons.types.catacombs.best_score.tier_1.value}**`, inline: true},
-                    {name: "<:scarff:852111493909446686> Floor 2", value: `Normal: **${apiData.data.dungeons.types.catacombs.tier_completions.tier_2}**\nBest Score: **${apiData.data.dungeons.types.catacombs.best_score.tier_2.value}**`, inline: true},
-                    {name: "<:professor:852111493952176148> Floor 3", value: `Normal: **${apiData.data.dungeons.types.catacombs.tier_completions.tier_3}**\nBest Score: **${apiData.data.dungeons.types.catacombs.best_score.tier_3.value}**`, inline: true},
-                    {name: "<:thorn:852111493990580284> Floor 4", value: `Normal: **${apiData.data.dungeons.types.catacombs.tier_completions.tier_4}**\nBest Score: **${apiData.data.dungeons.types.catacombs.best_score.tier_4.value}**`, inline: true},
-                    {name: "<:livid:852111493784666123> Floor 5", value: `Normal: **${apiData.data.dungeons.types.catacombs.tier_completions.tier_5}**\nBest Score: **${apiData.data.dungeons.types.catacombs.best_score.tier_5.value}**`, inline: true},
-                    {name: "<:sadan:852111495466582017> Floor 6", value: `Normal: **${apiData.data.dungeons.types.catacombs.tier_completions.tier_6}**\nBest Score: **${apiData.data.dungeons.types.catacombs.best_score.tier_6.value}**`, inline: true},
-                    {name: "<:necron:852111495575765012> Floor 7", value: `Normal: **${apiData.data.dungeons.types.catacombs.tier_completions.tier_7}**\nBest Score: **${apiData.data.dungeons.types.catacombs.best_score.tier_7.value}**`, inline: true},
+                    {name: "<:bonzo:852111493859115019> Floor 1", value: `Normal: **${tier1}**\nBest Score: **${value1}**`, inline: true},
+                    {name: "<:scarff:852111493909446686> Floor 2", value: `Normal: **${tier2}**\nBest Score: **${value2}**`, inline: true},
+                    {name: "<:professor:852111493952176148> Floor 3", value: `Normal: **${tier3}**\nBest Score: **${value3}**`, inline: true},
+                    {name: "<:thorn:852111493990580284> Floor 4", value: `Normal: **${tier4}**\nBest Score: **${value4}**`, inline: true},
+                    {name: "<:livid:852111493784666123> Floor 5", value: `Normal: **${tier5}**\nBest Score: **${value5}**`, inline: true},
+                    {name: "<:sadan:852111495466582017> Floor 6", value: `Normal: **${tier6}**\nBest Score: **${value6}**`, inline: true},
+                    {name: "<:necron:852111495575765012> Floor 7", value: `Normal: **${tier7}**\nBest Score: **${value7}**`, inline: true},
                 )
         )
     },

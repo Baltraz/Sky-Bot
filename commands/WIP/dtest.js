@@ -7,12 +7,9 @@ module.exports = {
     usage: 'dtest (IGN)',
     description: "Show Dungeons Stats for the mentioned User",
     async execute(client, message, args) {
-      message.channel.send('this command is in development');
-return;
-      if(args[0] === undefined) {
-  message.channel.send('Please enter a IGN')
-  return;
-}
+  /*  message.channel.send('this command is in development');
+return;*/
+
 
         if (!args[0]) {
             var ign = message.member.displayName;
@@ -45,19 +42,20 @@ return;
         // At this point we know its a valid IGN, but not if it has skyblock profiles
 
         const apiData = await getApiData(ign); // Gets all skyblock player data from Senither's Hypixel API Facade
-        console.log(apiData)
 
-      /*  if (apiData.status != 200) {
+
+     /* if (apiData.status != 200) {
             return message.channel.send(
                 new Discord.MessageEmbed()
                     .setDescription(apiData.reason)
                     .setColor('DC143C')
                     .setTimestamp()
-            ).then(message.reactions.removeAll().catch(error => console.error('Failed to clear reactions: ', error)))
-      } */
+            ).then(message.reactions.removeAll().catch(error => console.error('Failed to clear reactions: ', error))) 
+     } */
        // if(!apiData.dungeons) return message.channel.send("This player hasn't played dungeons yet")
 
         // IGN is valid and player has skyblock profiles
+        console.log(apiData.dungeons.dungeon_types.catacombs.tier_completions)
 
         return message.channel.send( // EDIT THIS BIT
             new Discord.MessageEmbed()  
@@ -75,19 +73,20 @@ return;
                     {name: "\u200b", value: "\u200b"},
                     {name: "Floor Completions", value: "\u200b"},
 
-                    {name: "<:bonzo:852111493859115019> Floor 1", value: `Normal: ${apiData.dungeons.dungeon_types.catacombs.tier_completions['1']
+
+                    {name: "<:bonzo:852111493859115019> Floor 1", value: `Normal: ${apiData.data.dungeons.dungeon_types.catacombs.tier_completions[1]
 }`, inline: true},
-                    {name: "<:scarff:852111493909446686> Floor 2", value: `Normal: ${apiData.dungeons.dungeon_types.catacombs.tier_completions['2']
+                    {name: "<:scarff:852111493909446686> Floor 2", value: `Normal: ${apiData.data.dungeons.dungeon_types.catacombs.tier_completions[2]
 }`, inline: true},
-                    {name: "<:professor:852111493952176148> Floor 3", value: `${apiData.dungeons.dungeon_types.catacombs.tier_completions['3']
+                    {name: "<:professor:852111493952176148> Floor 3", value: `${apiData.data.dungeons.dungeon_types.catacombs.tier_completions[3]
 }`, inline: true},
-                    {name: "<:thorn:852111493990580284> Floor 4", value: `Normal: ${apiData.dungeons.dungeon_types.catacombs.tier_completions['4']
+                    {name: "<:thorn:852111493990580284> Floor 4", value: `Normal: ${apiData.data.dungeons.dungeon_types.catacombs.tier_completions[4]
 }`, inline: true},
-                    {name: "<:livid:852111493784666123> Floor 5", value: `Normal: ${apiData.dungeons.dungeon_types.catacombs.tier_completions['5']
+                    {name: "<:livid:852111493784666123> Floor 5", value: `Normal: ${apiData.data.dungeons.dungeon_types.catacombs.tier_completions[5]
 }`, inline: true},
-                    {name: "<:sadan:852111495466582017> Floor 6", value: `Normal: ${apiData.dungeons.dungeon_types.catacombs.tier_completions['6']
+                    {name: "<:sadan:852111495466582017> Floor 6", value: `Normal: ${apiData.data.dungeons.dungeon_types.catacombs.tier_completions[6]
 }`, inline: true},
-                    {name: "<:necron:852111495575765012> Floor 7", value: `Normal: ${apiData.dungeons.dungeon_types.catacombs.tier_completions['7']
+                    {name: "<:necron:852111495575765012> Floor 7", value: `Normal: ${apiData.data.dungeons.dungeon_types.catacombs.tier_completions[7]
 }`, inline: true},
                 )
         ).then(message.reactions.removeAll().catch(error => console.error('Failed to clear reactions: ', error)))
@@ -105,7 +104,7 @@ async function getApiData(ign) {
     const config = require('../../config.json');
 
     const UUID = await getUUID(ign);
-    const response = await fetch(`https://api.slothpixel.me/api/skyblock/profiles/${ign}`);
+    const response = await fetch(`https://api.slothpixel.me/api/skyblock/profile/${UUID}`);
     return await response.json();
 }
 
