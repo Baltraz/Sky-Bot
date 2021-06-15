@@ -9,8 +9,8 @@ module.exports = {
 	perms: 'None',
 	folder: 'Skyblock',
 	execute(client, message, args) {
-		if (!message.guild.roles.cache.find(role => role.name === 'Verified'))
-			return message.channel.send("Can't find a Role named `Verified`.");
+		if (!message.guild.roles.cache.find(role => role.name === 'Linked'))
+			return message.channel.send("Can't find a Role named `Linked`.");
 
 		if (!message.guild.me.hasPermission('MANAGE_ROLES'))
 			return message.channel.send("I don't have `MANAGE_ROLES` Permission.");
@@ -21,7 +21,7 @@ module.exports = {
 			);
 
 		let verifyrole = message.guild.roles.cache.find(
-			role => role.name === 'Verified'
+			role => role.name === 'Linked'
 		);
 
 		let target = message.author;
@@ -85,7 +85,7 @@ module.exports = {
 										.setDescription(
 											`${
 												message.author
-											} has successfully verified and their Nickname has been updated.`
+											} has successfully linked and their Nickname has been updated.`
 										)
 										.setColor('GREEN');
 									message.channel.send(vembed).then(msg =>

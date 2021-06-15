@@ -53,6 +53,7 @@ module.exports = {
 
         // IGN is valid and player has skyblock profiles
 
+
         return message.channel.send( // EDIT THIS BIT
             new Discord.MessageEmbed()  
                 .setTitle(`Dungeons Stats for ${ign}`)
@@ -66,20 +67,22 @@ module.exports = {
                     {name: "<:archer:852079613042491402> Archer Level", value: toFixed(apiData.data.dungeons.classes.archer.level), inline: true},
                     {name: "<:tank:852079613051666472> Tank Level", value: toFixed(apiData.data.dungeons.classes.tank.level), inline: true},
 
-                    {name: "\u200b", value: "\u200b"},
-                    {name: "Floor Completions", value: "\u200b"},
+                    {name: "\u200b", value: "**Floor Completions**"},
 
-                    {name: "<:bonzo:852111493859115019> Floor 1", value: `Normal: ${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_1)}`, inline: true},
-                    {name: "<:scarff:852111493909446686> Floor 2", value: `Normal: ${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_2)}`, inline: true},
-                    {name: "<:professor:852111493952176148> Floor 3", value: `Normal: ${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_3)}`, inline: true},
-                    {name: "<:thorn:852111493990580284> Floor 4", value: `Normal: ${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_4)}`, inline: true},
-                    {name: "<:livid:852111493784666123> Floor 5", value: `Normal: ${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_5)}`, inline: true},
-                    {name: "<:sadan:852111495466582017> Floor 6", value: `Normal: ${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_6)}`, inline: true},
-                    {name: "<:necron:852111495575765012> Floor 7", value: `Normal: ${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_7)}`, inline: true},
+                    //find a way to switch from .time -> .seconds and then convert the seconds.ms to M and S
+
+                    {name: "<:bonzo:852111493859115019> Floor 1", value: `Normal: ${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_1)}\nFastest S+: ?`, inline: true},
+                    {name: "<:scarff:852111493909446686> Floor 2", value: `Normal: ${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_2)}\nFastest S+: ${apiData.data.dungeons.types.catacombs.fastest_time_s_plus.tier_2.time}`, inline: true},
+                    {name: "<:professor:852111493952176148> Floor 3", value: `Normal: ${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_3)}\nFastest S+: ?`, inline: true},
+                    {name: "<:thorn:852111493990580284> Floor 4", value: `Normal: ${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_4)}\nFastest S+: ${apiData.data.dungeons.types.catacombs.fastest_time_s_plus.tier_4.time}`, inline: true},
+                    {name: "<:livid:852111493784666123> Floor 5", value: `Normal: ${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_5)}\nFastest S+: ${apiData.data.dungeons.types.catacombs.fastest_time_s_plus.tier_5.time}`, inline: true},
+                    {name: "<:sadan:852111495466582017> Floor 6", value: `Normal: ${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_6)}\nFastest S+: ${apiData.data.dungeons.types.catacombs.fastest_time_s_plus.tier_6.time}`, inline: true},
+                    {name: "<:necron:852111495575765012> Floor 7", value: `Normal: ${toFixed(apiData.data.dungeons.types.catacombs.tier_completions.tier_7)}\nFastest S+: ${apiData.data.dungeons.types.catacombs.fastest_time_s_plus.tier_7.time}`, inline: true},
                 )
         )
     },
 };
+
 
 
 async function getUUID(ign) {

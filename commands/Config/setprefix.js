@@ -9,9 +9,8 @@ module.exports = {
   perms: "Admin",
   folder: "Config",
     execute: (client, message, args) => {
-      if (message.author.id !== config.ownerID) return message.channel.send('Feature not released yet :D will happen soon')
 
-       //   if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send("You are missing the Permission \`ADMINISTRATOR\`.");
+       if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send("You are missing the Permission \`ADMINISTRATOR\`.");
 
       const id = message.guild.id;
     let gprefix = prefix.getPrefix(id);

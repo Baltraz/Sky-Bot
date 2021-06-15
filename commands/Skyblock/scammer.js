@@ -51,7 +51,7 @@ if (res.status != 200) {
             .setTitle('⚠️USER IS A SCAMMER⚠️')
             .setDescription(`**DON\'T TRADE WITH THAT USER**\n\n**IGN:** ${ign}\n**Reason:** ${sbz[uuid]["reason"]}\n**UUID:** ${uuid}`)
             .setColor('RED')
-            .setFooter('Found in SBZ List')
+            .setFooter('Powered by the SkyblockZ Scammer Database')
           message.channel.send(sbzembed)
           return;
         } else if (found) {
@@ -60,7 +60,7 @@ if (res.status != 200) {
             .setTitle('⚠️USER IS A SCAMMER⚠️')
             .setDescription(`**DON\'T TRADE WITH THAT USER**\n\n**IGN:** ${ign}\n**Reason:** ${found.scamREASON}\n**UUID:** ${uuid}`)
             .setColor('RED')
-            .setFooter(`Found in Sky Bot List`)
+            .setFooter('Powered by the Sky Bot Scammer Database')
           message.channel.send(sbembed)
           return;
         } else {
@@ -69,7 +69,6 @@ if (res.status != 200) {
             .setTitle('<a:yes:847468695772987423> USER IS INNOCENT')
             .setDescription(`Still be careful when trading with anyone!`)
             .setColor('GREEN')
-            .setFooter(`UUID: ${uuid}`)
           message.channel.send(innocent)
         }
         mclient.close();

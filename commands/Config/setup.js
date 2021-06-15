@@ -25,10 +25,10 @@ module.exports = {
     }
 
 
-    if (message.guild.roles.cache.find(role => role.name === 'Verified')) {
-      pembed.addField("Verified Role", "<a:yes:847468695772987423>", true)
-    } else if (!message.guild.roles.cache.find(role => role.name === "Verified")) {
-      pembed.addField("Verified Role", "<a:no:847468672380829707>", true)
+    if (message.guild.roles.cache.find(role => role.name === 'Linked')) {
+      pembed.addField("Linked Role", "<a:yes:847468695772987423>", true)
+    } else if (!message.guild.roles.cache.find(role => role.name === "Linked")) {
+      pembed.addField("Linked Role", "<a:no:847468672380829707>", true)
     }
 
 

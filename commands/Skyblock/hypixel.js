@@ -1,17 +1,19 @@
-const Discord = require('discord.js');
-const axios = require("axios");
+const Discord = require('discord.js')
+const axios = require("axios")
 const config = require("../../config.json")
 
 
 module.exports = {
-  name: "Hypixel",
-  description: "Shows Info about the Hypixel profile of the user",
-  usage: "hypixel (IGN)",
-  perms: "None",
-  folder: "WIP",
-    execute: (client, message, args) => {
+    name: "Hypixel",
+    description: "Shows Info about the Hypixel profile of the user",
+    usage: "!hypixel (IGN)",
+    perms: "None",
+    folder: "Skyblock",
+      execute: (client, message, args) => {
     let mcname = args[0] 
     if(!mcname) return message.channel.send("You didn't specify a user")
+
+    message.react('<a:wait:847471618272002059>');
 
     axios.get(`https://some-random-api.ml/mc?username=${mcname}`) //Minecraft UUID api
     .then((res) => {
@@ -19,9 +21,9 @@ module.exports = {
         axios.get(`https://api.hypixel.net/player?uuid=${UUID}&key=${config.apikey}`) //General api = network stats
         .then((resp) => {
             const unixFirstLogin = resp.data.player.firstLogin
-            var firstLogin = new Date(unixFirstLogin) //Should make a date but im not sure LOL
+            var firstLogin = new Date(unixFirstLogin).toDateString() //Should make a date but im not sure LOL
             const unixLastLogin = resp.data.player.lastLogin
-            var lastLogin = new Date(unixLastLogin)
+            var lastLogin = new Date(unixLastLogin).toDateString()
             var displayName = resp.data.player.displayname
             let packRank = resp.data.player.newPackageRank
             let rank = resp.data.player.rank
@@ -37,8 +39,8 @@ module.exports = {
            .then((response) => {  
                 let session = response.data.session.online
                 let emoji = ''
-                if(session === false) emoji = ":x:"
-                if(session === true) emoji = ":white_check_mark:"
+                if(session === false) emoji = ":red_circle:"
+                if(session === true) emoji = ":green_circle:"
                 if(session === true) {
                     var gametype = response.data.session.gameType
                 }
@@ -50,35 +52,35 @@ module.exports = {
                     if(!guild) {
                         var embed = new Discord.MessageEmbed()
                         .setAuthor(displayName, `https://cravatar.eu/helmavatar/${displayName}/600.png`, (`https://plancke.io/hypixel/player/stats/${displayName}`))
-                        .setTitle(`**${displayName}'s Hypixel Stats**`, )
                         .addFields(
-                            {name: "**Level**", value: `**Network Level**: ${level}\n**Total Exp**: ${networkExp}\n**Total Karma**: ${karma}`, inline: true}, {name: "**Rank**", value: `${rankFixed}`, inline: true},
-                            {name: "**Guild**", value: `Player is not in a guild`, inline: true}, {name: '**Status**', value: `${emoji}${gameo}`, inline: true},
-                            {name: "**First Login**", value: firstLogin, inline: true}, {name: '**Last Login**', value: lastLogin, inline: true}
+                            {name: "**Level**", value: `**Network Level**: ${Math.floor(level)}\n**Total Exp**: ${networkExp}\n**Total Karma**: ${karma}`, inline: true}, {name: "**Rank**", value: `${rankFixed}`, inline: true},
+                            {name: "**Guild**", value: `Player is not in a guild`, inline: true}, {name: "**First Login**", value: firstLogin, inline: true},
+                            {name: '**Last Login**', value: lastLogin, inline: true}, {name: '**Status**', value: `${emoji}${gameo}`, inline: true},
                         )
                         .setColor(color)
+                        .setTimestamp()
                     }
                     else if(guild) {
                         guild = ""
                     var guildName = respo.data.guild.name
                     const unixGuildCreated = respo.data.guild.created
-                    var guildCreated = new Date(unixGuildCreated)
+                    var guildCreated = new Date(unixGuildCreated).toDateString()
                 
                     //Now we have all data so we can make a embed
                     var embed = new Discord.MessageEmbed()
-                    .setAuthor([displayName](`https://plancke.io/hypixel/player/stats/${displayName}`))
-                    .setTitle(`**${displayName}'s Hypixel Stats**`, )
+                    .setAuthor(displayName, `https://cravatar.eu/avatar/${UUID}`, (`https://plancke.io/hypixel/player/stats/${displayName}`))
                     .addFields(
-                        {name: "**Level**", value: `**Network Level**: ${level}\n**Total Exp**: ${networkExp}\n**Total Karma**: ${karma}`, inline: true}, {name: "**Rank**", value: `${rankFixed}`, inline: true},
-                        {name: "**Guild**", value: `**Guild Name**: ${guildName}\n**Created At**: ${guildCreated}`, inline: true}, {name: '**Status**', value: `${emoji}${gameo}`, inline: true},
-                        {name: "**First Login**", value: firstLogin, inline: true}, {name: '**Last Login**', value: lastLogin, inline: true}
+                        {name: "**Level**", value: `**Network Level**: ${Math.floor(level)}\n**Total Exp**: ${networkExp.toLocaleString('en-US')}\n**Total Karma**: ${karma.toLocaleString('en-US')}`, inline: true}, {name: "**Rank**", value: `${rankFixed}`, inline: true},
+                        {name: "**Guild**", value: `**Guild Name**: ${guildName}\n**Created At**: ${guildCreated}`, inline: true}, {name: "**First Login**", value: firstLogin, inline: true},
+                         {name: '**Last Login**', value: lastLogin, inline: true}, {name: '**Status**', value: `${emoji}${gameo}`, inline: true}
                     )
-                    .setColor(color)}
+                    .setColor(color)
+                    .setTimestamp()}
+                    
                     message.channel.send(embed)
                 })
             })
         })
     })
-
     }
-};
+}

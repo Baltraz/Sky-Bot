@@ -18,7 +18,7 @@ module.exports = {
     if (user) {
       message.channel.send(ratembed)
     } else {
-      message.channel.send("<a:wait:847471618272002059> You didn't mention anyone to bean.")
+      message.channel.send("<a:wait:847471618272002059> You didn't mention anyone to rat.")
     }
   }
 };

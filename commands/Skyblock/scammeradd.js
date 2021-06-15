@@ -10,7 +10,7 @@ module.exports = {
   name: "scammeradd",
   description: "Adds a Scammer to the Database (Dev Only)",
   usage: "scammeradd (Scammer IGN) (Scammer Reason)",
-  perms: "Dev Only",
+  perms: "Scam Managers Only",
   folder: "Skyblock",
   execute: (client, message, args) => {
     if(!config.scammanagers.includes(message.author.id)
@@ -18,10 +18,11 @@ module.exports = {
 
 
     const scammerIGN = args[0];
-    const scamREASON = args.slice(1).join(' ');
+    const scamPROOF = args[1];
+    const scamREASON = args.slice(2).join(' ');
 
     if(args[0] === undefined || args[1] === undefined) {
-      message.channel.send("!scammeradd (Scammer IGN) (Scammer Reason)");
+      message.channel.send("!scammeradd (Scammer IGN) (Scam Proof[IMGUR Link]) (Scam Reason)");
       return;
     }
 
@@ -37,7 +38,7 @@ module.exports = {
       
       await collection.updateOne(
         { _id: uuid },
-        { $set: { scammerIGN: scammerIGN, scamREASON: scamREASON } },
+        { $set: { scammerIGN: scammerIGN, scamPROOF: scamPROOF, scamREASON: scamREASON } },
         { upsert: true }
       )
 

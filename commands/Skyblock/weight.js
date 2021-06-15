@@ -122,6 +122,7 @@ module.exports = {
                             `<:rev:852892164559732806> Revenant Horror`,
                             `<:tara:852892164392222740> Tarantula Broodfather`,
                             `<:sven:852892164299423754> Sven Packmaster`,
+                            `<:eman:854253314747924511> Voidgloom Seraph`,
                         ].join('\n'),
                         inline: true
                     },
@@ -130,7 +131,8 @@ module.exports = {
                         value: [
                             (apiData.data.slayers.bosses.revenant.experience).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
                             (apiData.data.slayers.bosses.tarantula.experience).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
-                            (apiData.data.slayers.bosses.sven.experience).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+                            (apiData.data.slayers.bosses.sven.experience).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
+                            (apiData.data.slayers.bosses.enderman.experience).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
                         ].join('\n'),
                         inline: true
                     },
@@ -139,7 +141,8 @@ module.exports = {
                         value: [
                             `**${toFixed(apiData.data.slayers.bosses.revenant.weight)}** + ${toFixed(apiData.data.slayers.bosses.revenant.weight_overflow)} *(${toFixed(apiData.data.slayers.bosses.revenant.weight + apiData.data.slayers.bosses.revenant.weight_overflow)})*`,
                             `**${toFixed(apiData.data.slayers.bosses.tarantula.weight)}** + ${toFixed(apiData.data.slayers.bosses.tarantula.weight_overflow)} *(${toFixed(apiData.data.slayers.bosses.tarantula.weight + apiData.data.slayers.bosses.tarantula.weight_overflow)})*`,
-                            `**${toFixed(apiData.data.slayers.bosses.sven.weight)}** + ${toFixed(apiData.data.slayers.bosses.sven.weight_overflow)} *(${toFixed(apiData.data.slayers.bosses.sven.weight + apiData.data.slayers.bosses.sven.weight_overflow)})*`
+                            `**${toFixed(apiData.data.slayers.bosses.sven.weight)}** + ${toFixed(apiData.data.slayers.bosses.sven.weight_overflow)} *(${toFixed(apiData.data.slayers.bosses.sven.weight + apiData.data.slayers.bosses.sven.weight_overflow)})*`,
+                            `**${toFixed(apiData.data.slayers.bosses.enderman.weight)}** + ${toFixed(apiData.data.slayers.bosses.enderman.weight_overflow)} *(${toFixed(apiData.data.slayers.bosses.enderman.weight + apiData.data.slayers.bosses.enderman.weight_overflow)})*`
                         ].join('\n'),
                         inline: true
                     },

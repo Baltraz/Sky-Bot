@@ -33,6 +33,24 @@ client.on('message', message => {
 
 });
 
+//dont judge me i was threatened to
+client.on('message', message => {
+
+if(message.content === '!mollyqt') {
+        if(message.author.id === '444806963415482369') 
+
+
+
+        message.channel.send(
+            new Discord.MessageEmbed()
+                .setDescription(":flushed:")
+                .setImage('https://cdn.discordapp.com/attachments/836267623485407283/844622340545052702/image0.png')
+                .setTimestamp()
+        )
+}
+
+});
+
 //Command Loader
 client.commands = new Discord.Collection();
 
