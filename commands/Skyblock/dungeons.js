@@ -118,11 +118,23 @@ module.exports = {
         if(!value7) value7 = 0
         if(value7) value7 = apiData.data.dungeons.types.catacombs.best_score.tier_7.value
 
+        let time1 = apiData.data.dungeons.types.catacombs.fastest_time_s_plus.tier_1
+        if(!time1) time1 = 0
+        if(time1) time1 = apiData.data.dungeons.types.catacombs.fastest_time_s_plus.tier_1.seconds
+        let min1 = Math.floor(time1 / 60)
+        let sec1 = Math.floor(time1 % 60)
+
         let time2 = apiData.data.dungeons.types.catacombs.fastest_time_s_plus.tier_2
         if(!time2) time2 = 0
         if(time2) time2 = apiData.data.dungeons.types.catacombs.fastest_time_s_plus.tier_2.seconds
         let min2 = Math.floor(time2 / 60)
         let sec2 = Math.floor(time2 % 60)
+
+        let time3 = apiData.data.dungeons.types.catacombs.fastest_time_s_plus.tier_3
+        if(!time3) time3 = 0
+        if(time3) time3 = apiData.data.dungeons.types.catacombs.fastest_time_s_plus.tier_3.seconds
+        let min3 = Math.floor(time3 / 60)
+        let sec3 = Math.floor(time3 % 60)
 
         let time4 = apiData.data.dungeons.types.catacombs.fastest_time_s_plus.tier_4
         if(!time4) time4 = 0
@@ -166,9 +178,9 @@ module.exports = {
                     {name: "\u200b", value: "**Floor Completions**"},
 
 
-                    {name: "<:bonzo:852111493859115019> Floor 1", value: `Normal: **${tier1}**\nFastest S+: **?**\nBest Score: **${value1}**`, inline: true},
+                    {name: "<:bonzo:852111493859115019> Floor 1", value: `Normal: **${tier1}**\nFastest S+: **${min1}m ${sec1}s**\nBest Score: **${value1}**`, inline: true},
                     {name: "<:scarff:852111493909446686> Floor 2", value: `Normal: **${tier2}**\nFastest S+: **${min2}m ${sec2}s**\nBest Score: **${value2}**`, inline: true},
-                    {name: "<:professor:852111493952176148> Floor 3", value: `Normal: **${tier3}**\nFastest S+: **?**\nBest Score: **${value3}**`, inline: true},
+                    {name: "<:professor:852111493952176148> Floor 3", value: `Normal: **${tier3}**\nFastest S+: **${min3}m ${sec3}s**\nBest Score: **${value3}**`, inline: true},
                     {name: "<:thorn:852111493990580284> Floor 4", value: `Normal: **${tier4}**\nFastest S+: **${min4}m ${sec4}s**\nBest Score: **${value4}**`, inline: true},
                     {name: "<:livid:852111493784666123> Floor 5", value: `Normal: **${tier5}**\nFastest S+: **${min5}m ${sec5}s**\nBest Score: **${value5}**`, inline: true},
                     {name: "<:sadan:852111495466582017> Floor 6", value: `Normal: **${tier6}**\nFastest S+: **${min6}m ${sec6}s**\nBest Score: **${value6}**`, inline: true},
