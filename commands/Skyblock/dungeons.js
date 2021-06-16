@@ -22,7 +22,6 @@ module.exports = {
 
         ign = ign.replace(/\W/g, ''); // removes weird characters
 
-        message.react('<a:wait:847471618272002059>');
 
         fetch(`https://api.mojang.com/users/profiles/minecraft/${ign}`)
             .then(res => {
@@ -55,15 +54,23 @@ module.exports = {
 
 
         if (apiData.status != 200) {
-            return message.channel.send(
-                new Discord.MessageEmbed()
-                    .setDescription(apiData.reason)
+            const errorembed = new Discord.MessageEmbed()
+                    .setDescription('There wasn an Error getting the Data from the Hypixel API.\nPlease try again later!')
                     .setColor('DC143C')
                     .setTimestamp()
-            )
-        } 
-        if(!apiData.data.dungeons) return message.channel.send("This player hasn't played dungeons yet")
 
+            waitingembed.edit(errorembed);
+            return;
+        } 
+
+        if(!apiData.data.dungeons) {
+          const nodungembed = new Discord.MessageEmbed()
+          .setDescription("This player hasn't played dungeons yet!")
+          .setColor('ORANGE')
+          .setTimestamp()
+          waitingembed.edit(nodungembed);
+          return;
+        }
 
 
         // IGN is valid and player has skyblock profiles
@@ -165,7 +172,7 @@ module.exports = {
              const foundresult = new Discord.MessageEmbed()  
                 .setTitle(`Dungeons Stats`)
                 .setColor('7CFC00')
-                .setFooter('Click their Name to view their SkyShiiyu')
+                .setFooter('Click their Name to view their SkyShiiyu\n0m 0s means they haven\'t gotten an S+ on said Floor yet.')
                 .setAuthor(ign, `https://cravatar.eu/helmavatar/${ign}/600.png`, `http://sky.shiiyu.moe/stats/${ign}`)
                 .setDescription(`Catacombs Level: **${toFixed(apiData.data.dungeons.types.catacombs.level)}**\nSecrets Count: **${toFixed(apiData.data.dungeons.secrets_found)}**`)
                 .addFields(

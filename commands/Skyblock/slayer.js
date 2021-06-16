@@ -27,17 +27,22 @@ module.exports = {
 
         ign = ign.replace(/\W/g, ''); // removes weird characters
 
-        message.react('<a:wait:847471618272002059>');
+        const waitembed = new Discord.MessageEmbed()
+        .setDescription('Checking for Player Data . . .')
+        .setFooter('If i don\'t respond within 10 Seconds then theres an Error at the Hypixel API\nTry again later pls.')
+        .setColor('ORANGE')
+
+        const waitingembed = await message.channel.send(waitembed)
 
         fetch(`https://api.mojang.com/users/profiles/minecraft/${ign}`)
             .then(res => {
                 if (res.status != 200) {
-                    return message.channel.send(
-                        new Discord.MessageEmbed()
+                        const nomcacc = new Discord.MessageEmbed()
                             .setDescription(`No Minecraft account found for \`${ign}\``)
                             .setColor('DC143C')
                             .setTimestamp()
-                    )
+                    waitingembed.edit(nomcacc)
+                    return;
                 }
             }); // Test if IGN esists
 
@@ -47,34 +52,44 @@ module.exports = {
         const apiData = await getApiData(ign, method); // Gets all skyblock player data from Senither's Hypixel API Facade
 
 		if (apiData.status != 200) {
-			return message.channel.send(
-				new Discord.MessageEmbed()
+				const apierror = new Discord.MessageEmbed()
 					.setDescription(apiData.reason)
 					.setColor('DC143C')
 					.setTimestamp()
-			)
+			waitingembed.edit(apierror)
+      return;
 		}
 
         // IGN is valid and player has skyblock profiles
 
-        if (apiData.data.skills.apiEnabled == false) return message.channel.send(
-            new Discord.MessageEmbed()
+        if (apiData.data.skills.apiEnabled == false) {
+            const noapion = new Discord.MessageEmbed()
                 .setAuthor(ign, `https://cravatar.eu/helmavatar/${ign}/600.png`, `https://sky.shiiyu.moe/stats/${ign}`)
                 .setDescription('You currently have skills API disabled, please enable it in the skyblock menu and try again')
                 .setColor('DC143C')
                 .setTimestamp()
-        )
+                waitingembed.edit(noapion)
+                return;
+        }
+        
 
-        return message.channel.send( // EDIT THIS BIT
-            new Discord.MessageEmbed()
+            const slayerembed = new Discord.MessageEmbed()
                 .setColor('7CFC00')
                 .setAuthor(ign, `https://cravatar.eu/helmavatar/${ign}/600.png`, `http://sky.shiiyu.moe/stats/${ign}`)
                 .setFooter(`${ign}'s Total Slayer EXP: ` + apiData.data.slayers.total_experience)
                 .addFields(
-                    {name: `Slayer Data for ${ign}`, value: getSlayers(apiData), inline:true},
-                )
-                
-        )
+                    {name: `Slayer Data for ${ign}`, value: getSlayers(apiData), inline: true},
+               )
+               /*
+               .setDescription(`Slayer Data for ${ign}`)
+               .addFields(
+              {`<:rev:852892164559732806> **Revenant [${rlevel}]**`, `Experience: **${rxp}**\n\n **Slayer Kills:** \n\`\`\`T1: ${r1}\nT2: ${r2}\nT3: ${r3}\nT4: ${r4}\nT5: ${r5}\`\`\``},
+              {<:tara:852892164392222740> **Tarantula [${tlevel}]**`, `Experience: **${txp}**\n\n **Slayer Kills:** \n\`\`\`T1: ${t1}\nT2: ${t2}\nT3: ${t3}\nT4: ${t4}\`\`\``},
+              {}
+               )
+               */
+              waitingembed.edit(slayerembed)
+              return;
     },
 };
 
@@ -83,20 +98,37 @@ function getSlayers(apiData) {
   const txp = apiData.data.slayers.bosses.tarantula.experience
   const sxp = apiData.data.slayers.bosses.sven.experience
   const exp = apiData.data.slayers.bosses.enderman.experience
-  const rkills = apiData.data.slayers.bosses.revenant.kills.tier_4 + apiData.data.slayers.bosses.revenant.kills.tier_5 + apiData.data.slayers.bosses.revenant.kills.tier_1 + apiData.data.slayers.bosses.revenant.kills.tier_2 + apiData.data.slayers.bosses.revenant.kills.tier_3
-  const tkills = apiData.data.slayers.bosses.tarantula.kills.tier_1 + apiData.data.slayers.bosses.tarantula.kills.tier_2 + apiData.data.slayers.bosses.tarantula.kills.tier_3 + apiData.data.slayers.bosses.tarantula.kills.tier_4
-  const skills = apiData.data.slayers.bosses.sven.kills.tier_1 + apiData.data.slayers.bosses.sven.kills.tier_2 + apiData.data.slayers.bosses.sven.kills.tier_3 + apiData.data.slayers.bosses.sven.kills.tier_4
-  const ekills = apiData.data.slayers.bosses.enderman.kills.tier_1 + apiData.data.slayers.bosses.enderman.kills.tier_2 + apiData.data.slayers.bosses.enderman.kills.tier_3 + apiData.data.slayers.bosses.enderman.kills.tier_4
+  const rlevel = apiData.data.slayers.bosses.revenant.level
+  const tlevel = apiData.data.slayers.bosses.tarantula.level
+  const slevel = apiData.data.slayers.bosses.sven.level
+  const elevel = apiData.data.slayers.bosses.enderman.level
+  const r1 = apiData.data.slayers.bosses.revenant.kills.tier_1
+  const r2 = apiData.data.slayers.bosses.revenant.kills.tier_2
+  const r3 = apiData.data.slayers.bosses.revenant.kills.tier_3
+  const r4 = apiData.data.slayers.bosses.revenant.kills.tier_4
+  const r5 = apiData.data.slayers.bosses.revenant.kills.tier_5
+  const t1 = apiData.data.slayers.bosses.tarantula.kills.tier_1
+  const t2 = apiData.data.slayers.bosses.tarantula.kills.tier_2
+  const t3 = apiData.data.slayers.bosses.tarantula.kills.tier_3
+  const t4 = apiData.data.slayers.bosses.tarantula.kills.tier_4
+  const s1 = apiData.data.slayers.bosses.sven.kills.tier_1
+  const s2 = apiData.data.slayers.bosses.sven.kills.tier_2
+  const s3 = apiData.data.slayers.bosses.sven.kills.tier_3
+  const s4 = apiData.data.slayers.bosses.sven.kills.tier_4
+  const e1 = apiData.data.slayers.bosses.enderman.kills.tier_1
+  const e2 = apiData.data.slayers.bosses.enderman.kills.tier_2
+  const e3 = apiData.data.slayers.bosses.enderman.kills.tier_3
+  const e4 = apiData.data.slayers.bosses.enderman.kills.tier_4
 
   return[
-    `<:rev:852892164559732806> **Revenant**`,
-    `Experience: ${rxp}, Kills: ${rkills}`,
-    `<:tara:852892164392222740> **Tarantula**`,
-    `Experience: ${txp}, Kills: ${tkills}`,
-    `<:sven:852892164299423754> **Sven**`,
-    `Experience: ${sxp}, Kills: ${skills}`,
-    `<:eman:854253314747924511> **Enderman**`,
-    `Experience: ${exp}, Kills: ${ekills}`
+    `<:rev:852892164559732806> **Revenant [${rlevel}]**`,
+    `Experience: **${rxp}**\n\n **Slayer Kills:** \n\`\`\`T1: ${r1}\nT2: ${r2}\nT3: ${r3}\nT4: ${r4}\nT5: ${r5}\`\`\``,
+    `<:tara:852892164392222740> **Tarantula [${tlevel}]**`,
+    `Experience: **${txp}**\n\n **Slayer Kills:** \n\`\`\`T1: ${t1}\nT2: ${t2}\nT3: ${t3}\nT4: ${t4}\`\`\``,
+    `<:sven:852892164299423754> **Sven [${slevel}]**`,
+    `Experience: **${sxp}**\n\n **Slayer Kills:** \n\`\`\`T1: ${s1}\nT2: ${s2}\nT3: ${s3}\nT4: ${s4}\`\`\``,
+    `<:eman:854253314747924511> **Enderman [${elevel}]**`,
+    `Experience: **${exp}**\n\n **Slayer Kills:** \n\`\`\`T1: ${e1}\nT2: ${e2}\nT3: ${e3}\nT4: ${e4}\`\`\``,
   ].join('\n');
 
 }

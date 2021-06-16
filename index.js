@@ -18,7 +18,26 @@ client.login(mySecret);
 client.on('ready', () => {
   console.log(chalk.greenBright(`Logged in as ${client.user.username}!`));
   console.log(chalk.greenBright(`Loaded ${c} Commands and ${e} Events!`));
-  client.user.setActivity(`${client.users.cache.size} Members and ${client.guilds.cache.size} Servers`, { type: 'WATCHING' });
+ //client.user.setActivity(`${client.users.cache.size} Members and ${client.guilds.cache.size} Servers`, { type: 'WATCHING' });
+});
+
+//cycles status
+client.on('ready' , () => {
+
+  const arrayOfStatus = [ 
+  `${client.guilds.cache.size} Servers`, 
+  `${client.users.cache.size} Users`, 
+  `help for help`, 
+  `invite to Invite me!`
+  ];
+
+let index = 0;
+setInterval(() => {
+  if (index === arrayOfStatus.length) index
+  const status = arrayOfStatus[Math.floor(Math.random()*arrayOfStatus.length)]
+  client.user.setActivity(status , {type : 'WATCHING'});
+  index++;
+}, 30000); 
 });
 
 //Replies with the Prefix when Bot is mentioned

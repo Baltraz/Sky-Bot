@@ -26,17 +26,22 @@ module.exports = {
 
         ign = ign.replace(/\W/g, ''); // removes weird characters
 
-        message.react(loading);
+        const waitembed = new Discord.MessageEmbed()
+        .setDescription('Checking for Player Data . . .')
+        .setFooter('If i don\'t respond within 10 Seconds then theres an Error at the Hypixel API\nTry again later pls.')
+        .setColor('ORANGE')
+
+        const waitingembed = await message.channel.send(waitembed)
 
         fetch(`https://api.mojang.com/users/profiles/minecraft/${ign}`)
             .then(res => {
                 if (res.status != 200) {
-                    return message.channel.send(
-                        new Discord.MessageEmbed()
+                        const nomcacc = new Discord.MessageEmbed()
                             .setDescription(`No Minecraft account found for \`${ign}\``)
                             .setColor('DC143C')
                             .setTimestamp()
-                    ).then(message.reactions.removeAll().catch(error => console.error('Failed to clear reactions: ', error)))
+                    waitingembed.edit(nomcacc)
+                    return;
                 }
             }); // Test if IGN esists
 
@@ -46,33 +51,37 @@ module.exports = {
         const apiData = await getApiData(ign, method); // Gets all skyblock player data from Senither's Hypixel API Facade
 
 		if (apiData.status != 200) {
-			return message.channel.send(
-				new Discord.MessageEmbed()
-					.setDescription(apiData.reason)
+				const apierrorembed = new Discord.MessageEmbed()
+					.setDescription('Error getting Data from Hypixel\'s API\nPlease try again later.')
 					.setColor('DC143C')
 					.setTimestamp()
-			).then(message.reactions.removeAll().catch(error => console.error('Failed to clear reactions: ', error)))
+          waitingembed.edit(apierrorembed)
+          return;
 		}
         // IGN is valid and player has skyblock profiles
 
-        if (apiData.data.skills.apiEnabled == false) return message.channel.send(
-            new Discord.MessageEmbed()
+        if (apiData.data.skills.apiEnabled == false) {
+            const apioff = new Discord.MessageEmbed()
                 .setAuthor(ign, `https://cravatar.eu/helmavatar/${ign}/600.png`, `https://sky.shiiyu.moe/stats/${ign}`)
                 .setDescription('You currently have skills API disabled, please enable it in the skyblock menu and try again')
                 .setColor('DC143C')
                 .setTimestamp()
-        ).then(message.reactions.removeAll().catch(error => console.error('Failed to clear reactions: ', error)))
+             waitingembed.edit(apioff)
+                return;
+        }
 
-        if (apiData.data.dungeons == null) return message.channel.send(
-            new Discord.MessageEmbed()
+//fix this shit
+       if (apiData.data.dungeons == null) {
+           const nodungeonsfound = new Discord.MessageEmbed()
                 .setAuthor(ign, `https://cravatar.eu/helmavatar/${ign}/600.png`, `https://sky.shiiyu.moe/stats/${ign}`)
                 .setDescription(`${ign} has not entered the catacombs`)
                 .setColor('DC143C')
                 .setTimestamp()
-        ).then(message.reactions.removeAll().catch(error => console.error('Failed to clear reactions: ', error)))
+        waitingembed.edit(nodungeonsfound)
+        return;
+    }
 
-        return message.channel.send(
-            new Discord.MessageEmbed()
+            const foundresults = new Discord.MessageEmbed()
                 .setAuthor(ign, `https://cravatar.eu/helmavatar/${ign}/600.png`, `https://sky.shiiyu.moe/stats/${ign}`)
                 .setColor('7CFC00')
                 .setDescription(`${ign}'s total Weight for their **${apiData.data.name}** profile is **${toFixed(apiData.data.weight)} + ${toFixed(apiData.data.weight_overflow)} Overflow (${toFixed(apiData.data.weight + apiData.data.weight_overflow)} Total)**`)
@@ -189,7 +198,7 @@ module.exports = {
                     },
                 )
                 .setTimestamp()
-        ).then(message.reactions.removeAll().catch(error => console.error('Failed to clear reactions: ', error)))
+          waitingembed.edit(foundresults)
     },
 };
 

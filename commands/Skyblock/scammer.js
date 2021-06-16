@@ -19,21 +19,33 @@ module.exports = {
       return;
     }
     
-   message.react('<a:wait:847471618272002059>');
+        const waitembed = new Discord.MessageEmbed()
+        .setDescription('Checking for Player Data . . .')
+        .setFooter('If i don\'t respond within 10 Seconds then theres an Error at the Database\nTry again later pls.')
+        .setColor('ORANGE')
+
+        const waitingembed = await message.channel.send(waitembed)
     
     axios.get(`https://api.mojang.com/users/profiles/minecraft/${ign}`).then(res => {
       const uuid = res.data.id;
 
 
 if (uuid === undefined) {
-  message.channel.send(`Invalid Username can\'t find ${ign} in the Mojang Database.`)
+  const invalidign = new Discord.MessageEmbed()
+  .setDescription(`Invalid Username can\'t find **${ign}** in the Mojang Database.`)
+  .setColor('ORANGE')
+  waitingembed.edit(invalidign)
   return;
 }
 
 if (res.status != 200) {
-                 message.channel.send('An Error has occured this is usually due to the API being overloaded or something going wrong pls try again in a minute.')
-                 return;
-                }
+  const apierror = new Discord.MessageEmbed()
+  .setDescription(`An Error has occured this is usually due to the API being overloaded or something going wrong pls try again in a minute.`)
+  .setColor('ORANGE')
+  waitingembed.edit(apierror)
+  return;
+}
+
 
       const MongoClient = require('mongodb').MongoClient;
       const mclient = new MongoClient(urii, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -52,7 +64,7 @@ if (res.status != 200) {
             .setDescription(`**DON\'T TRADE WITH THAT USER**\n\n**IGN:** ${ign}\n**Reason:** ${sbz[uuid]["reason"]}\n**UUID:** ${uuid}`)
             .setColor('RED')
             .setFooter('Powered by the SkyblockZ Scammer Database')
-          message.channel.send(sbzembed)
+          waitingembed.edit(sbzembed)
           return;
         } else if (found) {
           const sbembed = new Discord.MessageEmbed()
@@ -61,7 +73,7 @@ if (res.status != 200) {
             .setDescription(`**DON\'T TRADE WITH THAT USER**\n\n**IGN:** ${ign}\n**Reason:** ${found.scamREASON}\n**UUID:** ${uuid}`)
             .setColor('RED')
             .setFooter('Powered by the Sky Bot Scammer Database')
-          message.channel.send(sbembed)
+          waitingembed.edit(sbembed)
           return;
         } else {
           const innocent = new Discord.MessageEmbed()
@@ -69,7 +81,7 @@ if (res.status != 200) {
             .setTitle('<a:yes:847468695772987423> USER IS INNOCENT')
             .setDescription(`Still be careful when trading with anyone!`)
             .setColor('GREEN')
-          message.channel.send(innocent)
+          waitingembed.edit(innocent)
         }
         mclient.close();
 
