@@ -54,23 +54,23 @@ module.exports = {
   //all needed calculations
   const rxp = apiData.data.slayers.bosses.revenant.experience
   let rrxp = Math.floor(rxp / 1000)
-  //if (rrxp > 1000) { rrxp = Math.floor(rxp / 1000000)+ '.' + Math.floor(rxp / 10000) + 'M'} else { rrxp = rrxp + 'k'}
+  if (rrxp > 999) { rrxp = Math.floor(rxp / 1000000) + '.' + Math.floor((rxp % 1000000) / 1000) + 'M'} else { rrxp = rrxp + 'k'}
 
   const txp = apiData.data.slayers.bosses.tarantula.experience
   let ttxp = Math.floor(txp / 1000)
-  //if (ttxp > 1000) { ttxp = Math.floor(txp / 1000000)+ '.' + Math.floor(txp / 10000) + 'M'} else { ttxp = ttxp + 'k'}
+  if (ttxp > 999) { ttxp = Math.floor(txp / 1000000) + '.' + Math.floor((txp % 1000000) / 1000) + 'M'} else { ttxp = ttxp + 'k'}
 
   const sxp = apiData.data.slayers.bosses.sven.experience
   let ssxp = Math.floor(sxp / 1000)
-  //if (ssxp > 1000) { ssxp = Math.floor(sxp / 1000000)+ '.' + Math.floor(sxp / 10000) + 'M'} else { ssxp = ssxp + 'k'}
+  if (ssxp > 999) { ssxp = Math.floor(sxp / 1000000) + '.' + Math.floor((sxp % 1000000) / 1000) + 'M'} else { ssxp = ssxp + 'k'}
 
   const exp = apiData.data.slayers.bosses.enderman.experience
   let eexp = Math.floor(exp / 1000)
-  //if (eexp > 1000) { eexp = Math.floor(exp / 1000000)+ '.' + Math.floor(exp / 10000) + 'M'} else { eexp = eexp + 'k'}
+  if (eexp > 999) { eexp = Math.floor(exp / 1000000) + '.' + Math.floor((exp % 1000000) / 1000) + 'M'} else { eexp = eexp + 'k'}
 
   const totalxp = apiData.data.slayers.total_experience
   let ttotalxp = Math.floor(totalxp / 1000)
-  //if (ttotalxp > 1000) { ttotalxp = Math.floor(totalxp / 1000000)+ '.' + Math.floor(totalxp / 1000) + 'M'} else { ttotalxp = ttotalxp + 'k'}
+  if (ttotalxp > 999) { ttotalxp = Math.floor(totalxp / 1000000) + '.' + Math.floor((totalxp % 1000000) / 1000) + 'M'} else { ttotalxp = ttotalxp + 'k'}
 
   const rlevel = apiData.data.slayers.bosses.revenant.level
   const rfixed = rlevel.toFixed(0)
@@ -137,10 +137,10 @@ module.exports = {
                
                .setDescription(`**Slayer Data for ${ign}**`)
                .addFields(
-              { name: `<:rev:852892164559732806> **Revenant [${rfixed}]**`, value: `Experience: **${rrxp}k**\n\n **Slayer Kills:** \n\`\`\`T1: ${r1}\nT2: ${r2}\nT3: ${r3}\nT4: ${r4}\nT5: ${r5}\`\`\``, inline: true },
-              { name: `<:tara:852892164392222740> **Tarantula [${tfixed}]**`, value: `Experience: **${ttxp}k**\n\n **Slayer Kills:** \n\`\`\`T1: ${t1}\nT2: ${t2}\nT3: ${t3}\nT4: ${t4}\nT5: ${t5}\`\`\``, inline: true},
-              { name: `<:sven:852892164299423754> **Sven [${sfixed}]**`, value: `Experience: **${ssxp}k**\n\n **Slayer Kills:** \n\`\`\`T1: ${s1}\nT2: ${s2}\nT3: ${s3}\nT4: ${s4}\nT5: ${s5}\`\`\``, inline: true},
-              { name: `<:eman:854253314747924511> **Enderman [${efixed}]**`, value: `Experience: **${eexp}k**\n\n **Slayer Kills:** \n\`\`\`T1: ${e1}\nT2: ${e2}\nT3: ${e3}\nT4: ${e4}\nT5: ${e5}\`\`\``}
+              { name: `<:rev:852892164559732806> **Revenant [${rfixed}]**`, value: `Experience: **${rrxp}**\n\n **Slayer Kills:** \n\`\`\`T1: ${r1}\nT2: ${r2}\nT3: ${r3}\nT4: ${r4}\nT5: ${r5}\`\`\``, inline: true },
+              { name: `<:tara:852892164392222740> **Tarantula [${tfixed}]**`, value: `Experience: **${ttxp}**\n\n **Slayer Kills:** \n\`\`\`T1: ${t1}\nT2: ${t2}\nT3: ${t3}\nT4: ${t4}\nT5: ${t5}\`\`\``, inline: true},
+              { name: `<:sven:852892164299423754> **Sven [${sfixed}]**`, value: `Experience: **${ssxp}**\n\n **Slayer Kills:** \n\`\`\`T1: ${s1}\nT2: ${s2}\nT3: ${s3}\nT4: ${s4}\nT5: ${s5}\`\`\``, inline: true},
+              { name: `<:eman:854253314747924511> **Enderman [${efixed}]**`, value: `Experience: **${eexp}**\n\n **Slayer Kills:** \n\`\`\`T1: ${e1}\nT2: ${e2}\nT3: ${e3}\nT4: ${e4}\nT5: ${e5}\`\`\``}
                )
                
               waitingembed.edit(slayerembed)

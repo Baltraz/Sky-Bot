@@ -12,9 +12,8 @@ const mentionedMember = message.mentions.members.first();
 if (!mentionedMember) return;
 const mentionedUser = mentionedMember.user;
 
-console.log(mentionedMember)
 
-if(!args.length) {
+if(args.length === null) {
   message.channel.send('Please mentioned a User in the Server')
   return;
 }
