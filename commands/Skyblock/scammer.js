@@ -57,16 +57,7 @@ if (res.status != 200) {
 
 
 
-        if (sbz[uuid]) {
-          const sbzembed = new Discord.MessageEmbed()
-            .setAuthor(ign, `https://cravatar.eu/helmavatar/${ign}/600.png`, `https://de.namemc.com/profile/${ign}`)
-            .setTitle('⚠️USER IS A SCAMMER⚠️')
-            .setDescription(`**DON\'T TRADE WITH THAT USER**\n\n**IGN:** ${ign}\n**Reason:** ${sbz[uuid]["reason"]}\n**UUID:** ${uuid}`)
-            .setColor('RED')
-            .setFooter('Powered by the SkyblockZ Scammer Database')
-          waitingembed.edit(sbzembed)
-          return;
-        } else if (found) {
+         if (found) {
           const sbembed = new Discord.MessageEmbed()
             .setAuthor(ign, `https://cravatar.eu/helmavatar/${ign}/600.png`, `https://de.namemc.com/profile/${ign}`)
             .setTitle('⚠️USER IS A SCAMMER⚠️')
@@ -74,6 +65,15 @@ if (res.status != 200) {
             .setColor('RED')
             .setFooter('Powered by the Sky Bot Scammer Database')
           waitingembed.edit(sbembed)
+          return;
+        } else if (sbz[uuid]) {
+          const sbzembed = new Discord.MessageEmbed()
+            .setAuthor(ign, `https://cravatar.eu/helmavatar/${ign}/600.png`, `https://de.namemc.com/profile/${ign}`)
+            .setTitle('⚠️USER IS A SCAMMER⚠️')
+            .setDescription(`**DON\'T TRADE WITH THAT USER**\n\n**IGN:** ${ign}\n**Reason:** ${sbz[uuid]["reason"]}\n**UUID:** ${uuid}`)
+            .setColor('RED')
+            .setFooter('Powered by the SkyblockZ Scammer Database')
+          waitingembed.edit(sbzembed)
           return;
         } else {
           const innocent = new Discord.MessageEmbed()

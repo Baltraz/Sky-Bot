@@ -24,9 +24,9 @@ module.exports = {
         { name: "<:contributor:849605979589967922> Contributors", value: "Hima, Delta, Mend", inline: true },
         { name: "<:verifiedbot:848830315890737172> Bot Version", value: "1.1.0", inline: true },
         { name: "<:support:848831144509177866> Support Server", value: "[Discord Support Server](https://discord.gg/Ca6XpTRQaR)", inline: true },
-        { name: "ℹ️ Total Server Count", value: `${client.guilds.cache.size}`, inline: true },
-        { name: "ℹ️ Total User Count", value: `${client.users.cache.size}`, inline: true },
-        { name: "<:uptime:847474288884842567> Bot Uptime", value: `${pms(client.uptime)}`, inline: true },
+        { name: "ℹ️ Total Server Count", value: `\`\`${client.guilds.cache.size}\`\``, inline: true },
+        { name: "ℹ️ Total User Count", value: `\`\`${client.users.cache.size}\`\``, inline: true },
+        { name: "<:uptime:847474288884842567> Bot Uptime", value: `\`\`${pms(client.uptime)}\`\``, inline: true },
         { name: "Prefix", value: `\`${gprefix}\``, inline: true },
         { name: "Command Count", value: '\`43\`', inline: true },
         { name: "Event Count", value: '\`2\`', inline: true })

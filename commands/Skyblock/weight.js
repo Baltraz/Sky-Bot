@@ -63,23 +63,23 @@ module.exports = {
         if (apiData.data.skills.apiEnabled == false) {
             const apioff = new Discord.MessageEmbed()
                 .setAuthor(ign, `https://cravatar.eu/helmavatar/${ign}/600.png`, `https://sky.shiiyu.moe/stats/${ign}`)
-                .setDescription('You currently have skills API disabled, please enable it in the skyblock menu and try again')
+                .setDescription('This Player current has the Skills API disabled, tell them to enable it in the Skyblock Menu and then try again')
                 .setColor('DC143C')
                 .setTimestamp()
              waitingembed.edit(apioff)
                 return;
         }
 
-//fix this shit
+	  //fix this shit
        if (apiData.data.dungeons == null) {
            const nodungeonsfound = new Discord.MessageEmbed()
                 .setAuthor(ign, `https://cravatar.eu/helmavatar/${ign}/600.png`, `https://sky.shiiyu.moe/stats/${ign}`)
-                .setDescription(`${ign} has not entered the catacombs`)
+               .setDescription(`${ign} has not entered the catacombs`)
                 .setColor('DC143C')
                 .setTimestamp()
         waitingembed.edit(nodungeonsfound)
         return;
-    }
+     }
 
             const foundresults = new Discord.MessageEmbed()
                 .setAuthor(ign, `https://cravatar.eu/helmavatar/${ign}/600.png`, `https://sky.shiiyu.moe/stats/${ign}`)

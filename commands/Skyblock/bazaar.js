@@ -48,7 +48,10 @@ module.exports = {
 
         const apiData = await getApiData(itemId, method);
 
-
+        if (apiData.error) {
+          message.channel.send(`Couldn\'t find Item\`${itemId}\` make sure you spelled it correctly.\nExample:\`gold ingot\``)
+          return;
+        }
 
         message.react(loading);
 
