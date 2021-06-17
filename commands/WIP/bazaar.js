@@ -6,18 +6,18 @@ const loading = '847471618272002059'
 
 module.exports = {
   name: "Bazaar",
-  description: "Get Bazaar data for an item",
+  description: "Get Bazaar Data for an item",
   usage: "bazzar (item)",
   perms: "None",
   folder: "Skyblock",
     async execute(client, message, args) {
 
-      if(args[0] === undefined) {
-        message.channel.send('Please enter an valid Item.\n**Example:** bazaar ENCHANTED_GOLD')
+     /* if(args[0] === undefined) {
+        message.channel.send('Please enter an valid Item.\n**Example:** enchanted_gold')
         return;
-      }
+     }*/
 
-      if (!args[0]) {
+     /* if (!args[0]) {
             var itemId = message.member.itemIdentity;
         } else {
             if (message.mentions.members.first()) {
@@ -27,15 +27,34 @@ module.exports = {
 
         var method = 'save';
         if (args[0]) method = args[0];
+        }*/
+
+        var method = 'save';
+        
+        if(args[0] === undefined) {
+          message.channel.send('Please enter an Item to check.\n**Example:** enchanted_gold')
+          return;
+        } else if (args[1] === undefined) {
+          var itemId = args[0].toUpperCase();
+        } else if (args[2] === undefined) {
+          var iteminput = args[0] + '_' + args[1]
+          var itemId = iteminput.toUpperCase();
+        } else if (args[3] === undefined) {
+          var iteminput2 = args[0] + '_' + args[1] + '_' + args[2]
+          var itemId = iteminput2.toUpperCase();
         }
+        
+
 
         const apiData = await getApiData(itemId, method);
+
+
 
         message.react(loading);
 
         return message.channel.send(
             new Discord.MessageEmbed()
-                .setTitle(`Bazaar data for ${itemId}`)
+                .setTitle(`Bazaar Data for ${itemId}`)
                 .setColor('7CFC00')
                 .setAuthor(itemId, `https://sky.lea.moe/item/${itemId}`, `https://api.slothpixel.me/api/skyblock/bazaar/${itemId}`)
                 .addFields(

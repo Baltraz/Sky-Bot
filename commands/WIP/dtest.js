@@ -7,8 +7,8 @@ module.exports = {
     usage: 'dtest (IGN)',
     description: "Show Dungeons Stats for the mentioned User",
     async execute(client, message, args) {
-  /*  message.channel.send('this command is in development');
-return;*/
+    message.channel.send('this command is in development');
+return;
 
 
         if (!args[0]) {
