@@ -13,8 +13,13 @@ module.exports = {
   folder: "Skyblock",
   async execute(client, message, args) {
 
-        if(!config.scammanagers.includes(message.author.id)
-) return message.channel.send('You are not allowed to do this.')
+if(!config.scammanagers.includes(message.author.id)) { 
+const noperms = new Discord.MessageEmbed()
+.setDescription('You tried using a Scam Manager Only Command.\nIf you want to report a Scammer join https://discord.gg/Ca6XpTRQaR and report them there.')
+.setColor('ORANGE')
+message.channel.send(noperms)
+return;
+}
 
     const ign = args[0];
 

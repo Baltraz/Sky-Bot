@@ -1,4 +1,3 @@
-
 const urii = process.env['uri']
 const Discord = require('discord.js');
 const config = require('../../config.json')
@@ -13,8 +12,13 @@ module.exports = {
   perms: "Scam Managers Only",
   folder: "Skyblock",
   execute: (client, message, args) => {
-    if(!config.scammanagers.includes(message.author.id)
-) return message.channel.send('You are not allowed to do this.')
+    if(!config.scammanagers.includes(message.author.id)) { 
+const noperms = new Discord.MessageEmbed()
+.setDescription('You tried using a Scam Manager Only Command.\nIf you want to report a Scammer join https://discord.gg/Ca6XpTRQaR and report them there.')
+.setColor('ORANGE')
+message.channel.send(noperms)
+return;
+}
 
 
     const scammerIGN = args[0];
@@ -22,7 +26,7 @@ module.exports = {
     const scamREASON = args.slice(2).join(' ');
 
     if(args[0] === undefined || args[1] === undefined) {
-      message.channel.send("!scammeradd (Scammer IGN) (Scam Proof[IMGUR Link]) (Scam Reason)");
+      message.channel.send("scammeradd (Scammer IGN) (Scam Proof[IMGUR Link]) (Scam Reason)");
       return;
     }
 
