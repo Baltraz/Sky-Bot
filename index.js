@@ -21,6 +21,7 @@ client.on('ready', () => {
  client.user.setActivity(`${client.users.cache.size} Members and ${client.guilds.cache.size} Servers`, { type: 'WATCHING' });
 });
 
+
 /*//cycles status
 client.on('ready' , () => {
 

@@ -84,7 +84,6 @@ module.exports = {
                         inline: true
                     }
                 )
-                .setTimestamp()
         ).then(message.reactions.removeAll().catch(error => console.error('Failed to clear reactions: ', error)))
     }
 };

@@ -33,7 +33,7 @@ module.exports = {
     .setTitle("An error has occured")
     .addField(`<:input:849565147331559424> Input:\n`, '```js\n' + `${result}` + '```', false)
     .addField(`<:output:849565147348336650>Output:\n`, '```js\n' + `${error.message}` + '```', true)
-    //.setDescription(`Output:\n\`\`\`${err}\`\`\``)
+    .setDescription(`Output:\n\`\`\`${error}\`\`\``)
     return message.channel.send(resultError)
   }
   }

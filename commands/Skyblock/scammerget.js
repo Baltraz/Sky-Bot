@@ -54,7 +54,7 @@ return;
             .setAuthor(ign, `https://cravatar.eu/helmavatar/${ign}/600.png`, `https://de.namemc.com/profile/${ign}`)
             .setTitle('Found Info')
             .setDescription(`**IGN:** ${ign}\n**Reason:** ${found.scamREASON}\n**UUID:** ${uuid}\n**Proof:** ${found.scamPROOF}`)
-            .setColor('GREEN')
+            .setColor('BLACK')
           message.channel.send(sbembed)
           return;
         }
