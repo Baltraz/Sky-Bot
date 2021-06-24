@@ -8,7 +8,7 @@ module.exports = {
   usage: "eval <command snipet>",
   perms: "Dev",
   folder: "Dev",
-  execute: (client, message, args) => {
+  async execute(client, message, args) {
     if (message.author.id !== config.ownerID) return message.channel.send("Can't use this!")
   try {
     var result = args.join(" ")
@@ -16,7 +16,7 @@ module.exports = {
     .setColor("RED")
     .setDescription("ERROR: No valid eval args were provided")
     if (!result) return message.channel.send(noResultArg)
-    let evaled = eval(result);
+let evaled = await eval('(async () => {' + result +'})()');
     
     
     let resultSuccess = new Discord.MessageEmbed()

@@ -103,6 +103,7 @@ client.on('message', async message => {
 
   try {
     client.commands.get(command).execute(client, message, args);
+    client.channels.fetch(config.usedcommand).then(channel => channel.send(`${command} used in <#${message.channel.id}>.\nServer: ${message.guild.name}`))
   } catch (error) {
     console.error(error);
     message.reply('There was an Error trying to execute that Command!');

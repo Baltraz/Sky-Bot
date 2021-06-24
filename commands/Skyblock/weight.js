@@ -39,7 +39,6 @@ module.exports = {
                         const nomcacc = new Discord.MessageEmbed()
                             .setDescription(`No Minecraft account found for \`${ign}\``)
                             .setColor('DC143C')
-                            .setTimestamp()
                     waitingembed.edit(nomcacc)
                     return;
                 }
@@ -52,9 +51,9 @@ module.exports = {
 
 		if (apiData.status != 200) {
 				const apierrorembed = new Discord.MessageEmbed()
-					.setDescription('Error getting Data from Hypixel\'s API\nPlease try again later.')
+					.setDescription(apiData.reason)
 					.setColor('DC143C')
-					.setTimestamp()
+          .setFooter('If the Token is invalid please contact the Dev Baltraz#4874')
           waitingembed.edit(apierrorembed)
           return;
 		}
